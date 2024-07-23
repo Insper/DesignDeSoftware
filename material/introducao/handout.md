@@ -50,7 +50,7 @@ Então mãos à obra!
         2. Utilize o atalho `ctrl+F5`
         3. Clique na setinha verde no canto superior direito:
             <img src="../raw/introducao/run.png" alt='Botão para executar o código' width="30%" />
-        4. [Avançado] [Utilizando o terminal](/terminal-win) para ir até a pasta onde se encontra o arquivo e executando-o com o comando `python hello.py`
+        4. [Avançado] [Utilizando o terminal](../terminal-win/index.md) para ir até a pasta onde se encontra o arquivo e executando-o com o comando `python hello.py`
     7. O texto _Hello, world!_ deve aparecer no terminal.
 
 
@@ -84,7 +84,7 @@ Um último detalhe importante é o uso das aspas. Para indicar que `#!python Hel
 
 !!! info "Buscando ajuda"
 
-    Depois de pensar e tentar resolver problemas por conta própria e não encontrar a solução, não tenha vergonha de procurar ajuda na internet. Até mesmo programadores experientes fazem isso. É importante, entretanto, saber como fazer essas buscas: que termos usar, quais respostas confiar, etc. Você vai desenvolver uma intuição conforme for ganhando experiência, mas para te ajudar neste começo, escrevemos um [pequeno guia com algumas dicas](/buscando-ajuda).
+    Depois de pensar e tentar resolver problemas por conta própria e não encontrar a solução, não tenha vergonha de procurar ajuda na internet. Até mesmo programadores experientes fazem isso. É importante, entretanto, saber como fazer essas buscas: que termos usar, quais respostas confiar, etc. Você vai desenvolver uma intuição conforme for ganhando experiência, mas para te ajudar neste começo, escrevemos um [pequeno guia com algumas dicas](../buscando-ajuda/index.md).
 
 ## Operações matemáticas
 

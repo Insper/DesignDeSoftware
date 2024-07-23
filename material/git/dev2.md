@@ -17,7 +17,7 @@ Neste momento, o que temos é um repositório no GitHub, com um commit apenas, n
 ??? info "[Avançado] Usando o git no terminal"
     Para Design de Software é suficiente que você utilize a extensão do git para o VSCode, que apresentaremos nos próximos passos. Entretanto, para avançar em sua carreira de desenvolvimento de software, será **muito útil** saber utilizar o git através do terminal.
 
-    Nós criamos um guia sobre como [navegar pelo terminal](/conteudo/terminal-win) para te ajudar com os primeiros passos. Depois disso, tente reproduzir este handout utilizando o terminal ao invés do VSCode. Cada operação realizada no VSCode pode ser realizada por um comando no terminal: https://git-scm.com/docs/gittutorial
+    Nós criamos um guia sobre como [navegar pelo terminal](../terminal-win/index.md) para te ajudar com os primeiros passos. Depois disso, tente reproduzir este handout utilizando o terminal ao invés do VSCode. Cada operação realizada no VSCode pode ser realizada por um comando no terminal: https://git-scm.com/docs/gittutorial
 
     Reforçando: esta é uma forma mais avançada de uso do git. Tente utilizar apenas se estiver confortável com o que trabalhamos até o momento.
 

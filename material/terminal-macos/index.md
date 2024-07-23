@@ -9,7 +9,7 @@ Talvez você nunca tenha aberto o terminal/console/prompt do seu computador, mas
 ## Abrindo o Terminal
 
 !!! Danger "Atenção"
-    A partir deste ponto existem algumas diferenças entre os sistemas operacionais. **Este handout foi desenvolvido para usuários Mac OS X**. Se você usa Windows, consulte o [outro handout disponibilizado](/terminal-win).
+    A partir deste ponto existem algumas diferenças entre os sistemas operacionais. **Este handout foi desenvolvido para usuários Mac OS X**. Se você usa Windows, consulte o [outro handout disponibilizado](../terminal-win/index.md).
 
 Temos duas opções:
 

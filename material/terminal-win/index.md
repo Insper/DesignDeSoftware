@@ -9,7 +9,7 @@ Talvez você nunca tenha aberto o terminal/console/prompt do seu computador, mas
 ## Abrindo o Terminal
 
 !!! Danger "Atenção"
-    A partir deste ponto existem algumas diferenças entre os sistemas operacionais. **Este handout foi desenvolvido para usuários Windows**. Se você usa Mac OS X, consulte o [outro handout disponibilizado](/terminal-macos).
+    A partir deste ponto existem algumas diferenças entre os sistemas operacionais. **Este handout foi desenvolvido para usuários Windows**. Se você usa Mac OS X, consulte o [outro handout disponibilizado](../terminal-macos/index.md).
 
 No Windows, vamos utilizar uma versão alternativa do terminal chamada Anaconda Prompt. Ela foi instalada quando você instalou o Anaconda no seu computador. Para abrir o Anaconda Prompt clique em "Digite aqui para pesquisar" no canto inferior esquerdo (ou aperte a tecla `win`), digite "anaconda prompt" e aperte a tecla `enter`;
 

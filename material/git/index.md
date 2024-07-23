@@ -126,8 +126,8 @@ Vamos recapitular o que temos até o momento:
 1. Crie uma conta no GitHub: https://github.com/ . Com isso você poderá criar seus próprios repositórios Git remotos, acessíveis de qualquer lugar, com backups e disponibilidade garantidos! Nada mal para um serviço gratuito, não?
 2. Instale o git no seu computador seguindo os passos disponíveis nesta página: https://git-scm.com/downloads
 3. Combine com a sua dupla quem será o desenvolvedor 1 e quem será o desenvolvedor 2. A única diferença é que o desenvolvedor 1 vai criar o repositório no GitHub. Todos os outros comandos serão executados pelos dois membros da dupla. Entre no seu respectivo link a seguir:
-   - [Desenvolvedor 1](/git/dev1)
-   - [Desenvolvedor 2](/git/dev2)
+   - [Desenvolvedor 1](../git/dev1.md)
+   - [Desenvolvedor 2](../git/dev2.md)
 
 
 !!! info "Vídeo Suporte"
