@@ -11,6 +11,10 @@ nav:
   - Home: index.md
   - Informações:
     - Composição da Nota: about.md
+  - Projetos:
+    - Final: projeto/index.md
+  - Dicas:
+    - Buscando ajuda: buscando-ajuda/index.md
   - Conteúdo:
     - Introdução: introducao/handout.md
     - Funções: funcao/handout.md
@@ -23,6 +27,10 @@ nav:
     - Strings e Fatiamento: string/handout.md
     - Armazenamento permanente em arquivos: arquivo/handout.md
     - PyGame: pygame/handout.md
+  - Tutoriais:
+    - Usando o terminal (MacOS): terminal-macos/index.md
+    - Usando o terminal (Windows): terminal-win/index.md
+    - Controle de versões com Git: git/index.md
 
 
 extra:

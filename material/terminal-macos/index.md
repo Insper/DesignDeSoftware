@@ -8,9 +8,8 @@ Talvez você nunca tenha aberto o terminal/console/prompt do seu computador, mas
 
 ## Abrindo o Terminal
 
-:::admonition{type="danger" title="Atenção"}
-A partir deste ponto existem algumas diferenças entre os sistemas operacionais. **Este handout foi desenvolvido para usuários Mac OS X**. Se você usa Windows, consulte o [outro handout disponibilizado](/terminal-win).
-:::
+!!! Danger "Atenção"
+    A partir deste ponto existem algumas diferenças entre os sistemas operacionais. **Este handout foi desenvolvido para usuários Mac OS X**. Se você usa Windows, consulte o [outro handout disponibilizado](/terminal-win).
 
 Temos duas opções:
 
@@ -40,13 +39,10 @@ O comando `ls` realiza a primeira opção. Se você não mudou nenhuma configura
 
 Agora vamos tentar a segunda opção: navegar para outra pasta. Para isso usamos o comando `cd`. Ele deve ser seguido do nome da pasta. Vamos entrar na pasta `insper` listada acima. Para isso vamos usar o comando `cd insper`.
 
-:::admonition{type="danger"}
-Os arquivos no seu computador provavelmente serão diferentes dos arquivos deste exemplo.
-:::
+!!! Danger "Atenção"
+    Os arquivos no seu computador provavelmente serão diferentes dos arquivos deste exemplo.
 
-:::admonition{type="danger"}
-Os comandos executados anteriormente não são apagados.
-:::
+    Os comandos executados anteriormente não são apagados.
 
 <img src="raw/terminal-macos/osx-term2.png" alt="Executando o comando `cd`" width="50%" />
 
