@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Armazenamento permanente em arquivos - DesSoft - Design de Software</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../css/termynal.css"><link rel="stylesheet" href="../../css/custom.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../.."
+           title="DesSoft - Design de Software"
+           class="ah-logo"
+           aria-label="DesSoft - Design de Software">
+          DesSoft - Design de Software
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Informações</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../about/">Composição da Nota</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Conteúdo</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../introducao/handout/">Introdução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../funcao/handout/">Funções</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../input/handout/">Entrada e saída</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../if/handout/">Desvios condicionais (if)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../while/handout/">Laços de Repetição (while)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../lista/handout/">Armazenamento de dados em listas</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../for/handout/">Iterando em coleções com "for"</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../dicionario/handout/">Armazenamento em dicionários</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../string/handout/">Strings e Fatiamento</a>
+    </li>
+  
+
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Armazenamento permanente em arquivos</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#acessando-arquivos">Acessando arquivos</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#arquivos-em-python">Arquivos em Python</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#o-formato-json">O formato JSON</a>
+              </li>
+            
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../pygame/handout/">PyGame</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Conteúdo</li>
+                  
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="10-arquivos">10. Arquivos</h1>
+<p>Nossos programas até o momento utilizam dados fornecidos pelo usuário ou obtidos a partir de algum cálculo, mas esses dados são perdidos assim que o programa acaba. Arquivos são estruturas de dados que normalmente são armazenados em dispositivos secundários de memória. Esses dispositivos secundários de memória permitem o armazenamento permanente dos dados, ou seja, mesmo depois que o programa acaba ou até depois que o computador é reiniciado, os dados continuam existindo. Os principais dispositivos de armazenamento atualmente são:</p>
+<ul>
+<li>Disco Rígido (HD)</li>
+<li>Solid-State Drive (SSD)</li>
+<li>Pen Drives</li>
+</ul>
+<p>Os arquivos armazenados nestes dispositivos possuem sempre uma <strong>identificação (nome)</strong> e sua <strong>localização</strong> (normalmente em uma estrutura hierárquica de diretórios). Outros atributos como data e permissões de acesso também são normalmente usados no índice.</p>
+<h2 id="acessando-arquivos">Acessando arquivos</h2>
+<p>Arquivos são lidos como uma sequência de bytes. Um byte é um conjunto de 8 bits (<b>BI</b>nary digi<b>T</b>), que são valores do tipo 0 ou 1. Bytes por si só não possuem significado nenhum, são simplesmente uma sequência de 0s e 1s. É necessário que um programa seja capaz de entender essa sequência de bytes do arquivo para extrair alguma informação.</p>
+<p>Existem basicamente dois tipos de arquivos:</p>
+<ul>
+<li><strong>Arquivos de texto</strong>: os bytes representam caracteres. Por exemplo, os arquivos <code class="language-python highlight"><span class="o">.</span><span class="n">py</span></code> que criamos com o nosso código Python são arquivos de texto. Cada caractere do nosso código Python (incluindo espaços e pula linha) é representado por um byte e armazenado no nosso HD ou SSD.</li>
+<li><strong>Arquivos binários</strong>: cada byte pode ter um significado diferente. Por exemplo, em imagens é comum usar bytes para representar cores. No exemplo abaixo, os bytes do arquivo (à direita) são interpretados por um programa que é capaz de mostrar o resultado como uma imagem (à esquerda)</li>
+</ul>
+<p><img src="../raw/arquivo/arquivo-binario.png" width="50%" /></p>
+<p>Neste handout vamos aprender a trabalhar com arquivos em Python. Ao final do handout você deve ser capaz de abrir um arquivo para (1) ler os dados armazenados; ou (2) escrever dados.</p>
+<h2 id="arquivos-em-python">Arquivos em Python</h2>
+<p>Antes de utilizar qualquer arquivo é necessário abri-lo. Para isso, existe a função <code class="language-python highlight"><span class="nb">open</span><span class="p">()</span></code>, que recebe pelo menos dois argumentos: a localização do arquivo e o modo de abertura. Depois de utilizar o arquivo é <strong>muito importante</strong> lembrar de fechá-lo. <a href="https://www.myinstants.com/instant/tan-tan-tan/">Muitos problemas podem acontecer se você esquecer de fechar o programa</a>. Para isso devemos usar a função <code class="language-python highlight"><span class="n">close</span><span class="p">()</span></code>:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Modo tradicional de ler um arquivo</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">arquivo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;arquivo_texto.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">conteudo</span> <span class="o">=</span> <span class="n">arquivo</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">arquivo</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># O que acontece se não fechar?</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Imprime o conteúdo</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">conteudo</span><span class="p">)</span>
+</code></pre></div>
+<p>O programa acima abre um arquivo chamado <code class="language-python highlight"><span class="n">arquivo_texto</span><span class="o">.</span><span class="n">txt</span></code> para leitura (<strong>importante</strong>: ele deve existir na mesma pasta onde você está executando o seu programa), armazena o conteúdo na variável <code class="language-python highlight"><span class="n">conteudo</span></code>, fecha o arquivo e depois imprime todo o conteúdo do arquivo.</p>
+<div class="admonition exercise self-progress" data-slug="arquivo/handout/exercise_1" id="exercise_1_0">
+<p class="admonition-title">EXERCÍCIO 1</p>
+<form class="exercise-form">
+<p>Teste o programa acima no seu computador. Para isso, crie um arquivo chamado <code class="language-python highlight"><span class="n">arquivo_texto</span><span class="o">.</span><span class="n">txt</span></code> e escreva alguma coisa (pode ser no Spyder, VS Code, ou qualquer editor de texto de sua preferência - <strong>não use o Word, pois ele gera um arquivo muito mais complicado</strong>). Salve o programa acima <strong>na mesma pasta</strong>. Execute seu programa. Ele deve imprimir no terminal o conteúdo do seu arquivo.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Caminho (<em>path</em>) do arquivo</p>
+<p>Quando estamos trabalhando com arquivos é comum obtermos o erro <code class="language-python highlight"><span class="ne">FileNotFoundError</span></code>. Ele ocorre quando tentamos abrir (<code class="language-python highlight"><span class="nb">open</span><span class="p">()</span></code>) um arquivo que não existe. É importante que o arquivo que você está tentando abrir esteja na mesma pasta que contém o seu programa.</p>
+<p>É possível abrir arquivos localizados em outras pastas do seu computador, mas nesse caso é necessário especificar o caminho do arquivo, ou seja, qual é a sequência de pastas que devem ser percorridas para se localizar esse arquivo.</p>
+</div>
+<h3 id="abrindo-arquivos-com-o-with">Abrindo arquivos com o <code class="language-python highlight"><span class="k">with</span></code></h3>
+<p>Como dissemos anteriormente, é muito importante se lembrar de fechar o arquivo depois de utilizá-lo. Na verdade, isso é tão importante que existe uma maneira de escrevermos um código que fecha o arquivo automaticamente depois que terminamos de utilizá-lo:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># Abre um arquivo para a leitura.</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;arquivo_texto.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="n">conteudo</span> <span class="o">=</span> <span class="n">arquivo</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c1"># Quando sai do bloco do &#39;with&#39;, fecha o arquivo automaticamente.</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="c1"># Imprime o conteúdo</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">conteudo</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>A sintaxe do código acima é um pouco diferente, então vamos por partes. O <code class="language-python highlight"><span class="k">with</span></code> define um bloco dentro do qual o arquivo será utilizado. Assim que o bloco termina, o que é indicado pelo fim da indentação, o arquivo será automaticamente fechado. A função <code class="language-python highlight"><span class="nb">open</span><span class="p">()</span></code> não foi alterada, mas agora ao invés de <code class="language-python highlight"><span class="n">arquivo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;arquivo_texto.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span></code> nós temos <code class="language-python highlight"><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;arquivo_texto.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span></code>. O resultado será o mesmo: o arquivo aberto será armazenado na variável <code class="language-python highlight"><span class="n">arquivo</span></code>. Essa inversão da ordem é feita apenas em conjunto com o <code class="language-python highlight"><span class="k">with</span></code>.</p>
+<div class="admonition exercise self-progress" data-slug="arquivo/handout/exercise_2" id="exercise_2_0">
+<p class="admonition-title">EXERCÍCIO 2</p>
+<form class="exercise-form">
+<p>Teste a versão do programa acima. O resultado deve ser o mesmo da primeira versão.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h3 id="modos-de-abertura-de-um-arquivo">Modos de abertura de um arquivo</h3>
+<p>Comentamos que existem dois tipos de arquivo: arquivos binários e arquivos de texto. Nos exemplos acima nós trabalhamos com a leitura de um arquivo de texto. Para isso o modo de abertura do arquivo foi o <code class="language-python highlight"><span class="s1">&#39;r&#39;</span></code>, ou seja, leitura (<em>read</em>). Para abrir um arquivo binário para leitura devemos utilizar o modo <code class="language-python highlight"><span class="s1">&#39;rb&#39;</span></code> (<em>read binary</em>). Tanto o modo <code class="language-python highlight"><span class="s1">&#39;r&#39;</span></code> quanto o modo <code class="language-python highlight"><span class="s1">&#39;rb&#39;</span></code> permitem apenas a leitura de um arquivo existente. Não é possível adicionar (escrever) nenhuma informação a ele.</p>
+<p>Para adicionar dados a um arquivo devemos abri-lo com algum dos modos de <strong>escrita</strong>. Os modos disponíveis são <code class="language-python highlight"><span class="s1">&#39;w&#39;</span></code> e <code class="language-python highlight"><span class="s1">&#39;a&#39;</span></code>. O modo <code class="language-python highlight"><span class="s1">&#39;w&#39;</span></code> cria um novo arquivo no modo escrita (<strong>write</strong>). <strong>Importante:</strong> se já existir um arquivo com o mesmo nome ele apaga o antigo. O modo <code class="language-python highlight"><span class="s1">&#39;a&#39;</span></code> (<em>append</em>) é um modo de escrita alternativo que adiciona o novo conteúdo ao final do arquivo se ele já existir, sem apagar o conteúdo anterior. Exemplos:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span>
+<span class="normal"><a href="#__codelineno-2-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># Cria o arquivo para escrita (limpa o antigo se já existir)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;arquivo_texto.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="c1"># Escrevendo um texto</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="n">arquivo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;algum dado</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="c1"># Abre/Cria o arquivo para escrita SEM apagar o que tinha antes.</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;arquivo_texto.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="c1"># Escrevendo um texto</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="n">arquivo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;novo dado</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>A seguir apresentamos um resumo dos principais modos de abertura de arquivos (para mais detalhes consulte <a href="https://docs.python.org/3/library/functions.html#open">a documentação</a>):</p>
+<ul>
+<li><strong><code>'r'</code></strong>: modo de leitura de arquivo texto;</li>
+<li><strong><code>'rb'</code></strong>: modo de leitura de arquivo binário;</li>
+<li><strong><code>'w'</code></strong>: modo de escrita de arquivo texto;</li>
+<li><strong><code>'wb'</code></strong>: modo de escrita de arquivo binário;</li>
+<li><strong><code>'a'</code></strong>: modo de escrita de arquivo texto, sem apagar o conteúdo anterior;</li>
+<li><strong><code>'ab'</code></strong>: modo de escrita de arquivo binário, sem apagar o conteúdo anterior.</li>
+</ul>
+<div class="admonition exercise self-progress" data-slug="arquivo/handout/exercise_3" id="exercise_3_0">
+<p class="admonition-title">EXERCÍCIO 3</p>
+<form class="exercise-form">
+<p>Teste o programa acima no seu computador. Ele não vai imprimir nada no terminal, mas ao abrir o arquivo <code class="language-python highlight"><span class="n">arquivo_texto</span><span class="o">.</span><span class="n">txt</span></code> o seu conteúdo deve ser:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>algum dado
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>novo dado
+</code></pre></div>
+<p>Se trocássemos a ordem dos blocos <code class="language-python highlight"><span class="k">with</span></code> do programa acima, qual seria o efeito esperado? Teste essa mudança e verifique se ele fez o que você esperava.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="arquivo/handout/exercise_4" id="exercise_4_0">
+<p class="admonition-title">EXERCÍCIO 4</p>
+<form class="exercise-form">
+<p>Salve o arquivo <a href="../raw/arquivo/cancao_do_exilio.txt"><code class="language-python highlight"><span class="n">cancao_do_exilio</span><span class="o">.</span><span class="n">txt</span></code> (disponível neste link)</a> na mesma pasta onde você fez os outros testes deste handout. Depois disso, teste cada um dos programas abaixo:</p>
+<p><strong>Programa 1</strong></p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># Lendo tudo de uma vez</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;cancao_do_exilio.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="n">conteudo_completo</span> <span class="o">=</span> <span class="n">arquivo</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">conteudo_completo</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Programa 2</strong></p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1"># Lendo apenas a primeira linha</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;cancao_do_exilio.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>    <span class="n">primeira_linha</span> <span class="o">=</span> <span class="n">arquivo</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">primeira_linha</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Programa 3</strong></p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span>
+<span class="normal"><a href="#__codelineno-6-8">8</a></span>
+<span class="normal"><a href="#__codelineno-6-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1"># Lendo de linha em linha (note o plural em readlines)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;cancao_do_exilio.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo</span><span class="p">:</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>    <span class="c1"># linhas é uma lista de strings, cada linha é uma string diferente</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>    <span class="n">linhas</span> <span class="o">=</span> <span class="n">arquivo</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>    <span class="c1"># Verificando que linhas é uma lista de strings</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">linhas</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>    <span class="c1"># Imprimindo de linha em linha</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>    <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">linhas</span><span class="p">:</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">linha</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Note que no último exemplo as linhas aparecerão sempre com uma linha em branco entre si. Isso acontece porque no arquivo original cada linha termina em um <code class="language-python highlight"><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span></code>, que indica que a linha terminou, mas o print também pula uma linha automaticamente, então sempre serão puladas duas linhas.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h3 id="resumo-dos-metodos-de-arquivos">Resumo dos métodos de arquivos:</h3>
+<p>Abaixo você encontra um resumo dos principais métodos de arquivos. Para mais detalhes, consulte <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files">a documentação</a>.</p>
+<h4 id="para-arquivos-abertos-no-modo-de-leitura">Para arquivos abertos no modo de leitura</h4>
+<ul>
+<li><strong><code>read</code></strong>: retorna todo o conteúdo do arquivo em uma única string;</li>
+<li><strong><code>readline</code></strong>: retorna uma string contendo apenas a próxima linha;</li>
+<li><strong><code>readlines</code></strong>: retorna uma lista de strings, contendo uma string para cada linha.</li>
+</ul>
+<h4 id="para-arquivos-abertos-no-modo-de-escrita">Para arquivos abertos no modo de escrita</h4>
+<ul>
+<li><strong><code>write</code></strong>: escreve no arquivo a string passada como argumento;</li>
+<li><strong><code>writelines</code></strong>: recebe uma lista de strings e escreve todas no arquivo.</li>
+</ul>
+<div class="admonition exercise self-progress" data-slug="arquivo/handout/exercise_5" id="exercise_5_0">
+<p class="admonition-title">EXERCÍCIO 5</p>
+<form class="exercise-form">
+<p>Faça o exercício <a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432157" target="_blank">Conta Palavras no Arquivo</a>.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="arquivo/handout/exercise_6" id="exercise_6_0">
+<p class="admonition-title">EXERCÍCIO 6</p>
+<form class="exercise-form">
+<p>Faça o exercício <a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432157" target="_blank">Bananas no arquivo</a>.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="o-formato-json">O formato JSON</h2>
+<p>O formato JSON é uma forma de trocar informação de modo estruturado, simples e rápido entre sistemas. Ele é muito parecido com um dicionário do Python, contudo o JSON é um texto (string) e não uma estrutura de dados. Por ser um texto, ele pode ser armazenado em um arquivo. Assim esses dados continuam existindo, mesmo depois que o programa termina. Exemplo:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>{&quot;Alunos&quot;:[
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>     { &quot;nome&quot;: &quot;João&quot;, &quot;notas&quot;: [ 8, 9, 5 ]  },
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>     { &quot;nome&quot;: &quot;Maria&quot;, &quot;notas&quot;: [ 8, 10, 7 ] },
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>     { &quot;nome&quot;: &quot;José&quot;, &quot;notas&quot;: [ 10, 10, 9 ] }
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>]}
+</code></pre></div>
+<p>O JSON acima contém os nomes e notas de 3 alunos. Esse poderia ser o conteúdo de um arquivo de texto chamado, por exemplo, <code class="language-python highlight"><span class="n">alunos</span><span class="o">.</span><span class="n">json</span></code>. Para utilizar os dados presentes nele será necessário processar a string JSON para obter um dicionário. Para isso utilizamos o módulo <code class="language-python highlight"><span class="n">json</span></code> do Python:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span>
+<span class="normal"><a href="#__codelineno-8-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">import</span> <span class="nn">json</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;alunos.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo_json</span><span class="p">:</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a>    <span class="n">texto</span> <span class="o">=</span> <span class="n">arquivo_json</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="c1"># Para verificar que é realmente um texto (string),</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="c1"># vamos usar um fatiamento:</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">texto</span><span class="p">[:</span><span class="mi">15</span><span class="p">])</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="c1"># Criando um dicionário a partir das informações no texto</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="n">dicionario</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="c1"># Para verificar que é um dicionário,</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="c1"># vamos imprimir o valor armazenado na chave &quot;Alunos&quot;</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">dicionario</span><span class="p">[</span><span class="s1">&#39;Alunos&#39;</span><span class="p">])</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="c1"># Adicionando um novo aluno no dicionário</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="n">novo_aluno</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nome&#39;</span><span class="p">:</span> <span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;notas&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]}</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="n">dicionario</span><span class="p">[</span><span class="s1">&#39;Alunos&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">novo_aluno</span><span class="p">)</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a>
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a><span class="c1"># Transformando de volta para JSON (texto)</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="n">novo_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">dicionario</span><span class="p">)</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24"></a>
+<a id="__codelineno-8-25" name="__codelineno-8-25"></a><span class="c1"># Salvando o arquivo</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;alunos.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo_json</span><span class="p">:</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27"></a>    <span class="n">arquivo_json</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">novo_json</span><span class="p">)</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28"></a>
+<a id="__codelineno-8-29" name="__codelineno-8-29"></a><span class="c1"># Abra o arquivo alunos.json e verifique seu conteúdo.</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition exercise self-progress" data-slug="arquivo/handout/exercise_7" id="exercise_7_0">
+<p class="admonition-title">EXERCÍCIO 7</p>
+<form class="exercise-form">
+<p>Baixe o arquivo <a href="../raw/arquivo/alunos.json"><code>alunos.json</code></a> disponível <a href="../raw/arquivo/alunos.json">neste link</a>. Salve-o na mesma pasta onde você está fazendo os testes deste handout. Abra o arquivo no Spyder, VS Code ou seu editor de texto favorito. Crie um novo arquivo chamado <code>testa_json.py</code> e copie o código do programa acima. Teste-o e verifique o conteúdo do arquivo <code>alunos.json</code>.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="arquivo/handout/exercise_8" id="exercise_8_0">
+<p class="admonition-title">EXERCÍCIO 8</p>
+<form class="exercise-form">
+<p>Faça o exercício <a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432157" target="_blank">Valor Total Do Estoque</a>.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../../string/handout/"
+               class="ah-prev"
+               title="Strings e Fatiamento">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Strings e Fatiamento</span>
+            </a>
+          
+          
+            <a href="../../pygame/handout/"
+               class="ah-next"
+               title="PyGame">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">PyGame</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="../../js/tabs.js"></script><script src="../../js/termynal.js"></script><script src="../../js/custom.js"></script>
+    
+  </body>
+</html>

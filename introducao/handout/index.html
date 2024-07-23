@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Introdução - DesSoft - Design de Software</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../css/termynal.css"><link rel="stylesheet" href="../../css/custom.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../.."
+           title="DesSoft - Design de Software"
+           class="ah-logo"
+           aria-label="DesSoft - Design de Software">
+          DesSoft - Design de Software
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Informações</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../about/">Composição da Nota</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Conteúdo</span>
+    <ul>
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Introdução</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#o-python">O Python</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#instalacao">Instalação</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#ola-mundo">Olá Mundo!</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#operacoes-matematicas">Operações matemáticas</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#variaveis">Variáveis</a>
+              </li>
+            
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../funcao/handout/">Funções</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../input/handout/">Entrada e saída</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../if/handout/">Desvios condicionais (if)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../while/handout/">Laços de Repetição (while)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../lista/handout/">Armazenamento de dados em listas</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../for/handout/">Iterando em coleções com "for"</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../dicionario/handout/">Armazenamento em dicionários</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../string/handout/">Strings e Fatiamento</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../arquivo/handout/">Armazenamento permanente em arquivos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../pygame/handout/">PyGame</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Conteúdo</li>
+                  
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="01-introducao-ao-python-variaveis-e-operacoes-matematicas">01. Introdução ao Python, Variáveis e Operações Matemáticas</h1>
+<h2 id="o-python">O Python</h2>
+<p>O nome Python teve a sua origem no grupo humorístico britânico <a href="https://pt.wikipedia.org/wiki/Monty_Python">Monty Python</a> (se tiver curiosidade, é possível encontrar alguns títulos no Netflix).</p>
+<p><img src="../raw/introducao/monty-python.jpg" alt="Fonte: https://www.esquire.com/entertainment/movies/a25270/monty-python-meaning-of-life-review/" /></p>
+<p>A linguagem Python foi desenvolvida por <a href="https://en.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a> no início da década de 1990. Apesar de ser uma linguagem relativamente antiga, o seu uso apresentou <a href="https://stackoverflow.blog/2017/09/06/incredible-growth-python/">um crescimento significativo nos últimos anos</a> e é hoje uma das linguagens de programação mais populares no mundo, sendo <a href="https://www.python.org/about/quotes/">amplamente utilizada por grandes empresas</a> como Google, Netflix, Nasa, Dropbox, e muitos outros.</p>
+<p>Neste primeiro <em>handout</em> vamos desenvolver nossos primeiros programas em Python, utilizando os seguintes conceitos básicos de programação: operações matemáticas, variáveis e funções.</p>
+<h2 id="instalacao">Instalação</h2>
+<p>Existem diversas formas de instalar o Python. Recomendamos a instalação através do Anaconda, que já inclui o Python e alguns módulos adicionais que serão úteis em outras disciplinas. Para isso, acesse o link de instalação referente ao seu sistema operacional:</p>
+<ul>
+<li>Windows: <a href="https://docs.anaconda.com/anaconda/install/windows/">https://docs.anaconda.com/anaconda/install/windows/</a></li>
+<li>macOS: <a href="https://docs.anaconda.com/anaconda/install/mac-os/">https://docs.anaconda.com/anaconda/install/mac-os/</a></li>
+<li>Linux: <a href="https://docs.anaconda.com/anaconda/install/linux/">https://docs.anaconda.com/anaconda/install/linux/</a></li>
+</ul>
+<p>Para escrever e editar o nosso código será necessário utilizarmos um editor de código. Existem diversas alternativas, mas nesta disciplina focaremos no <a href="https://code.visualstudio.com/">Visual Studio Code</a> (VS Code), um dos editores mais populares atualmente. Veremos que o código é essencialmente texto, então poderíamos utilizar qualquer editor de texto disponível, mas editores como o VS Code possuem diversas ferramentas que facilitam o desenvolvimento.</p>
+<p>É provável que o VS Code já tenha sido instalado juntamente com o Anaconda. Para verificar, abra o Anaconda Navigator (um programa instalado com o Anaconda), procure pelo VS Code e clique em <em>Launch</em>. Se ele mostrar a opção de instalar, você pode instalá-lo pelo próprio Anaconda Navigator. Caso contrário, você pode fazer o download no seguinte link: <a href="https://code.visualstudio.com/Download">https://code.visualstudio.com/Download</a></p>
+<h2 id="ola-mundo">Olá Mundo!</h2>
+<p>Quando vamos aprender uma nova linguagem de programação é comum escrevermos um primeiro programa que, ao ser executado, mostra na tela o texto <em>Hello, world!</em> ("Olá, mundo!"). Apesar de ser um programa muito simples, ele já nos permite começar a compreender dois aspectos da linguagem:</p>
+<ol>
+<li>Qual é a "cara" da linguagem, ou seja, qual é a estrutura básica do código.</li>
+<li>Como executar um programa escrito nessa linguagem.</li>
+</ol>
+<p>Então mãos à obra!</p>
+<div class="admonition exercise self-progress" data-slug="introducao/handout/exercise_1" id="exercise_1_0">
+<p class="admonition-title">EXERCÍCIO 1</p>
+<form class="exercise-form">
+<p>Siga os passos a seguir para escrever e executar seu primeiro programa em Python:</p>
+<ol>
+<li>Abra o VS Code.</li>
+<li>Crie um novo arquivo clicando em "File &rarr; New File" ou utilizando o atalho <code>ctrl+n</code> (Windows)/<code>cmd+n</code> (macOS).</li>
+<li>Salve o arquivo com o nome <code>hello.py</code>. Para isso, clique em "File &rarr; Save", preencha o nome, escolha uma pasta para salvar o arquivo e clique em "Save".</li>
+<li>Digite o código <code class="language-python highlight"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">)</span></code>
+    <img src="../raw/introducao/hello.png" alt='Código com "hello world"' width="80%" /></li>
+<li>Salve o arquivo clicando em "File &rarr; Save" ou usando o atalho <code>ctrl+s</code> (Windows)/<code>cmd+s</code> (macOS).</li>
+<li>Execute seu programa. Para executar um programa em Python, temos quatro possibilidades:<ol>
+<li>Clique em "Run &rarr; Run Without Debugging"</li>
+<li>Utilize o atalho <code>ctrl+F5</code></li>
+<li>Clique na setinha verde no canto superior direito:
+    <img src="../raw/introducao/run.png" alt='Botão para executar o código' width="30%" /></li>
+<li>[Avançado] <a href="/terminal-win">Utilizando o terminal</a> para ir até a pasta onde se encontra o arquivo e executando-o com o comando <code>python hello.py</code></li>
+</ol>
+</li>
+<li>O texto <em>Hello, world!</em> deve aparecer no terminal.</li>
+</ol>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h3 id="entendendo-nosso-primeiro-programa">Entendendo nosso primeiro programa</h3>
+<p>Nosso código possui apenas uma linha, mas já contém diversos conceitos importantes. Não se preocupe se não entender toda a explicação a seguir, tudo ficará mais claro conforme formos aprendendo mais. A linha <code class="language-python highlight"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">)</span></code> pode ser lida como: "Python, por favor, mostre na tela o texto <code class="language-python highlight"><span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="err">!</span></code>. Vamos por partes.</p>
+<p><span id="print-arg"></span></p>
+<p>Comecemos pela a função <code class="language-python highlight"><span class="nb">print</span></code>. Essa função é utilizada para mostrar texto no terminal. Podemos entender uma função como um comando do Python, ou seja, estamos dizendo para o Python <strong>fazer</strong> algo. A ação de mostrar algo na tela depende de uma informação adicional: o que deve ser mostrado. Essa informação da qual a ação depende é chamada de <strong>argumento da função</strong>. No nosso exemplo, o argumento da função <code class="language-python highlight"><span class="nb">print</span></code> é o texto <code class="language-python highlight"><span class="s1">&#39;Hello, world!&#39;</span></code>.</p>
+<p>Um último detalhe importante é o uso das aspas. Para indicar que <code class="language-python highlight"><span class="n">Hello</span><span class="p">,</span> <span class="n">world</span><span class="err">!</span></code> é um texto nós utilizamos aspas, que podem ser simples ou duplas. Isso é muito importante, pois o que estiver entre aspas será considerado pelo Python como texto (que chamamos de <em>string</em>) e não como um comando (por exemplo a função <code class="language-python highlight"><span class="nb">print</span></code>).</p>
+<div class="admonition info">
+<p class="admonition-title">Dica Pro: documente o código!</p>
+<p>Uma lição a ser aprendida é que passamos <strong>muito</strong> mais tempo lendo código pré-existente do que escrevendo código novo. Por isso a documentação do código é uma prática extremamente importante. A documentação pode ser feita por meio de comentários, trechos de texto que não afetam o comportamento do programa, que ajudam o leitor (seja algum colega de trabalho que não conhece o código ou você mesmo algum tempo no futuro) a compreender o código.</p>
+<p>Veja a seguir um exemplo do mesmo programa que acabamos de executar, mas com documentação:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="sd">Programa que escreve &quot;Hello, world!&quot; no console.</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sd">Serve para verificar se conseguimos usar o Python pela primeira vez.</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="sd">@author: Profs. Design de Software</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, world!&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>O texto entre <code class="language-python highlight"><span class="s2">&quot;&quot;&quot;</span></code> será ignorado pelo programa. Note que nesse comentário podemos encontrar informações como:</p>
+<ul>
+<li>O que o código faz;</li>
+<li>Por que ele foi escrito;</li>
+<li>Quem escreveu o código.</li>
+</ul>
+<p>Esse primeiro programa ainda é muito simples, mas conforme formos desenvolvendo programas mais complexos os comentários se tornam cada vez mais relevantes.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Buscando ajuda</p>
+<p>Depois de pensar e tentar resolver problemas por conta própria e não encontrar a solução, não tenha vergonha de procurar ajuda na internet. Até mesmo programadores experientes fazem isso. É importante, entretanto, saber como fazer essas buscas: que termos usar, quais respostas confiar, etc. Você vai desenvolver uma intuição conforme for ganhando experiência, mas para te ajudar neste começo, escrevemos um <a href="/buscando-ajuda">pequeno guia com algumas dicas</a>.</p>
+</div>
+<h2 id="operacoes-matematicas">Operações matemáticas</h2>
+<p>Queremos usar o Python para fazer algo além de só mostrar um texto na tela. Para isso vamos começar aprendendo sobre como realizar operações matemáticas.</p>
+<div class="admonition exercise self-progress" data-slug="introducao/handout/exercise_2" id="exercise_2_0">
+<p class="admonition-title">EXERCÍCIO 2</p>
+<form class="exercise-form">
+<p>Crie um novo arquivo chamado <code>operadores.py</code> no VS Code e copie o código a seguir. Execute-o e tente identificar a partir dos resultados o que cada operador faz. Discuta com seus colegas.</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Usando alguns operadores numéricos:&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nb">print</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Importante!</p>
+<p>O programa em Python é executado linha a linha, ou seja, as linhas do programa são executadas uma após a outra de cima para baixo. <strong>Uma linha de código só é executada depois que a linha anterior terminou de executar.</strong></p>
+</div>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Resposta</p>
+<p>Leia a resposta apenas depois de discutir com seus colegas.</p>
+<p>O código abaixo foi comentado com as respostas. Comentários em Python são iniciados com o caractere cerquilha (<code class="language-python highlight"><span class="c1">#</span></code>). Tudo o que vier depois desse caractere será ignorado pelo programa.</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="sd">Programa para demonstrar alguns operadores numéricos.</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="sd">@author: Profs. Design de Software</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Usando alguns operadores numéricos:&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Soma.</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Subtração.</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Multiplicação.</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Potenciação ou exponenciação.</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># Operadores de divisão</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Divisão.</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Divisão inteira: quociente.</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="nb">print</span><span class="p">(</span><span class="mi">7</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Resto da divisão inteira.</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1"># É possível utilizar parênteses para modificar a ordem</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="c1"># de aplicação das operações.</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="nb">print</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># Parênteses.</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Mais alguns detalhes...</p>
+<p>No programa acima podemos observar mais alguns detalhes:</p>
+<ul>
+<li>A cerquilha (<code class="language-python highlight"><span class="c1">#</span></code>) que inicia um comentário pode ser inserida no começo de uma linha ou precedida por 2 espaços depois de um trecho de código. Esses dois espaços antes da cerquilha não são obrigatórios, mas são um padrão adotado pela comunidade Python.</li>
+<li>Os operadores e números estão separados por espaços. Esses espaços também não são obrigatórios, mas facilitam na interpretação visual.</li>
+</ul>
+</div>
+</div>
+</div>
+<p>A ordem de prioridade dos operadores em Python segue a convenção matemática do PEMDAS:</p>
+<ul>
+<li><strong>P</strong>arênteses têm a maior prioridade e pode ser usado para forçar uma expressão a ser avaliada na ordem que você quiser.</li>
+<li><strong>E</strong>xponenciação tem a próxima precedência mais alta.</li>
+<li><strong>M</strong>ultiplicação e</li>
+<li><strong>D</strong>ivisão têm a mesma precedência, que é maior do que a</li>
+<li><strong>A</strong>dição e</li>
+<li><strong>S</strong>ubtração.</li>
+</ul>
+<p>Além disso, as operações de mesma prioridade são avaliadas da esquerda para a direita.</p>
+<div class="admonition exercise self-progress" data-slug="introducao/handout/exercise_3" id="exercise_3_0">
+<p class="admonition-title">EXERCÍCIO 3</p>
+<form class="exercise-form">
+<p>Escreva um programa em Python que imprime (mostra na tela com o comando <code class="language-python highlight"><span class="nb">print</span></code>) o resultado das seguintes expressões numéricas:</p>
+<ol>
+<li><span class="arithmatex">\(1 + \frac{1}{2} + \frac{1}{2^2} + \frac{1}{2^3} + \frac{1}{2^4}\)</span> (resposta esperada: 1,9375)</li>
+<li><span class="arithmatex">\(\frac{3\times 4+5}{1+2\times 3}\)</span> (resposta esperada: 2,4285714285714284 <span class="arithmatex">\(\rightarrow\)</span> não se preocupe se der alguma diferença nas últimas casas decimais)</li>
+<li><span class="arithmatex">\(\sqrt{3^2+4^2}\)</span> (resposta esperada: 5,0)</li>
+</ol>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="variaveis">Variáveis</h2>
+<p>Podemos armazenar valores ou resultados de expressões matemáticas em variáveis. Uma variável é como se fosse uma caixa com uma etiqueta com o seu nome. O conteúdo armazenado na caixa pode ser acessado a partir do nome em sua etiqueta. Considere o exemplo a seguir:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<p>Devemos ler a primeira linha como: "a variável x <strong>recebe</strong> o valor 5". É como se disséssemos: "interpretador Python, por favor, crie na memória do computador uma caixa chamada <code class="language-python highlight"><span class="n">x</span></code> e guarde lá dentro o valor <code class="language-python highlight"><span class="mi">5</span></code>."</p>
+<p>A linha seguinte pede para o Python imprimir o <strong>conteúdo</strong> da variável <code class="language-python highlight"><span class="n">x</span></code>, nesse caso, <code class="language-python highlight"><span class="mi">5</span></code>. Assim, o Python vai escrever <code class="language-python highlight"><span class="mi">5</span></code> no terminal.</p>
+<p>Podemos usar variáveis dentro de outras expressões. Por exemplo:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O retângulo de lados </span><span class="si">{0}</span><span class="s1"> e </span><span class="si">{1}</span><span class="s1"> tem área </span><span class="si">{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Usamos o <code class="language-python highlight"><span class="o">.</span><span class="n">format</span><span class="p">()</span></code> para escrever valores no meio do texto. É importante notar que:</p>
+<ol>
+<li>A sequência dos argumentos (conteúdo dentro dos parênteses do <code class="language-python highlight"><span class="o">.</span><span class="n">format</span><span class="p">()</span></code>) é importante.</li>
+<li>O primeiro argumento (<code class="language-python highlight"><span class="n">x</span></code>) será inserido no lugar do <code class="language-python highlight"><span class="p">{</span><span class="mi">0</span><span class="p">}</span></code>, o segundo argumento (<code class="language-python highlight"><span class="n">y</span></code>) será inserido no lugar do <code class="language-python highlight"><span class="p">{</span><span class="mi">1</span><span class="p">}</span></code> e o terceiro argumento (<code class="language-python highlight"><span class="n">z</span></code>) será inserido no lugar do <code class="language-python highlight"><span class="p">{</span><span class="mi">2</span><span class="p">}</span></code>.</li>
+<li>Em Python (e em programação em geral) começamos a contar a partir do zero, ou seja, 0 é o primeiro, 1 é o segundo, 2 é o terceiro e assim por diante.</li>
+<li>O <code class="language-python highlight"><span class="o">.</span><span class="n">format</span><span class="p">()</span></code> é executado primeiro, escrevendo os valores no meio do texto, e depois o resultado é utilizado pela função <code>print()</code>, mostrando o resultado na tela.</li>
+</ol>
+</div>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../../about/"
+               class="ah-prev"
+               title="Composição da Nota">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Composição da Nota</span>
+            </a>
+          
+          
+            <a href="../../funcao/handout/"
+               class="ah-next"
+               title="Funções">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">Funções</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="../../js/tabs.js"></script><script src="../../js/termynal.js"></script><script src="../../js/custom.js"></script>
+    
+  </body>
+</html>

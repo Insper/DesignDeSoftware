@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Iterando em coleções com "for" - DesSoft - Design de Software</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../css/termynal.css"><link rel="stylesheet" href="../../css/custom.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../.."
+           title="DesSoft - Design de Software"
+           class="ah-logo"
+           aria-label="DesSoft - Design de Software">
+          DesSoft - Design de Software
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Informações</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../about/">Composição da Nota</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Conteúdo</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../introducao/handout/">Introdução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../funcao/handout/">Funções</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../input/handout/">Entrada e saída</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../if/handout/">Desvios condicionais (if)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../while/handout/">Laços de Repetição (while)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../lista/handout/">Armazenamento de dados em listas</a>
+    </li>
+  
+
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Iterando em coleções com "for"</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#percorrendo-listas-com-while">Percorrendo listas com while</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#a-repeticao-for">A repetição for</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#o-range">O range</a>
+              </li>
+            
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../dicionario/handout/">Armazenamento em dicionários</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../string/handout/">Strings e Fatiamento</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../arquivo/handout/">Armazenamento permanente em arquivos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../pygame/handout/">PyGame</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Conteúdo</li>
+                  
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="07-for">07. For</h1>
+<p>O objetivo de aprendizado deste handout é que, ao final da atividade, você seja capaz de utilizar o <code class="language-python highlight"><span class="k">for</span></code> para percorrer listas e intervalos (<code class="language-python highlight"><span class="nb">range</span></code>) em seus programas em conjunto com as estruturas que vimos nas aulas anteriores (<code class="language-python highlight"><span class="nb">input</span></code>, <code class="language-python highlight"><span class="k">if</span></code>, <code class="language-python highlight"><span class="k">while</span></code>, etc.). Vamos começar com um exemplo.</p>
+<h2 id="percorrendo-listas-com-while">Percorrendo listas com <code class="language-python highlight"><span class="k">while</span></code></h2>
+<p>Considere a função a seguir, que recebe uma lista de números como argumento:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span> <span class="nf">soma_elementos</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">soma</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="n">n</span> <span class="o">=</span> <span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="n">soma</span> <span class="o">+=</span> <span class="n">n</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="k">return</span> <span class="n">soma</span>
+</code></pre></div>
+<p>O que ela faz? Ela inicializa uma variável <code class="language-python highlight"><span class="n">soma</span></code> com o valor zero e, <strong>para cada elemento <code class="language-python highlight"><span class="n">n</span></code> da lista</strong>, adiciona o valor guardado em <code class="language-python highlight"><span class="n">n</span></code> na variável <code class="language-python highlight"><span class="n">soma</span></code> e <strong>vai para o próximo elemento</strong>. Depois disso, devolve o resultado da soma de todos os elementos. Depois de fazer muitos exercícios você pode ter percebido que em muitos casos temos uma estrutura muito parecida com essa quando estamos percorrendo uma lista:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Faz algumas inicializações</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">elemento</span> <span class="o">=</span> <span class="n">lista</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="c1"># Faz alguma coisa com o elemento</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>Com essa estrutura podemos, por exemplo, imprimir ou somar todos os elementos de uma lista. Nesses casos, a lógica é sempre parecida: executa alguma ação <strong>para cada elemento da lista</strong>. Na verdade esse tipo de procedimento é tão comum que existe uma maneira mais sucinta de fazer isso em Python: a repetição <code class="language-python highlight"><span class="k">for</span></code>.</p>
+<h2 id="a-repeticao-for">A repetição <code class="language-python highlight"><span class="k">for</span></code></h2>
+<p>O <code class="language-python highlight"><span class="k">for</span></code> percorre automaticamente todos os elementos em uma lista, caracteres em uma string, e outras estruturas que veremos no futuro:</p>
+<p><img src="../raw/for/for.png" width="50%" alt="A repetição <code>for</code>"></p>
+<p>Ele se comporta de forma semelhante ao <code class="language-python highlight"><span class="k">while</span></code> se considerarmos que ele executa o bloco de código  múltiplas vezes, mas uma diferença importante é que o <code class="language-python highlight"><span class="k">for</span></code> <strong>não possui condição</strong>. Ele percorre todos os elementos e depois termina. Podemos ler o código abaixo:</p>
+<p><img src="../raw/for/for_e_lista.png" width="20%"></p>
+<p>como:</p>
+<p><img src="../raw/for/for_e_lista_leitura.png" width="30%"></p>
+<p>Assim, podemos reescrever o código a seguir:</p>
+<p><img src="../raw/for/while_para_for1.png" width="40%"></p>
+<p>utilizando o for:</p>
+<p><img src="../raw/for/while_para_for2.png" width="40%"></p>
+<p>Cada vez que o Python for executar o bloco dentro do <code class="language-python highlight"><span class="k">for</span></code> a variável <code class="language-python highlight"><span class="n">e</span></code> será automaticamente atualizada com o valor do próximo elemento da lista.</p>
+<h2 id="o-range">O <code class="language-python highlight"><span class="nb">range</span></code></h2>
+<p>Outra estratégia bastante comum em programação é o uso de contadores para percorrer números em um intervalo. Executamos uma determinada operação para o valor 0, depois para o valor 1, depois para o valor 2, e assim por diante. O Python possui uma função chamada <code class="language-python highlight"><span class="nb">range</span></code> que gera essa sequência de números naturais. Existem 3 maneiras de utilizar o <code class="language-python highlight"><span class="nb">range</span></code>:</p>
+<p><img src="../raw/for/range.png" width="50%"></p>
+<ul>
+<li><code class="language-python highlight"><span class="nb">range</span></code> com <strong>um</strong> argumento: os números gerados vão desde o zero até o <strong>antes</strong> do argumento. Exemplo: <code class="language-python highlight"><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span></code> gera a sequência <code class="language-python highlight"><span class="mi">0</span></code>, <code class="language-python highlight"><span class="mi">1</span></code>, <code class="language-python highlight"><span class="mi">2</span></code> (note que o <code class="language-python highlight"><span class="mi">3</span></code> não pertence à sequência gerada);</li>
+<li><code class="language-python highlight"><span class="nb">range</span></code> com <strong>dois</strong> argumentos: os números gerados vão desde o primeiro argument até <strong>antes</strong> do segundo argumento. Exemplo: <code class="language-python highlight"><span class="nb">range</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span></code> gera a sequência <code class="language-python highlight"><span class="mi">13</span></code>, <code class="language-python highlight"><span class="mi">14</span></code>, <code class="language-python highlight"><span class="mi">15</span></code>, <code class="language-python highlight"><span class="mi">16</span></code> (note que o <code class="language-python highlight"><span class="mi">13</span></code> pertence à sequência, mas o <code class="language-python highlight"><span class="mi">17</span></code>, não);</li>
+<li><code class="language-python highlight"><span class="nb">range</span></code> com <strong>três</strong> argumentos: os números gerados vão desde o primeiro argument até <strong>antes</strong> do segundo argumento e o terceiro argumento é o salto de um elemento gerado para o próximo. Exemplo: <code class="language-python highlight"><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></code> gera a sequência <code class="language-python highlight"><span class="mi">2</span></code>, <code class="language-python highlight"><span class="mi">5</span></code>, <code class="language-python highlight"><span class="mi">8</span></code>, <code class="language-python highlight"><span class="mi">11</span></code> (note que o <code class="language-python highlight"><span class="mi">2</span></code> pertence à sequência, mas o próximo elemento da sequência, o <code class="language-python highlight"><span class="mi">14</span></code>, não).</li>
+</ul>
+<div class="admonition exercise self-progress" data-slug="for/handout/exercise_1" id="exercise_1_0">
+<p class="admonition-title">EXERCÍCIO 1</p>
+<form class="exercise-form">
+<p>Refaça os exercícios a seguir utilizando <code class="language-python highlight"><span class="k">for</span></code> e, quando necessário <code class="language-python highlight"><span class="nb">range</span></code>:</p>
+<ul>
+<li><a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432158" target="_blank">Soma dos n primeiros termos</a></li>
+<li><a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432158" target="_blank">Calcula Fatorial</a></li>
+<li><a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432158" target="_blank">Soma valores da lista</a></li>
+<li><a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432158" target="_blank">Soma dos números ímpares</a></li>
+</ul>
+<p>Para praticar mais, refaça os outros exercícios que resolveu com <a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432164" target="_blank"><code class="language-python highlight"><span class="k">while</span></code></a> agora utilizando o <code class="language-python highlight"><span class="k">for</span></code>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Cuidado</p>
+<p>Nem todos os exercícios podem ser resolvidos com o <code class="language-python highlight"><span class="k">for</span></code>.</p>
+</div>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../../lista/handout/"
+               class="ah-prev"
+               title="Armazenamento de dados em listas">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Armazenamento de dados em listas</span>
+            </a>
+          
+          
+            <a href="../../dicionario/handout/"
+               class="ah-next"
+               title="Armazenamento em dicionários">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">Armazenamento em dicionários</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="../../js/tabs.js"></script><script src="../../js/termynal.js"></script><script src="../../js/custom.js"></script>
+    
+  </body>
+</html>

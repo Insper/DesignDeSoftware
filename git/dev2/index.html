@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Dev2 - DesSoft - Design de Software</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../css/termynal.css"><link rel="stylesheet" href="../../css/custom.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../.."
+           title="DesSoft - Design de Software"
+           class="ah-logo"
+           aria-label="DesSoft - Design de Software">
+          DesSoft - Design de Software
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Informações</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../about/">Composição da Nota</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Conteúdo</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../introducao/handout/">Introdução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../funcao/handout/">Funções</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../input/handout/">Entrada e saída</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../if/handout/">Desvios condicionais (if)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../while/handout/">Laços de Repetição (while)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../lista/handout/">Armazenamento de dados em listas</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../for/handout/">Iterando em coleções com "for"</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../dicionario/handout/">Armazenamento em dicionários</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../string/handout/">Strings e Fatiamento</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../arquivo/handout/">Armazenamento permanente em arquivos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../pygame/handout/">PyGame</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="instrucoes-para-o-desenvolvedor-2">Instruções para o Desenvolvedor 2</h1>
+<h2 id="criando-o-repositorio-no-github">Criando o repositório no GitHub</h2>
+<ol>
+<li>Espere o desenvolvedor 1 compartilhar a tela com você;</li>
+<li>Acompanhe a criação do repositório pela tela do desenvolvedor 1 (apenas uma pessoa da dupla vai criar o repositório).</li>
+</ol>
+<h2 id="adicionando-colaboradores-no-projeto">Adicionando colaboradores no projeto</h2>
+<ol>
+<li>Quando o desenvolvedor 1 pedir, passe o seu nome de usuário do GitHub;</li>
+<li>Quando o desenvolvedor 1 colar no chat o link com o convite para participar do repositório, acesse o link e aceite o convite.</li>
+</ol>
+<h2 id="clonando-o-repositorio-remoto-na-sua-maquina">Clonando o repositório remoto na sua máquina</h2>
+<p>Neste momento, o que temos é um repositório no GitHub, com um commit apenas, no qual um arquivo (README.md) foi adicionado. Agora precisamos clonar o repositório no seu próprio computador para que você possa trabalhar com os arquivos! Este passo deve ser executado pelos 2 desenvolvedores. Cada um no seu próprio computador.</p>
+<p>:::admonition{type="info" title="[Avançado] Usando o git no terminal" collapse}
+Para Design de Software é suficiente que você utilize a extensão do git para o VSCode, que apresentaremos nos próximos passos. Entretanto, para avançar em sua carreira de desenvolvimento de software, será <strong>muito útil</strong> saber utilizar o git através do terminal.</p>
+<p>Nós criamos um guia sobre como <a href="/conteudo/terminal-win">navegar pelo terminal</a> para te ajudar com os primeiros passos. Depois disso, tente reproduzir este handout utilizando o terminal ao invés do VSCode. Cada operação realizada no VSCode pode ser realizada por um comando no terminal: <a href="https://git-scm.com/docs/gittutorial">https://git-scm.com/docs/gittutorial</a></p>
+<p>Reforçando: esta é uma forma mais avançada de uso do git. Tente utilizar apenas se estiver confortável com o que trabalhamos até o momento.
+:::</p>
+<p>Abra o VSCode (se já estiver aberto, feche e abra uma nova janela):</p>
+<ol>
+<li>Clique no menu de (1) controle de versão na barra lateral (em algumas versões do VSCode ele estará no menu "Explorer") e depois clique no botão (2) "Clone repository":<img src="raw/git/vscode1.png" width="200px"></li>
+<li>Copie o endereço do seu repositório (que aparece na barra de busca do seu navegador) e cole no campo de texto do VSCode. O endereço será parecido com este: <code>https://github.com/nome-de-usuario-do-desenvolvedor-1/nome-do-repositorio</code></li>
+<li>Selecione uma localização a criação da sua cópia local do repositório;</li>
+<li>Abra a pasta do repositório (normalmente o VSCode pergunta se você quer abrir logo depois de clonar o repositório - se isso não acontecer, abra a pasta pelo menu <code>File -&gt; Open</code>).</li>
+</ol>
+<p>:::admonition{type="info" title='O que fazer se não existir o botão "Clone Repository"'}
+É possível que o botão "Clone Repository" não tenha aparecido para você. Nesse caso, existem outras duas possibilidades. Ao abrir o VSCode, na tela de boas vindas, você também pode encontrar a opção "clone repository" como um link:</p>
+<p><img src="raw/git/vscode-git1.png" width="200px"></p>
+<p>Uma terceira opção é apertar a tecla <code>F1</code>, digitar <code>git clone</code>, selecionar a opção desejada com o teclado (provavelmente a primeira) e apertar enter:</p>
+<p><img src="raw/git/vscode-git2.png" width="500px">
+:::</p>
+<p>Parabéns, você acaba de clonar o repositório no seu computador!</p>
+<h2 id="mais-um-pouco-de-configuracao">Mais um pouco de configuração</h2>
+<p>Só falta configurarmos o seu nome e e-mail para que as suas modificações (<em>commits</em>) sejam identificadas com as suas informações.</p>
+<ol>
+<li>Abra o terminal do VSCode através do menu <code>Terminal -&gt; New Terminal</code>;</li>
+<li>Digite o comando a seguir, substituindo <code>Seu Nome</code> pelo seu nome (mantenha as aspas): <code>git config --global user.name "Seu Nome"</code></li>
+<li>Digite o comando a seguir, substituindo <code>seuemail</code> pelo seu endereço de e-mail (novamente, não se esqueça das aspas): <code>git config --global user.email "seuemail"</code></li>
+</ol>
+<p>Agora sim, tudo pronto para começarmos a usar o git!</p>
+<h2 id="fazendo-seu-primeiro-commit">Fazendo seu primeiro commit</h2>
+<p>Um commit é um registro do repositório em um dado momento. Cada commit é uma versão do seu repositório para a qual você pode retornar caso necessário. Nesta seção vamos fazer o nosso primeiro commit. As instruções a partir deste ponto são ligeiramente diferentes para cada um dos desenvolvedores, então é importante que você as siga com atenção.</p>
+<p>Crie um arquivo chamado <code>dev2.py</code> dentro da pasta do repositório que você clonou pelo VSCode:</p>
+<p><img src="raw/git/vscode2.png" width="150px" /></p>
+<p>:::admonition{type="danger" title="Importante"}
+O arquivo precisa ser criado dentro da pasta do repositório. Caso contrário o git não será capaz de encontrá-lo.
+:::</p>
+<p>Nesse novo arquivo, adicione uma linha de código que imprime o seu nome no terminal. Lembre-se de sempre salvar o arquivo.</p>
+<p>Na barra de opções, na esquerda da janela do VSCode, deve ter aparecido o número 1 dentro de um círculo azul. Isso quer dizer que você possui 1 arquivo diferente da última versão salva (ou seja, do último commit). Ao clicar nesse botão (botão 1 na imagem abaixo), o arquivo que você criou estará listado em "Changes" (2).</p>
+<p><img src="raw/git/vscode3-dev2.png" width="250px" /></p>
+<p>Como dissemos anteriormente, o commit é um registro do estado do repositório em um dado momento. Para criarmos um commit é necessário indicar para o git quais arquivos, dentre os arquivos modificados, nós queremos considerar. Esse passo é necessário porque você pode querer registrar as mudanças em alguns arquivos, mas deixar outros que ainda esteja trabalhando para um próximo commit. Para adicionar um arquivo ao próximo commit, clique no botão <code>+</code>. Ele deve sair da lista "Changes" e entrar na lista "Staged Changes", que são os arquivos que entrarão no próximo commit (1). Depois de adicionar o arquivo, digite uma mensagem no campo de texto (2). Ela é necessária para identificar o que foi feito nesse commit. Escreva: <code>Primeiro commit do/da SEU NOME</code> (substituindo <code>SEU NOME</code> pelo seu próprio nome). Finalmente, finalize o commit clicando no ✓ (3).</p>
+<p><img src="raw/git/vscode4-dev2.png" width="250px" /></p>
+<p>Parabéns! Você fez o seu primeiro commit. Isso significa que acabou? Hmm... ainda não. No começo do handout nós comentamos que existe um repositório remoto, armazenado no GitHub e você criou um clone/cópia local desse repositório no seu computador. Assim, o commit que você acabou de fazer existe apenas na sua cópia local, mas ainda não está disponível para os seus companheiros de trabalho.</p>
+<p>Mas antes de prosseguir, espere o OK do desenvolvedor 1.</p>
+<p>Para enviar as suas modificações para o repositório remoto precisamos fazer a operação <em>push</em>. Note que na barra inferior da janela do VSCode apareceu um número 0 ao lado de uma seta apontando para baixo e um número 1 com uma seta apontando para cima:</p>
+<p><img src="raw/git/vscode5.png" width="250px" /></p>
+<p>A seta apontando para baixo indica que existem zero modificações novas no repositório remoto. A seta apontando para cima indica que existe uma modificação a ser enviada para o repositório remoto. Aperte esse botão (sim, é um botão) e espere. Essa pode ser uma operação demorada. Quando a animação terminar significa que as modificações foram enviadas.</p>
+<p>É possível que o VSCode apresente a seguinte pergunta:</p>
+<p><img src="raw/git/vscode6.png" width="300px" /></p>
+<p>Você pode responder <code>Yes</code>, isso vai facilitar a sua vida. Depois que a animação terminar, você pode verificar que o seu commit foi enviado acessando o seu repositório pelo navegador:</p>
+<p><img src="raw/git/github7.png" width="800px" /></p>
+<p>Note que existe um outro arquivo disponível, o <code>dev1.py</code>, que não existia antes. Isso aconteceu porque o desenvolvedor 1 já havia feito um commit com esse arquivo. Quando você clicou no botão de atualizar, essa modificação foi recebida do repositório remoto.</p>
+<p>Dê um OK para o desenvolvedor 1. Agora ele vai receber o seu arquivo <code>dev2.py</code>.</p>
+<h2 id="gerenciando-conflitos-de-versao">Gerenciando conflitos de versão</h2>
+<p>É possível que mais do que um membro da equipe modifique o mesmo trecho de código. Quando isso acontecer, e provavelmente vai, será necessário fazer um <em>merge</em>, ou seja, juntar as modificações geradas pelos dois membros da equipe. Vamos gerar um conflito de propósito para aprendermos como lidar com ele. Mas a primeira dica é: quando isso acontecer, não entre em pânico, no começo as mensagens de erro assustam um pouco mesmo.</p>
+<p>Vamos começar gerando um conflito para você resolver. Abra o arquivo <code>dev1.py</code> e modifique o <code>print</code> para que ele imprima o seu nome ao invés do nome do desenvolvedor 1.</p>
+<p>:::admonition{type="danger" title="Importante"}
+É muito importante que você <strong>modifique</strong> a linha existente e não crie uma nova. Caso contrário o conflito não será gerado.
+:::</p>
+<p>Aguarde o OK do desenvolvedor 1.</p>
+<p>Depois de receber o OK do desenvolvedor 1, compartilhe sua tela.</p>
+<p>Adicione o arquivo <code>dev1.py</code> no commit, escreva uma mensagem, faça o commit e depois o push (ou seja, repita o processo da seção anterior). Quando você tentar sincronizar os repositórios (fazer o <em>push</em>), ocorrerá um conflito e o arquivo <code>dev1.py</code> terá um conteúdo parecido com o seguinte:</p>
+<p><img src="raw/git/vscode9.png" width="700px" /></p>
+<p>As linhas em conflito são delimitadas por <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=========</code> e <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>. O que está entre o <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> e o <code>=========</code> são as suas modificações (commits) locais. O que está entre o <code>=========</code> e o <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> são as modificações (commits) remotos, que no caso foram adicionados pelo desenvolvedor 1. O git não sabe como juntar essas duas modificações, então ele gera o conflito e pede para que você resolva.</p>
+<p>Você tem 3 opções:</p>
+<ol>
+<li>Utilizar a sua versão</li>
+<li>Utilizar a versão do repositório remoto</li>
+<li>Utilizar ambas as versões. Nesse caso, a versão final do seu código será composta por duas linhas.</li>
+</ol>
+<p>Selecione "Accept Current Change" (mas se quiser testar alguma das outras opções, fique à vontade). Como você precisou tomar uma decisão sobre como juntar (<em>merge</em>) as versões do código, é necessário fazer um novo commit e <em>push</em>. Nesse caso, o git já criou uma mensagem para você, mas você pode alterá-la se quiser.</p>
+<p>Dê um OK para o desenvolvedor 1 e deixe que ele compartilhe a tela com você. Agora é a sua vez de esperar pelo OK do desenvolvedor 2.</p>
+<p>Depois que receber o OK, vamos gerar um conflito para que o desenvolvedor 1 resolva. Para isso, abra o arquivo <code>dev2.py</code> e modifique o seu <code>print</code> para que ele imprima o seu nome completo (se já estiver com o nome completo, modifique para apenas o primeiro nome).</p>
+<p>Adicione esse arquivo no commit, escreva uma mensagem, faça o commit e depois o push.</p>
+<p>Dê o OK para o desenvolvedor 1 e espere pelo OK dele.</p>
+<p>Compartilhe a tela com o desenvolvedor 1. Atualize o seu repositório local (<em>pull</em>) com o <em>merge</em> feito pelo desenvolvedor 1 clicando no mesmo botão de sincronização da imagem acima. Verifique que o arquivo <code>dev2.py</code> contém o código atualizado com o nome do desenvolvedor 1 (ou qualquer modificação que ele tenha feito).</p>
+<h2 id="pronto">Pronto!</h2>
+<p>Sim, é bastante informação. O git é uma ferramenta extremamente poderosa e útil, mas é necessário alguma prática para dominá-lo. Com o que vimos hoje você já deve conseguir realizar boa parte das atividades do dia-a-dia com o git. Quando acontecer algum imprevisto ou algo que você não saiba resolver, não entre em pânico. É bastante provável que seja um problema comum e você pode procurar pela solução na internet. Senão, nós, os seus professores, estamos à disposição para ajudar :)</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="../../js/tabs.js"></script><script src="../../js/termynal.js"></script><script src="../../js/custom.js"></script>
+    
+  </body>
+</html>

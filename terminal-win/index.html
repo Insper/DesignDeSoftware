@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Index - DesSoft - Design de Software</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../css/termynal.css"><link rel="stylesheet" href="../css/custom.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href=".."
+           title="DesSoft - Design de Software"
+           class="ah-logo"
+           aria-label="DesSoft - Design de Software">
+          DesSoft - Design de Software
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Informações</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../about/">Composição da Nota</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Conteúdo</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../introducao/handout/">Introdução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../funcao/handout/">Funções</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../input/handout/">Entrada e saída</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../if/handout/">Desvios condicionais (if)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../while/handout/">Laços de Repetição (while)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../lista/handout/">Armazenamento de dados em listas</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../for/handout/">Iterando em coleções com "for"</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../dicionario/handout/">Armazenamento em dicionários</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../string/handout/">Strings e Fatiamento</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../arquivo/handout/">Armazenamento permanente em arquivos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../pygame/handout/">PyGame</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="navegando-pelo-terminal-windows">Navegando Pelo Terminal (Windows)</h1>
+<p><img src="raw/terminal-win/tron-legacy-grep.jpg" alt="Fonte: http://twentyeighttwelve.com/tron-legacy-command-line/" /></p>
+<p>Você já deve ter visto em algum filme uma cena como a mostrada acima: <a href="http://hackertyper.com/">um "hacker" digita comandos freneticamente em uma interface onde só aparecem comandos de texto ininteligíveis até que magicamente ele obtém os dados que todos julgavam ser impossível obter</a>. Interfaces de linha de comando podem assustar um pouco no começo, mas veremos que sabendo apenas 2 comandos já é possível utilizá-las para navegar pelos arquivos do computador.</p>
+<p>Talvez você nunca tenha aberto o terminal/console/prompt do seu computador, mas ele está (<a href="https://en.wikipedia.org/wiki/Command-line_interface">e sempre esteve</a>) lá! Vamos começar abrindo o terminal no nosso computador.</p>
+<h2 id="abrindo-o-terminal">Abrindo o Terminal</h2>
+<p>:::admonition{type="danger" title="Atenção"}
+A partir deste ponto existem algumas diferenças entre os sistemas operacionais. <strong>Este handout foi desenvolvido para usuários Windows</strong>. Se você usa Mac OS X, consulte o <a href="/terminal-macos">outro handout disponibilizado</a>.
+:::</p>
+<p>No Windows, vamos utilizar uma versão alternativa do terminal chamada Anaconda Prompt. Ela foi instalada quando você instalou o Anaconda no seu computador. Para abrir o Anaconda Prompt clique em "Digite aqui para pesquisar" no canto inferior esquerdo (ou aperte a tecla <code>win</code>), digite "anaconda prompt" e aperte a tecla <code>enter</code>;</p>
+<p><img src="raw/terminal-win/win-term0.png" alt="Uma janela parecida com essa deve aparecer ao abrir o terminal" width="50%" /></p>
+<p>Não vamos entrar em detalhes, mas a principal informação que aparece antes do <code>&gt;</code> é a sua pasta atual. Os comandos são digitados depois do <code>&gt;</code>.</p>
+<h2 id="o-comando-dir">O comando <code>dir</code></h2>
+<p>Vamos começar pelo comando <code>dir</code>. Digite <code>dir</code> e aperte a tecla <code>enter</code>:</p>
+<p><img src="raw/terminal-win/win-term1.png" alt="Resultado do comando <code>dir</code>" width="50%" /></p>
+<p>O comando <code>dir</code> lista os arquivos e pastas presentes na pasta atual. Funciona mais ou menos assim: imagine que você é um personagem de um jogo em uma sala (a pasta atual) com diversas informações (arquivos) e algumas portas (outras pastas). Todos os comandos que você executar serão executados na pasta atual. Por enquanto, vamos considerar duas possibilidades de ação:</p>
+<ol>
+<li>Visualizar os arquivos disponíveis da pasta atual;</li>
+<li>Navegar para outra pasta.</li>
+</ol>
+<p>O comando <code>dir</code> realiza a primeira opção. Se você não mudou nenhuma configuração do terminal você sempre começa na pasta do seu usuário (também conhecida como sua <em>home</em>). Para verificar que o comando listou os arquivos e pastas disponíveis, vamos abrir o Explorador de Arquivos na mesma pasta:</p>
+<p><img src="raw/terminal-win/win-explorer1.png" alt="Conteúdo da home" width="50%" /></p>
+<h2 id="o-comando-cd">O comando <code>cd</code></h2>
+<p>Agora vamos tentar a segunda opção: navegar para outra pasta. Para isso usamos o comando <code>cd</code>. Ele deve ser seguido do nome da pasta. Vamos entrar na pasta <code>insper</code> listada acima. Para isso vamos usar o comando <code>cd insper</code>.</p>
+<p>:::admonition{type="danger"}
+Os arquivos no seu computador provavelmente serão diferentes dos arquivos deste exemplo.
+:::</p>
+<p>:::admonition{type="danger"}
+Os comandos executados anteriormente não são apagados.
+:::</p>
+<p><img src="raw/terminal-win/win-term2.png" alt="Executando o comando <code>cd</code>" width="50%" /></p>
+<p>O comando <code>cd</code> não imprime nada no terminal. Esse é o resultado esperado. Vamos visualizar o conteúdo da pasta <code>insper</code>. Para isso, mais uma vez usamos o comando <code>dir</code>:</p>
+<p><img src="raw/terminal-win/win-term3.png" alt="Resultado do comando <code>dir</code> na pasta <code>insper</code>" width="50%" /></p>
+<p>Vemos que essa pasta contém o arquivo <code>calendario.txt</code> e diversas pastas com nomes de disciplinas. Vamos entrar na pasta <code>design-de-software</code>. Mas antes disso, você notou que, na pasta atual, <code>design-de-software</code> é a única pasta que começa com as letras <code>des</code>? Além disso, o terminal acabou de listar as pastas, então em teoria ele "sabe" quais são as pastas e arquivos disponíveis. Não seria bom se eu pudesse escrever só o começo do nome da pasta e o terminal já completasse com o resto? E sim, ele faz isso! Podemos, por exemplo, digitar somente <code>cd des</code>:</p>
+<p><img src="raw/terminal-win/win-term4.png" alt="Digitando apenas <code>cd</code> e o começo do nome da pasta" width="50%" /></p>
+<p>Depois disso, ao apertar a tecla <code>tab</code>, o terminal vai completar o comando com o resto do nome:</p>
+<p><img src="raw/terminal-win/win-term5.png" alt="O terminal completa o nome da pasta quando não há ambiguidade" width="50%" /></p>
+<p>No nosso exemplo, dentro da pasta <code>design-de-software</code> existe uma pasta <code>aulas</code>, que contém outras duas pastas <code>aula01</code> e <code>aula02</code>, que por sua vez contém 4 arquivos.</p>
+<p><img src="raw/terminal-win/win-explorer2.png" alt="Conteúdo da pasta <code>design-de-software</code>" width="50%" /></p>
+<p>Pode ser um pouco cansativo usar um comando separado para entrar em cada pasta, ainda mais se você já souber o caminho completo. Por isso, também podemos avançar mais de um nível no comando <code>cd</code>, separando os nomes das pastas com uma barra invertida ('\'):</p>
+<p><img src="raw/terminal-win/win-term6.png" alt="Podemos usar o comando <code>cd</code> com um caminho mais longo" width="50%" /></p>
+<p>Para verificar que estamos no lugar certo vamos usar, mais uma vez, o comando <code>dir</code>:</p>
+<p><img src="raw/terminal-win/win-term7.png" alt="Resultado do comando <code>dir</code> na pasta <code>insper\design-de-software\aulas\aula02</code>" width="50%" /></p>
+<p>Finalmente, podemos também voltar para pastas acima da pasta atual. Para isso usamos o <code>..</code>, que se refere à pasta mãe. Por exemplo:</p>
+<p><img src="raw/terminal-win/win-term8.png" alt="Usando o <code>cd ..</code> para subir um nível" width="50%" /></p>
+<p>Vemos que agora estamos na pasta <code>aulas</code>:</p>
+<p><img src="raw/terminal-win/win-term9.png" alt="Usando <code>ls</code> para ver o conteúdo" width="50%" /></p>
+<p>Podemos também compor o <code>..</code> no caminho de uma pasta. Por exemplo: <code>..\..</code> são dois níveis acima da pasta atual.</p>
+<p><img src="raw/terminal-win/win-term10.png" alt="Combinando o <code>..</code> em um caminho mais complexo" width="50%" /></p>
+<p>Assim, depois de executar <code>cd ..\..</code> vemos que estamos novamente na pasta <code>insper</code>.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="../js/tabs.js"></script><script src="../js/termynal.js"></script><script src="../js/custom.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Armazenamento de dados em listas - DesSoft - Design de Software</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../css/termynal.css"><link rel="stylesheet" href="../../css/custom.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../.."
+           title="DesSoft - Design de Software"
+           class="ah-logo"
+           aria-label="DesSoft - Design de Software">
+          DesSoft - Design de Software
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Informações</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../about/">Composição da Nota</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Conteúdo</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../introducao/handout/">Introdução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../funcao/handout/">Funções</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../input/handout/">Entrada e saída</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../if/handout/">Desvios condicionais (if)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../while/handout/">Laços de Repetição (while)</a>
+    </li>
+  
+
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Armazenamento de dados em listas</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#e-se-fosse-um-mooc-massive-open-online-course">E se fosse um MOOC (Massive Open Online Course)?</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#o-tipo-list">O tipo list</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#cabe-tudo-em-uma-lista">Cabe tudo em uma lista!</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#acessando-elementos-de-uma-lista">Acessando elementos de uma lista</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#descobrindo-o-numero-de-elementos-em-uma-lista">Descobrindo o número de elementos em uma lista</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#substituindo-elementos-em-uma-lista">Substituindo elementos em uma lista</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#adicionando-e-removendo-elementos-em-uma-lista">Adicionando e removendo elementos em uma lista</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#soma-e-multiplicacao-de-listas">Soma e multiplicação de listas?</a>
+              </li>
+            
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../for/handout/">Iterando em coleções com "for"</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../dicionario/handout/">Armazenamento em dicionários</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../string/handout/">Strings e Fatiamento</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../arquivo/handout/">Armazenamento permanente em arquivos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../pygame/handout/">PyGame</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Conteúdo</li>
+                  
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="06-listas">06 - Listas</h1>
+<p>O objetivo de aprendizado deste handout é que, ao final da atividade, você seja capaz de utilizar listas em seus programas em conjunto com as estruturas que vimos nas aulas anteriores (<code class="language-python highlight"><span class="nb">input</span></code>, <code class="language-python highlight"><span class="k">if</span></code>, <code class="language-python highlight"><span class="k">while</span></code>, etc.). Vamos começar com um aquecimento.</p>
+<div class="admonition exercise self-progress" data-slug="lista/handout/exercise_1" id="exercise_1_0">
+<p class="admonition-title">EXERCÍCIO 1</p>
+<form class="exercise-form">
+<p>Utilizando apenas o que já vimos sobre Python, implemente um programa que pergunta para o usuário a nota de 3 alunos e armazena cada nota em uma variável. Depois de receber os 3 valores, imprima as notas e a média. Para o usuário, seu programa deve se comportar da seguinte maneira caso ele digite <code class="language-python highlight"><span class="mi">8</span></code>, <code class="language-python highlight"><span class="mi">2</span></code> e <code class="language-python highlight"><span class="mi">8</span></code> (esse é um exemplo de saída do terminal):</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Digite<span class="w"> </span>a<span class="w"> </span>nota<span class="w"> </span><span class="m">1</span>:<span class="w"> </span><span class="m">8</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Digite<span class="w"> </span>a<span class="w"> </span>nota<span class="w"> </span><span class="m">2</span>:<span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Digite<span class="w"> </span>a<span class="w"> </span>nota<span class="w"> </span><span class="m">3</span>:<span class="w"> </span><span class="m">8</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Notas<span class="w"> </span>digitadas:
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="m">8</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="m">2</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="m">8</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Média:<span class="w"> </span><span class="m">6</span>
+</code></pre></div>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="lista/handout/exercise_2" id="exercise_2_0">
+<p class="admonition-title">EXERCÍCIO 2</p>
+<form class="exercise-form">
+<p>Altere seu programa do exercício 1 para que ele pergunte 6 notas ao invés de 3. Note que será necessário alterar seu código que imprime todas as notas digitadas e a média. Dica: a solução envolve basicamente copiar e colar código.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="e-se-fosse-um-mooc-massive-open-online-course">E se fosse um MOOC (Massive Open Online Course)?</h2>
+<p>O que aconteceria se ao invés de 6 notas tivéssemos 10000 notas? Ainda seria possível (mas definitivamente não recomendável) copiar e colar as mesmas linhas para adaptar o código para essa nova situação. Pior, sempre é possível que o usuário precise de 1 nota a mais e você teria que alterar o seu programa novamente. O problema é que o programa escrito dessa forma pode armazenar uma <strong>quantidade fixa</strong> de notas. Seria interessante termos alguma forma de armazenar uma <strong>quantidade variável</strong> de notas, que fosse aumentando conforme a demanda. É aí que entram as listas em Python.</p>
+<h2 id="o-tipo-list">O tipo <code class="language-python highlight"><span class="nb">list</span></code></h2>
+<p>Listas são uma das mais formas mais comuns de se organizar uma sequência de dados em Python. Para acessar um dado armazenado em uma lista utilizamos a sua posição, ou índice. Por exemplo, o código a seguir cria uma lista com os números <code class="language-python highlight"><span class="mi">3</span></code>, <code class="language-python highlight"><span class="mi">5</span></code>, <code class="language-python highlight"><span class="mi">2</span></code>, <code class="language-python highlight"><span class="mi">4</span></code> e <code class="language-python highlight"><span class="mi">9</span></code> e a armazena em uma variável chamada <code class="language-python highlight"><span class="n">a</span></code>:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</code></pre></div>
+<p>Lembrando que em programação começamos a contar a partir de zero, o elemento no índice 0 (zero) é o primeiro elemento (número <code class="language-python highlight"><span class="mi">3</span></code>), no índice 1 é o segundo elemento (número <code class="language-python highlight"><span class="mi">5</span></code>), no índice 2 é o terceiro elemento (número <code class="language-python highlight"><span class="mi">2</span></code>) e assim por diante. Note que <strong>o último índice possível é igual ao tamanho da lista subtraído por 1</strong>. No nosso exemplo, o índice do último elemento é 4 e a lista tem tamanho 5.</p>
+<p><img src="../raw/lista/exemplo_lista.png" alt="Os elementos da lista são acessados através dos índices." width="50%"></p>
+<h2 id="cabe-tudo-em-uma-lista">Cabe tudo em uma lista!</h2>
+<p>Uma característica importante de listas é que elas podem guardar qualquer tipo de dados disponível no Python. Basta colocar os itens entre <strong>colchetes</strong> e separá-los por <strong>vírgulas</strong>. Por exemplo:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">lista_de_strings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;abobora&#39;</span><span class="p">,</span> <span class="s1">&#39;maçã&#39;</span><span class="p">,</span> <span class="s1">&#39;jaca&#39;</span><span class="p">]</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">lista_de_ints</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># Sim, pode ter elementos repetidos</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">lista_de_floats</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.14</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span> <span class="mf">1.00001</span><span class="p">]</span>
+</code></pre></div>
+<p>Podemos inclusive criar listas vazias:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">sacola_de_compras</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div>
+<p>Mas qual é a utilidade de criar uma lista vazia? Você se lembra que comentamos acima sobre armazenar uma quantidade variável de elementos? Em uma lista é possível adicionar novos elementos conforme a necessidade.</p>
+<h2 id="acessando-elementos-de-uma-lista">Acessando elementos de uma lista</h2>
+<p>Para acessar um elemento de uma lista utilizamos a sua posição (índice) entre colchetes. Por exemplo, para acessar o terceiro elemento da lista <code class="language-python highlight"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span></code> utilizamos o comando <code class="language-python highlight"><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span></code>.</p>
+<h2 id="descobrindo-o-numero-de-elementos-em-uma-lista">Descobrindo o número de elementos em uma lista</h2>
+<p>Podemos utilizar a função <code class="language-python highlight"><span class="nb">len</span><span class="p">()</span></code> para descobrir o tamanho de uma lista, ou seja, quantos elementos estão disponíveis nessa lista.</p>
+<div class="admonition exercise self-progress" data-slug="lista/handout/exercise_3" id="exercise_3_0">
+<p class="admonition-title">EXERCÍCIO 3</p>
+<form class="exercise-form">
+<p>Resolva o exercício <a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432162" target="_blank">Soma valores da lista</a>. Dica: será necessário criar pelo menos duas variáveis auxiliares, uma para guardar o índice e outra para guardar a soma.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="substituindo-elementos-em-uma-lista">Substituindo elementos em uma lista</h2>
+<p>Podemos também substituir o elemento em um índice específico da lista. Por exemplo, na lista <code class="language-python highlight"><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span></code> podemos substituir o segundo elemento pelo número 3 da seguinte maneira:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># O print a seguir vai imprimir a lista corrigida</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition exercise self-progress" data-slug="lista/handout/exercise_4" id="exercise_4_0">
+<p class="admonition-title">EXERCÍCIO 4</p>
+<form class="exercise-form">
+<p>Resolva o exercício <a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432162" target="_blank">Substitui valores negativos por zero</a>.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<p>:::</p>
+<h2 id="adicionando-e-removendo-elementos-em-uma-lista">Adicionando e removendo elementos em uma lista</h2>
+<p>Comentamos anteriormente que a lista pode guardar uma quantidade arbitrária de elementos. Essa quantidade pode, inclusive, mudar ao longo do tempo. Podemos adicionar e remover elementos a uma lista com o operador <code class="language-python highlight"><span class="k">del</span></code> e a função <code class="language-python highlight"><span class="o">.</span><span class="n">append</span><span class="p">()</span></code>.</p>
+<div class="admonition exercise choice  tag-choice-exercise" data-answer-idx="1" data-slug="lista/handout/lista_del_1" id="lista_del_1_0">
+<p class="admonition-title">Exercício 5</p>
+<form class="exercise-form">
+<p>Considere o código a seguir:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">animais</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;livro&quot;</span><span class="p">,</span> <span class="s2">&quot;hamster&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">del</span> <span class="n">animais</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">animais</span><span class="p">)</span>
+</code></pre></div>
+<p>Ao testar o código acima, o que foi impresso no terminal?</p>
+<div class="form-elements">
+<div class="alternative-set">
+  
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="1" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;livro&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">]</span></code>
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="0" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;hamster&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">]</span></code>
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="3" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;livro&quot;</span><span class="p">,</span> <span class="s2">&quot;hamster&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">]</span></code>
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="2" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;livro&quot;</span><span class="p">,</span> <span class="s2">&quot;hamster&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">]</span></code>
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="4" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;livro&quot;</span><span class="p">,</span> <span class="s2">&quot;hamster&quot;</span><span class="p">]</span></code>
+  </div>
+</label>
+
+</div>
+<input class="ah-button ah-button--primary" type="submit" name="sendButton" value="Enviar" disabled />
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Resposta</p>
+<p>A lista <code class="language-python highlight"><span class="n">animais</span></code> armazena o valor <code class="language-python highlight"><span class="s2">&quot;hamster&quot;</span></code> no índice <code class="language-python highlight"><span class="mi">4</span></code>.
+Ao utilizarmos o operador <code class="language-python highlight"><span class="k">del</span></code> estamos removendo o valor no índice <code class="language-python highlight"><span class="mi">4</span></code>. Desta forma, ao testar o código acima, foi impresso <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;livro&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">]</span></code> no terminal.</p>
+</div>
+</div>
+<div class="admonition exercise choice two-cols  tag-choice-exercise" data-answer-idx="1" data-slug="lista/handout/lista_del_2" id="lista_del_2_0">
+<p class="admonition-title">Exercício 6</p>
+<form class="exercise-form">
+<p>Considere ainda o código do exercício anterior. A lista <code class="language-python highlight"><span class="n">animais</span></code> se encontra da seguinte forma: <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;livro&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">]</span></code>.
+Acabamos removendo o valor errado, queremos excluir o valor <code class="language-python highlight"><span class="s2">&quot;livro&quot;</span></code> que não parece pertencer a lista <code class="language-python highlight"><span class="n">animais</span></code>.</p>
+<p>Qual das opções a seguir deleta o valor <code class="language-python highlight"><span class="s2">&quot;livro&quot;</span></code> da lista <code class="language-python highlight"><span class="n">animais</span></code>?</p>
+<div class="form-elements">
+<div class="alternative-set">
+  
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="0" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="k">del</span> <span class="n">animais</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span></code>
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="3" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="k">del</span> <span class="n">animais</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span></code>
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="2" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="k">del</span> <span class="n">animais</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span></code>
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="1" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="k">del</span> <span class="n">animais</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span></code>
+  </div>
+</label>
+
+</div>
+<input class="ah-button ah-button--primary" type="submit" name="sendButton" value="Enviar" disabled />
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Resposta</p>
+<p>O valor <code class="language-python highlight"><span class="s2">&quot;livro&quot;</span></code> está no índice de número <code class="language-python highlight"><span class="mi">3</span></code>. Desta forma, para remover o valor <code class="language-python highlight"><span class="s2">&quot;livro&quot;</span></code> da lista <code class="language-python highlight"><span class="n">animais</span></code>, utilizamos o código <code class="language-python highlight"><span class="k">del</span> <span class="n">animais</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span></code>.</p>
+<p>Como estamos trabalhando com lista, utilizamos os colchetes. Assim, os códigos <code class="language-python highlight"><span class="k">del</span> <span class="n">animais</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span></code> e <code class="language-python highlight"><span class="k">del</span> <span class="n">animais</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span></code> não são válidos.</p>
+</div>
+</div>
+<div class="admonition exercise choice  tag-choice-exercise" data-answer-idx="3" data-slug="lista/handout/lista_append_1" id="lista_append_1_0">
+<p class="admonition-title">Exercício 7</p>
+<form class="exercise-form">
+<p>Considere ainda a lista <code class="language-python highlight"><span class="n">animais</span></code> dos exercícios anteriores.
+Sem querer acabamos removendo o valor <code class="language-python highlight"><span class="s2">&quot;hamster&quot;</span></code> da lista. E agora queremos adicionar esse valor na lista para desfazer o nosso engano.</p>
+<p>Para isso, temos a função <code class="language-python highlight"><span class="o">.</span><span class="n">append</span><span class="p">()</span></code>. Teste o código a seguir:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">animais</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">]</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">animais</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;hamster&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">animais</span><span class="p">)</span>
+</code></pre></div>
+<p>O que foi impresso no terminal?</p>
+<div class="form-elements">
+<div class="alternative-set">
+  
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="0" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">]</span></code>
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="3" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">,</span> <span class="s2">&quot;hamster&quot;</span><span class="p">]</span></code>
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="1" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;hamster&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">]</span></code>
+  </div>
+</label>
+
+<label class="alternative">
+  <div class="content">
+    <input type="radio" name="data" value="2" _="   on click    set alternative to closest .alternative    if alternative matches <:not(.selected)/> then     set selected to false    else     set selected to true    end    remove .selected from .alternative in closest .alternative-set    if selected then     remove .selected from alternative     add @disabled to <input[type='submit']/> in closest .form-elements    else     add .selected to alternative     remove @disabled from <input[type='submit']/> in closest .form-elements    end   end   ">
+    <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;hamster&quot;</span><span class="p">,</span> <span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">]</span></code>
+  </div>
+</label>
+
+</div>
+<input class="ah-button ah-button--primary" type="submit" name="sendButton" value="Enviar" disabled />
+</div>
+</form>
+<div class="admonition answer no-indent">
+<p class="admonition-title">Resposta</p>
+<p>Foi impresso <code class="language-python highlight"><span class="p">[</span><span class="s2">&quot;cachorro&quot;</span><span class="p">,</span> <span class="s2">&quot;gato&quot;</span><span class="p">,</span> <span class="s2">&quot;coelho&quot;</span><span class="p">,</span> <span class="s2">&quot;peixe&quot;</span><span class="p">,</span> <span class="s2">&quot;hamster&quot;</span><span class="p">]</span></code>.
+Ao utilizarmos a função <code class="language-python highlight"><span class="n">append</span></code> passamos como argumento da função o valor que queremos armazenar na lista. Esse valor é adicionado ao final, dessa forma, os valores que já estavam armazenados na lista continuam com o mesmo índice.</p>
+<p>Note também, que não existe nenhum espaço vazio entre o ponto (<code>.</code>):
+<code class="language-python highlight"><span class="n">animais</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;hamster&quot;</span><span class="p">)</span></code>.</p>
+</div>
+</div>
+<h2 id="soma-e-multiplicacao-de-listas">Soma e multiplicação de listas?</h2>
+<p>Existe a opção de somarmos uma lista a outra. O resultado é <strong>uma nova lista</strong> com os elementos de ambas. Por exemplo:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">lista_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">lista_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">lista_1_e_2</span> <span class="o">=</span> <span class="n">lista_1</span> <span class="o">+</span> <span class="n">lista_2</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">lista_1_e_2</span><span class="p">)</span>  <span class="c1"># Vai imprimir [1, 2, 3, 4, 5, 6]</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">lista_2_e_1</span> <span class="o">=</span> <span class="n">lista_2</span> <span class="o">+</span> <span class="n">lista_1</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">lista_2_e_1</span><span class="p">)</span> <span class="c1"># Vai imprimir [4, 5, 6, 1, 2, 3]</span>
+</code></pre></div>
+<p>Além disso, também temos a opção de multiplicar uma lista por um número inteiro. Lembrando da matemática, multiplicar um número <span class="arithmatex">\(m\)</span> por outro número <span class="arithmatex">\(n\)</span> é o mesmo que somar <span class="arithmatex">\(m\)</span> com ele mesmo <span class="arithmatex">\(n\)</span> vezes. Ao multiplicarmos uma lista por um número temos um resultado análogo:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">numeros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">numeros_vezes_3</span> <span class="o">=</span> <span class="n">numeros</span> <span class="o">*</span> <span class="mi">3</span>  <span class="c1"># Análogo a: numeros + numeros + numeros</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">numeros_vezes_3</span><span class="p">)</span>  <span class="c1"># Vai imprimir [1, 2, 3, 1, 2, 3, 1, 2, 3]</span>
+</code></pre></div>
+<div class="admonition exercise self-progress" data-slug="lista/handout/exercise_5" id="exercise_5_0">
+<p class="admonition-title">EXERCÍCIO 8</p>
+<form class="exercise-form">
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<p>Como sempre, resolva os <a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432162" target="_blank">outros exercícios disponíveis</a>.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../../while/handout/"
+               class="ah-prev"
+               title="Laços de Repetição (while)">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Laços de Repetição (while)</span>
+            </a>
+          
+          
+            <a href="../../for/handout/"
+               class="ah-next"
+               title="Iterando em coleções com "for"">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">Iterando em coleções com "for"</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="../../js/tabs.js"></script><script src="../../js/termynal.js"></script><script src="../../js/custom.js"></script>
+    
+  </body>
+</html>

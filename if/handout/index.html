@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Desvios condicionais (if) - DesSoft - Design de Software</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../css/termynal.css"><link rel="stylesheet" href="../../css/custom.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../.."
+           title="DesSoft - Design de Software"
+           class="ah-logo"
+           aria-label="DesSoft - Design de Software">
+          DesSoft - Design de Software
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Informações</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../about/">Composição da Nota</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Conteúdo</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../introducao/handout/">Introdução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../funcao/handout/">Funções</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../input/handout/">Entrada e saída</a>
+    </li>
+  
+
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Desvios condicionais (if)</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#o-operador-if">O operador if</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#operadores-relacionais">Operadores relacionais</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#voltando-para-o-problema-inicial">Voltando para o problema inicial</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#e-o-caso-contrario">E o "caso contrário"?</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#agora-vai">Agora vai!</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#encadeando-condicionais">Encadeando condicionais</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#ifs-encadeados">If's encadeados</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#operadores-logicos">Operadores lógicos</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#operador-and">Operador and</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#operador-or">Operador or</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#operador-not">Operador not</a>
+              </li>
+            
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../while/handout/">Laços de Repetição (while)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../lista/handout/">Armazenamento de dados em listas</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../for/handout/">Iterando em coleções com "for"</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../dicionario/handout/">Armazenamento em dicionários</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../string/handout/">Strings e Fatiamento</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../arquivo/handout/">Armazenamento permanente em arquivos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../pygame/handout/">PyGame</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Conteúdo</li>
+                  
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="04-desvios-condicionais-if">04. Desvios Condicionais (if)</h1>
+<p>Nas aulas anteriores desenvolvemos programas que funcionam mais ou menos como uma linha de produção: uma série de comandos são executados um após o outro, sem opção de seguir por um caminho diferente. Você pode argumentar que o <code class="language-python highlight"><span class="nb">input</span><span class="p">()</span></code>, visto na aula passada, permite que o programa se comporte de formas diferentes dependendo do que o usuário digitar no teclado. Mas se olharmos o programa em si, <strong>a sequência de operações executadas</strong> é sempre a mesma. Na aula de hoje veremos como desenvolver programas que, dada uma condição, executam, ou não, um determinado bloco de código.</p>
+<p>Suponha que queremos desenvolver uma função que recebe dois números, <code class="language-python highlight"><span class="n">x</span></code> e <code class="language-python highlight"><span class="n">y</span></code> como argumento e devolve 1 se <code class="language-python highlight"><span class="n">x</span></code> for maior do que <code class="language-python highlight"><span class="n">y</span></code> e 0, caso contrário. A não ser que exista uma fórmula fechada (existe, para alguns casos), precisamos de alguma forma de executar um trecho de código <strong>somente se</strong> <code class="language-python highlight"><span class="n">x</span></code> for maior que <code class="language-python highlight"><span class="n">y</span></code> e outro trecho de código <strong>somente se</strong> essa condição não for verdadeira. Nossa função deve fazer algo parecido com o seguinte:</p>
+<p><img src="../raw/if/if.png" alt="Esquema da função que compara <code>x</code> e <code>y</code>" width="60%" /></p>
+<p>Para isso vamos precisar do operador <code class="language-python highlight"><span class="k">if</span></code>. Vamos começar com um exemplo curto para entender como ele funciona.</p>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_1" id="exercise_1_0">
+<p class="admonition-title">EXERCÍCIO 1</p>
+<form class="exercise-form">
+<p>Teste o seguinte programa:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Começando o programa&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrou no primeiro if&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrou no segundo if&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saindo do programa&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>O que foi mostrado no terminal? A saída do terminal está de acordo com o que você esperava que acontecesse?</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="o-operador-if">O operador <code class="language-python highlight"><span class="k">if</span></code></h2>
+<p>O operador <code class="language-python highlight"><span class="k">if</span></code> funciona da seguinte maneira:</p>
+<ul>
+<li>No caso de <code class="language-python highlight"><span class="k">if</span> <span class="kc">True</span><span class="p">:</span></code> o bloco do <code class="language-python highlight"><span class="k">if</span></code> é executado;</li>
+<li>No caso de <code class="language-python highlight"><span class="k">if</span> <span class="kc">False</span><span class="p">:</span></code> o bloco do <code class="language-python highlight"><span class="k">if</span></code> não é executado.</li>
+</ul>
+<p><strong>Importante:</strong> o operador <code class="language-python highlight"><span class="k">if</span></code> <strong>sempre</strong> deve ser procedido por um valor <code class="language-python highlight"><span class="kc">True</span></code> ou <code class="language-python highlight"><span class="kc">False</span></code>. Mas então, para que serve o <code class="language-python highlight"><span class="k">if</span></code>? Ele parece bastante limitado... Para isso precisamos abrir mais um parênteses.</p>
+<h2 id="operadores-relacionais">Operadores relacionais</h2>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_2" id="exercise_2_0">
+<p class="admonition-title">EXERCÍCIO 2</p>
+<form class="exercise-form">
+<p>Teste o programa a seguir:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># Testa as desigualdades.</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">menor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">menor</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="n">maior_ou_igual</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">maior_ou_igual</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="c1"># Isso sim é um igual e não uma atribuição.</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="n">igual</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">igual</span><span class="p">)</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="c1"># Testa se é diferente.</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="n">diferente</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">diferente</span><span class="p">)</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="c1"># Testa se contém.</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="n">contem_i</span> <span class="o">=</span> <span class="s1">&#39;i&#39;</span> <span class="ow">in</span> <span class="s1">&#39;Insper&#39;</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="nb">print</span><span class="p">(</span><span class="n">contem_i</span><span class="p">)</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;i&#39;</span> <span class="ow">in</span> <span class="s1">&#39;Insper&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="n">contem_I</span> <span class="o">=</span> <span class="s1">&#39;I&#39;</span> <span class="ow">in</span> <span class="s1">&#39;Insper&#39;</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="nb">print</span><span class="p">(</span><span class="n">contem_I</span><span class="p">)</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I&#39;</span> <span class="ow">in</span> <span class="s1">&#39;Insper&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_3" id="exercise_3_0">
+<p class="admonition-title">EXERCÍCIO 3</p>
+<form class="exercise-form">
+<p>Considere o programa a seguir. Antes de testar, discuta com um colega qual você espera que seja a saída no terminal. Depois disso, teste o programa e valide a sua hipótese.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span>
+<span class="normal"><a href="#__codelineno-2-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Começando o programa&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">if</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrou no primeiro if&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="k">if</span> <span class="s1">&#39;I&#39;</span> <span class="ow">in</span> <span class="s1">&#39;Insper&#39;</span><span class="p">:</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Entrou no segundo if&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saindo do programa&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<p>As expressões acima utilizam <em>operadores relacionais</em> para comparar valores e o resultado dessas operações <strong>sempre</strong> é um valor booleano. A tabela a seguir resume os principais operadores relacionais:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Operador</strong></th>
+<th><strong>Operação</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-python highlight"><span class="o">==</span></code></td>
+<td>Igual</td>
+</tr>
+<tr>
+<td><code class="language-python highlight"><span class="o">!=</span></code></td>
+<td>Diferente</td>
+</tr>
+<tr>
+<td><code class="language-python highlight"><span class="o">&gt;</span></code></td>
+<td>Maior</td>
+</tr>
+<tr>
+<td><code class="language-python highlight"><span class="o">&lt;</span></code></td>
+<td>Menor</td>
+</tr>
+<tr>
+<td><code class="language-python highlight"><span class="o">&gt;=</span></code></td>
+<td>Maior ou Igual</td>
+</tr>
+<tr>
+<td><code class="language-python highlight"><span class="o">&lt;=</span></code></td>
+<td>Menor ou Igual</td>
+</tr>
+</tbody>
+</table>
+<h2 id="voltando-para-o-problema-inicial">Voltando para o problema inicial</h2>
+<p>Agora podemos voltar para o problema inicial: faça uma função que recebe dois números <code class="language-python highlight"><span class="n">x</span></code> e <code class="language-python highlight"><span class="n">y</span></code> e devolve 1, caso <code class="language-python highlight"><span class="n">x</span></code> seja maior que <code class="language-python highlight"><span class="n">y</span></code>, ou zero, caso contrário.</p>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_4" id="exercise_4_0">
+<p class="admonition-title">EXERCÍCIO 4</p>
+<form class="exercise-form">
+<p>Teste o programa a seguir:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">def</span> <span class="nf">testa_x_y</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>            <span class="n">resultado</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>        <span class="k">return</span> <span class="n">resultado</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">testa_x_y</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<p>Caso o programa acima não tenha funcionado, tente resolver o problema com a ajuda dos seus colegas. Se não conseguirem resolver, conversem com o professor.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_5" id="exercise_5_0">
+<p class="admonition-title">EXERCÍCIO 5</p>
+<form class="exercise-form">
+<p>Acrescente a seguinte linha ao final do programa acima: <code class="language-python highlight"><span class="nb">print</span><span class="p">(</span><span class="n">testa_x_y</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span></code>. Teste o programa novamente.</p>
+<div class="admonition danger">
+<p class="admonition-title">Erro de variável não definida</p>
+<p>Um erro semelhante a este deve ter ocorrido: <code class="language-python highlight"><span class="ne">UnboundLocalError</span><span class="p">:</span> <span class="n">local</span> <span class="n">variable</span> <span class="s1">&#39;resultado&#39;</span> <span class="n">referenced</span> <span class="n">before</span> <span class="n">assignment</span></code>. Ele indica que a variável <code class="language-python highlight"><span class="n">resultado</span></code> foi referenciada antes de receber um valor. Antes de ler o próximo parágrafo, tente identificar por conta própria por que esse erro aconteceu.</p>
+<p>Os valores <code class="language-python highlight"><span class="mi">5</span></code> e <code class="language-python highlight"><span class="mi">10</span></code> são recebidos pela função nas variáveis <code class="language-python highlight"><span class="n">x</span></code> e <code class="language-python highlight"><span class="n">y</span></code> respectivamente. Na linha seguinte, <code class="language-python highlight"><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span></code> é avaliado como <code class="language-python highlight"><span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">10</span></code>, ou seja, <code class="language-python highlight"><span class="kc">False</span></code>. Nesse caso, o bloco do <code class="language-python highlight"><span class="k">if</span></code> não é executado e a próxima linha é <code class="language-python highlight"><span class="k">return</span> <span class="n">resultado</span></code>, mas qual valor está guardado em <code class="language-python highlight"><span class="n">resultado</span></code>? Como a variável <code class="language-python highlight"><span class="n">resultado</span></code> não foi inicializada <strong>nesta execução da função</strong>, o erro <code class="language-python highlight"><span class="ne">UnboundLocalError</span></code> ocorre.</p>
+</div>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="e-o-caso-contrario">E o "caso contrário"?</h2>
+<p>Para corrigir o erro na nossa função, vamos voltar à descrição do problema inicial: uma função que devolve 1 caso <code class="language-python highlight"><span class="n">x</span></code> seja maior que <code class="language-python highlight"><span class="n">y</span></code> ou zero, caso contrário. Precisamos tratar esse <em>"caso contrário"</em>. Para isso existe o operador <code class="language-python highlight"><span class="k">else</span></code>, que significa, literalmente, <em>"caso contrário"</em>.</p>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_6" id="exercise_6_0">
+<p class="admonition-title">EXERCÍCIO 6</p>
+<form class="exercise-form">
+<p>Teste o programa a seguir:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">numero</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Digite um número: &#39;</span><span class="p">))</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">if</span> <span class="n">numero</span> <span class="o">==</span> <span class="mi">42</span><span class="p">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Resposta para a vida, o universo e tudo mais&#39;</span><span class="p">)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Um número qualquer&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition danger">
+<p class="admonition-title">Atenção</p>
+<p>Se você não sabe o que a primeira linha do código acima faz, revise o handout da aula passada antes de prosseguir.</p>
+</div>
+<p>Faça alguns testes variando a entrada para verificar se o programa faz o que você espera. O operador <code class="language-python highlight"><span class="k">else</span></code> captura todos os casos para os quais a condição do <code class="language-python highlight"><span class="k">if</span></code> é falsa.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="agora-vai">Agora vai!</h2>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_7" id="exercise_7_0">
+<p class="admonition-title">EXERCÍCIO 7</p>
+<form class="exercise-form">
+<p>Agora sim, podemos terminar nossa função. Modifique a função do exercício 6 para que o programa volte a funcionar.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="encadeando-condicionais">Encadeando condicionais</h2>
+<p>É possível testar uma nova condição caso a anterior falhe, utilizando o operador <code class="language-python highlight"><span class="k">elif</span></code>. Ele pode ser lido como <em>"senão, se"</em>. Vamos trabalhar com um exemplo.</p>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_8" id="exercise_8_0">
+<p class="admonition-title">EXERCÍCIO 8</p>
+<form class="exercise-form">
+<p>Teste o programa a seguir:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span>
+<span class="normal"><a href="#__codelineno-5-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">numero</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Digite um número: &#39;</span><span class="p">))</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">if</span> <span class="n">numero</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;0 não é nem par, nem ímpar&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="k">elif</span> <span class="n">numero</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Resto da divisão de número por 2</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> é par&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">))</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> é ímpar&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<p>O que deve acontecer se o número <code class="language-python highlight"><span class="mi">0</span></code> for digitado? E o número <code class="language-python highlight"><span class="mi">11</span></code>? E o número <code class="language-python highlight"><span class="mi">10000</span></code>?</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_9" id="exercise_9_0">
+<p class="admonition-title">EXERCÍCIO 9</p>
+<form class="exercise-form">
+<p>Se <code class="language-python highlight"><span class="n">numero</span></code> for igual a zero, <code class="language-python highlight"><span class="n">numero</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span></code> é <code class="language-python highlight"><span class="kc">True</span></code>. Discuta com algum colega e valide com o professor: por que quando o usuário digita o número zero o programa não imprime <code class="language-python highlight"><span class="mi">0</span> <span class="n">é</span> <span class="n">par</span></code>?</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_10" id="exercise_10_0">
+<p class="admonition-title">EXERCÍCIO 10</p>
+<form class="exercise-form">
+<p>Discuta com um colega: por que podemos utilizar o <code class="language-python highlight"><span class="k">else</span></code> para imprimir que o número é ímpar? Em outra palavras, por que não precisamos de um <code class="language-python highlight"><span class="k">elif</span> <span class="n">numero</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span></code>?</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_11" id="exercise_11_0">
+<p class="admonition-title">EXERCÍCIO 11</p>
+<form class="exercise-form">
+<p>Altere a função do exercício 8 para que ela devolva <code class="language-python highlight"><span class="mi">1</span></code> se <code class="language-python highlight"><span class="n">x</span></code> for maior do que <code class="language-python highlight"><span class="n">y</span></code>, <code class="language-python highlight"><span class="mi">0</span></code> se <code class="language-python highlight"><span class="n">x</span></code> for igual a <code class="language-python highlight"><span class="n">y</span></code> ou <code class="language-python highlight"><span class="o">-</span><span class="mi">1</span></code>, se <code class="language-python highlight"><span class="n">x</span></code> for menor do que <code class="language-python highlight"><span class="n">y</span></code>.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="ifs-encadeados">If's encadeados</h2>
+<p>Dentro do bloco de um <code class="language-python highlight"><span class="k">if</span></code>, <code class="language-python highlight"><span class="k">elif</span></code> ou <code class="language-python highlight"><span class="k">else</span></code>, podemos ter qualquer código Python válido. Inclusive outros <code class="language-python highlight"><span class="k">if</span></code>'s. Considere a função a seguir, que, dada a idade de uma pessoa, devolve uma string que indica em que países essa pessoa é considerada maior de idade.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">def</span> <span class="nf">testa_maioridade</span><span class="p">(</span><span class="n">idade</span><span class="p">):</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>    <span class="k">if</span> <span class="n">idade</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>        <span class="k">return</span> <span class="s1">&#39;Maior nos EUA e BRASIL&#39;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>        <span class="k">if</span> <span class="n">idade</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>            <span class="k">return</span> <span class="s1">&#39;Maior no BRASIL&#39;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>            <span class="k">return</span> <span class="s1">&#39;Menor de idade&#39;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">testa_maioridade</span><span class="p">(</span><span class="mi">17</span><span class="p">))</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="nb">print</span><span class="p">(</span><span class="n">testa_maioridade</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">testa_maioridade</span><span class="p">(</span><span class="mi">21</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_12" id="exercise_12_0">
+<p class="admonition-title">EXERCÍCIO 12</p>
+<form class="exercise-form">
+<p>Modifique a função acima para utilizar <strong>exatamente</strong> um <code class="language-python highlight"><span class="k">if</span></code>, um <code class="language-python highlight"><span class="k">elif</span></code> e um <code class="language-python highlight"><span class="k">else</span></code>.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="operadores-logicos">Operadores lógicos</h2>
+<h2 id="operador-and">Operador <code class="language-python highlight"><span class="ow">and</span></code></h2>
+<p>Nos exercícios anteriores vimos como testar uma única condição, mas em muitos casos pode ser útil testar mais do que uma condição de uma vez. Por exemplo, um arco-íris ocorre se <em>está chovendo</em> <strong>e</strong> <em>fazendo sol</em>, simultaneamente. Ou seja:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span>
+<span class="normal"><a href="#__codelineno-7-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">esta_chovendo</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">faz_sol</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="k">if</span> <span class="n">esta_chovendo</span> <span class="ow">and</span> <span class="n">faz_sol</span><span class="p">:</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arco-íris!&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sem arco-íris. Alguma das condições não foi satisfeita.&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_13" id="exercise_13_0">
+<p class="admonition-title">EXERCÍCIO 13</p>
+<form class="exercise-form">
+<p>Teste o programa acima, modificando os valores de <code class="language-python highlight"><span class="n">esta_chovendo</span></code> e <code class="language-python highlight"><span class="n">faz_sol</span></code>. Existem 4 combinações possíveis. Teste todas e verifique se a saída no terminal corresponde ao que você esperava.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="operador-or">Operador <code class="language-python highlight"><span class="ow">or</span></code></h2>
+<p>Em outros casos é suficiente que <em>pelo menos uma das condições for satisfeita</em>. Por exemplo: uma pessoa paga meia entrada no teatro se <em>for estudante</em> <strong>ou</strong> <em>for idosa</em>. Ou seja:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span>
+<span class="normal"><a href="#__codelineno-8-6">6</a></span>
+<span class="normal"><a href="#__codelineno-8-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">estudante</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">idoso</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="k">if</span> <span class="n">estudante</span> <span class="ow">or</span> <span class="n">idoso</span><span class="p">:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Paga meia!&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Paga inteira...&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_14" id="exercise_14_0">
+<p class="admonition-title">EXERCÍCIO 14</p>
+<form class="exercise-form">
+<p>Teste o programa acima, modificando os valores de <code class="language-python highlight"><span class="n">estudante</span></code> e <code class="language-python highlight"><span class="n">idoso</span></code>. Existem 4 combinações possíveis. Teste todas e verifique se a saída no terminal corresponde ao que você esperava.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="operador-not">Operador <code class="language-python highlight"><span class="ow">not</span></code></h2>
+<p>Também existe a possibilidade de querermos considerar os casos em que uma condição é falsa. Por exemplo: sempre tomo sopa quando o dia não está quente.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">esta_quente</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">esta_quente</span><span class="p">:</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vou tomar sopa&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_15" id="exercise_15_0">
+<p class="admonition-title">EXERCÍCIO 15</p>
+<form class="exercise-form">
+<p>Teste o programa acima, modificando os valores de <code class="language-python highlight"><span class="n">esta_quente</span></code>. Existem 2 possibilidades. Teste ambas e verifique se a saída no terminal corresponde ao que você esperava.</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h3 id="resumindo">Resumindo</h3>
+<p>Vamos resumir o comportamento dos operadores <code class="language-python highlight"><span class="ow">and</span></code>, <code class="language-python highlight"><span class="ow">or</span></code> e <code class="language-python highlight"><span class="ow">not</span></code>:</p>
+<ul>
+<li><strong><code class="language-python highlight"><span class="ow">and</span></code></strong>: devolve <code class="language-python highlight"><span class="kc">True</span></code> se <strong>AMBOS</strong> os valores forem verdadeiros;</li>
+<li><strong><code class="language-python highlight"><span class="ow">or</span></code></strong>: devolve <code class="language-python highlight"><span class="kc">True</span></code> se <strong>PELO MENOS UM</strong> dos valores forem verdadeiros;</li>
+<li><strong><code class="language-python highlight"><span class="ow">not</span></code></strong>: inverte de <code class="language-python highlight"><span class="kc">True</span></code> para <code class="language-python highlight"><span class="kc">False</span></code> e vice-versa.</li>
+</ul>
+<div class="admonition exercise self-progress" data-slug="if/handout/exercise_16" id="exercise_16_0">
+<p class="admonition-title">EXERCÍCIO 16</p>
+<form class="exercise-form">
+<p>Faça uma função que recebe os lados de um triângulo e retorna se ele é equilátero, isósceles ou escaleno (se não sabe alguma dessas definições, procure na internet). Teste sua resposta no exercício :challenge{type="code" slug="classificador-de-triangulos"}.</p>
+<p>Você pode implementar essa função de diversas maneiras diferentes. Implemente as seguintes versões e compare o código gerado para cada uma:</p>
+<ol>
+<li>Teste se o triângulo é equilátero, depois se é isósceles e depois se é escaleno;</li>
+<li>Teste se o triângulo é equilátero, depois se é escaleno e depois se é isósceles;</li>
+<li>Teste se o triângulo é isósceles, depois se é equilátero e depois se é escaleno;</li>
+</ol>
+<div class="admonition danger">
+<p class="admonition-title">Erro comum</p>
+<p>Assuma que as variáveis <code class="language-python highlight"><span class="n">lado1</span></code>, <code class="language-python highlight"><span class="n">lado2</span></code> e <code class="language-python highlight"><span class="n">lado3</span></code> guardam as medidas dos lados do triângulo. Um erro comum neste exercício é tentar combinar duas comparações de maneira incompleta. Por exemplo, para verificar se um triângulo é isósceles:</p>
+<p><code class="language-python highlight"><span class="k">if</span> <span class="n">lado1</span> <span class="o">==</span> <span class="n">lado2</span> <span class="ow">and</span> <span class="o">!=</span> <span class="n">lado3</span></code></p>
+<p>Apesar de ser razoável achar que esse código seria válido ele <strong>não funciona</strong>. Lembre-se que os operadores lógicos (<code class="language-python highlight"><span class="ow">and</span></code> e <code class="language-python highlight"><span class="ow">or</span></code>) combinam dois valores booleanos, portanto <strong>cada lado do operador deve ser uma expressão completa</strong>. Assim, o correto seria:</p>
+<p><code class="language-python highlight"><span class="k">if</span> <span class="n">lado1</span> <span class="o">==</span> <span class="n">lado2</span> <span class="ow">and</span> <span class="n">lado1</span> <span class="o">!=</span> <span class="n">lado3</span></code></p>
+</div>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h3 id="exercicios-adicionais">EXERCÍCIOS ADICIONAIS</h3>
+<p>Se acabar os exercícios propostos neste handout, resolva os <a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432160" target="_blank">outros exercícios disponíveis</a></p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../../input/handout/"
+               class="ah-prev"
+               title="Entrada e saída">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Entrada e saída</span>
+            </a>
+          
+          
+            <a href="../../while/handout/"
+               class="ah-next"
+               title="Laços de Repetição (while)">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">Laços de Repetição (while)</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="../../js/tabs.js"></script><script src="../../js/termynal.js"></script><script src="../../js/custom.js"></script>
+    
+  </body>
+</html>

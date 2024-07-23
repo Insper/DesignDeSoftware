@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>Funções - DesSoft - Design de Software</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../css/termynal.css"><link rel="stylesheet" href="../../css/custom.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../.."
+           title="DesSoft - Design de Software"
+           class="ah-logo"
+           aria-label="DesSoft - Design de Software">
+          DesSoft - Design de Software
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Informações</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../about/">Composição da Nota</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Conteúdo</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../introducao/handout/">Introdução</a>
+    </li>
+  
+
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">Funções</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#chamando-ou-executando-funcoes">Chamando (ou executando) funções</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#estendendo-o-python-com-as-suas-proprias-funcoes">Estendendo o Python com as suas próprias funções</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#chamando-a-nossa-funcao-em-python">Chamando a nossa função em Python</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#outros-exercicios">Outros exercícios</a>
+              </li>
+            
+        
+      </ul>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../input/handout/">Entrada e saída</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../if/handout/">Desvios condicionais (if)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../while/handout/">Laços de Repetição (while)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../lista/handout/">Armazenamento de dados em listas</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../for/handout/">Iterando em coleções com "for"</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../dicionario/handout/">Armazenamento em dicionários</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../string/handout/">Strings e Fatiamento</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../arquivo/handout/">Armazenamento permanente em arquivos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../pygame/handout/">PyGame</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Conteúdo</li>
+                  
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="02-chamando-e-criando-funcoes">02. Chamando e criando funções</h1>
+<h2 id="chamando-ou-executando-funcoes">Chamando (ou executando) funções</h2>
+<p>Já vimos como podemos criar valores numéricos e realizar as operações aritméticas básicas (adição, subtração, divisão, multiplicação e potenciação) em Python. Sabemos que além dessas operações básicas existem diversas outras operações matemáticas úteis. Por exemplo: funções trigonométricas (seno, cosseno, tangente), logaritmo, fatorial, etc.</p>
+<p>Em Python não existem operadores para seno, logaritmo, etc., mas temos pacotes que estendem a linguagem com essas funcionalidades. Para este exemplo específico, nós temos o pacote <code>math</code>, um pacote do Python com diversas funções matemáticas úteis.</p>
+<div class="admonition info">
+<p class="admonition-title">Se estiver preocupada/preocupado com a matemática</p>
+<p>Não se preocupe, nesse começo nós utilizamos exemplos matemáticos por serem mais diretos, mas em breve começaremos a apresentar outros exemplos não relacionados à matemática.</p>
+</div>
+<p>Para dizer ao Python que queremos utilizar esse pacote nós devemos utilizar o comando <code class="language-python highlight"><span class="kn">import</span></code>. Veja a seguir um exemplo de cálculo do cosseno de zero:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">math</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">resultado</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Na linha 1 estamos dizendo para o Python que queremos utilizar o pacote de funções matemáticas <code>math</code>. Antes de entendermos a linha 2, vamos relembrar o que a linha 3 está fazendo: estamos pedindo para o Python executar (através dos parênteses) a função <code class="language-python highlight"><span class="nb">print</span></code> (que mostra um texto no terminal) utilizando como argumento o conteúdo da variável <code class="language-python highlight"><span class="n">resultado</span></code>.</p>
+<p>Agora que revisamos o uso da função <code class="language-python highlight"><span class="nb">print</span></code>, podemos voltar para a linha 2 do nosso código. Nessa linha nós estamos utilizando a função que calcula o cosseno (<code>cos</code>) do pacote <code>math</code>, ou seja, <code>math.cos</code>. Lembrando que os parênteses são a nossa forma de pedir para o Python <strong>executar</strong> uma função, o que essa linha faz é pedir para o Python executar a função <code>math.cos</code> com o argumento <code>0</code> (zero). Essa função vai devolver um resultado e nós queremos que o Python guarde esse resultado na variável <code>resultado</code>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Antes de prosseguir</p>
+<p>Recomendamos que você sempre teste os códigos apresentados no seu próprio computador. Para isso, procure sempre digitar o código ao invés de copiar e colar.</p>
+</div>
+<div class="admonition exercise self-progress" data-slug="funcao/handout/exercise_1" id="exercise_1_0">
+<p class="admonition-title">EXERCÍCIO 1</p>
+<form class="exercise-form">
+<p>Teste o código acima com valores diferentes, que você saiba o resultado esperado, e veja o que acontece.</p>
+<div class="admonition info">
+<p class="admonition-title">Deu diferente, e agora?</p>
+<p>Provavelmente o resultado não é o que você esperava. Se tiver curiosidade, leia a <a href="https://docs.python.org/3/library/math.html#math.cos">documentação da função <code>cos</code></a> para tentar entender o problema.</p>
+</div>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<h2 id="estendendo-o-python-com-as-suas-proprias-funcoes">Estendendo o Python com as suas próprias funções</h2>
+<p>Vimos que as funções no Python nos permitem estender as suas funcionalidades. Você pode pensar na função como uma parte reaproveitável de um programa. Como assim? Considere a função <code>math.cos</code> que acabamos de testar. Nós pedimos para o Python executar essa função passando um ângulo. Não sabemos (e nem precisamos saber, por enquanto) como ela faz isso, mas ela calcula o cosseno desse ângulo e devolve o resultado. Pensando no nosso programa, o que aconteceu foi que plugamos uma caixa preta na qual entram números representando ângulos e saem números representando o seu cosseno e é isso o que precisamos saber.</p>
+<p>Nós poderíamos inclusive chamar essa função várias vezes no mesmo programa, calculando o cosseno de vários ângulos. A cada vez o Python executaria esse código desconhecido/escondido e devolveria o resultado para guardarmos na nossa variável. Por isso dizemos que estamos <strong>reaproveitando código</strong> com a função. O código do nosso programa fica bastante sucinto, apesar de ele pode estar fazendo várias coisas por baixo dos panos sem que saibamos.</p>
+<p>Agora veremos que podemos inclusive criar as nossas próprias funções para estender o Python com a funcionalidade que quisermos!</p>
+<p>Vamos começar com um exemplo de uma função que converte valores de milhas para quilômetros:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">def</span> <span class="nf">converte_milhas_para_km</span><span class="p">(</span><span class="n">distancia_mi</span><span class="p">):</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="n">distancia_km</span> <span class="o">=</span> <span class="mf">1.60934</span> <span class="o">*</span> <span class="n">distancia_mi</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="k">return</span> <span class="n">distancia_km</span>
+</code></pre></div></td></tr></table></div>
+<p>Vamos entender o que está acontecendo, começando pelos nomes:</p>
+<ul>
+<li>O <code class="language-python highlight"><span class="n">distancia_mi</span></code> na linha 1 é chamado de <strong>argumento</strong> da função.</li>
+<li>O <code class="language-python highlight"><span class="n">distancia_km</span></code> na linha 3 é chamado de <strong>retorno</strong> ou <strong>resultado</strong> da função.</li>
+<li>As linhas 2 e 3 são chamadas de <strong>corpo</strong> ou <strong>bloco</strong> da função.</li>
+<li>O corpo da função é identificado com os 4 espaços no começo da linha. Esses 4 espaços são chamados de <strong>indentação</strong>.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Indentação</p>
+<p>A indentação é crucial e Python e tem um significado especial. Ela é utilizada para indicar blocos de código. Portanto não se deve utilizar indentações a mais ou a menos, pois isso causará um erro na execução do programa.</p>
+<p>O uso de 4 espaços é outra padronização da comunidade Python. Se você usar 2, 3 ou qualquer outra quantidade de espaços (ou até mesmo o caractere <code>tab</code>) o código funcionará da mesma forma. Desde que seja consistente, ou seja, escolha um formato e utilize-o em todo o seu programa. Recomendamos que você utilize 4 espaços para seguir o padrão da comunidade.</p>
+</div>
+<p>Se você executar o código acima não vai acontecer nada. Nesse código nós estamos apenas <strong>definindo</strong> a função <code class="language-python highlight"><span class="n">converte_milhas_para_km</span></code> (por isso a palavra <code class="language-python highlight"><span class="k">def</span></code>). Podemos entender a linha 1 como: "Python, <strong>quando</strong> eu pedir para você executar a função <code class="language-python highlight"><span class="n">converte_milhas_para_km</span></code>, passando um valor para <code class="language-python highlight"><span class="n">distancia_mi</span></code>, o que você deve fazer é: multiplicar o valor armazenado na variável <code class="language-python highlight"><span class="n">distancia_mi</span></code> por 1.60934 e guardar o resultado na variável <code class="language-python highlight"><span class="n">distancia_km</span></code> e depois devolver o valor armazenado na variável <code class="language-python highlight"><span class="n">distancia_km</span></code> como o resultado". Em outras palavras, é como se estivéssemos <strong>criando um novo comando do Python</strong> (assim como já temos o <code class="language-python highlight"><span class="nb">print</span></code> ou o <code class="language-python highlight"><span class="n">math</span><span class="o">.</span><span class="n">cos</span></code>, por exemplo).</p>
+<h2 id="chamando-a-nossa-funcao-em-python">Chamando a nossa função em Python</h2>
+<p>Vamos refletir brevemente sobre a função que acabamos de criar. Qual é o valor esperado para o resultado da chamada da função <code class="language-python highlight"><span class="n">converte_milhas_para_km</span><span class="p">(</span><span class="n">distancia_mi</span><span class="p">)</span></code>? A resposta é: depende! Depende do valor de <code>distancia_mi</code>. A função <code>converte_milhas_para_km</code> só vai devolver um valor se definirmos um valor para <code>distancia_mi</code>.</p>
+<p>Essa ideia é a mesma que apresentamos sobre a função <code class="language-python highlight"><span class="nb">print</span></code>, ou seja, precisamos de uma informação adicional. Uma vez que definimos uma função é como se ela se tornasse parte da linguagem Python. Assim, para esse contexto introdutório, não existe nenhuma diferença entre a função <code class="language-python highlight"><span class="nb">print</span></code> e a função <code class="language-python highlight"><span class="n">converte_milhas_para_km</span><span class="p">(</span><span class="n">distancia_mi</span><span class="p">)</span></code> em termos de importância. Ambas são comandos disponíveis no Python para o programador utilizar em seu código.</p>
+<p>Vamos então ver um exemplo de uso da nossa função <code class="language-python highlight"><span class="n">converte_milhas_para_km</span><span class="p">(</span><span class="n">distancia_mi</span><span class="p">)</span></code>. Suponha que o código que define a função <code class="language-python highlight"><span class="n">converte_milhas_para_km</span><span class="p">(</span><span class="n">distancia_mi</span><span class="p">)</span></code> esteja em um arquivo chamado <code>conversoes.py</code>. Considere o código a seguir em outro arquivo (por exemplo, <code>teste.py</code>, que deve estar na mesma pasta que o arquivo <code>conversoes.py</code>):</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">conversoes</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="n">b</span> <span class="o">=</span> <span class="n">conversoes</span><span class="o">.</span><span class="n">converte_milhas_para_km</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Na linha 1 nós falamos para o Python que queremos utilizar as funções disponíveis no arquivo <code>conversoes.py</code>. Na linha 3, armazenamos o número 10 na variável <code class="language-python highlight"><span class="n">a</span></code>. Na linha 4 ocorre a chamada da função. Vamos detalhar o que ocorre nessa linha:</p>
+<ul>
+<li>O valor da variável <code class="language-python highlight"><span class="n">a</span></code> é utilizado, o Python consulta esse valor na memória e substitui na chamada da função. Agora a linha é equivalente a <code class="language-python highlight"><span class="n">b</span> <span class="o">=</span> <span class="n">conversoes</span><span class="o">.</span><span class="n">converte_milhas_para_km</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code>.</li>
+<li>A função <code class="language-python highlight"><span class="n">conversoes</span><span class="o">.</span><span class="n">converte_milhas_para_km</span><span class="p">()</span></code> é executada com o argumento <code class="language-python highlight"><span class="mi">10</span></code>.</li>
+<li>A função <code class="language-python highlight"><span class="n">conversoes</span><span class="o">.</span><span class="n">converte_milhas_para_km</span><span class="p">()</span></code> devolve o valor <code class="language-python highlight"><span class="mf">16.0934</span></code> (não importa como foi calculado, apesar de nós sabermos).</li>
+<li>Agora que temos o resultado da função, a linha 4 é equivalente a <code class="language-python highlight"><span class="n">b</span> <span class="o">=</span> <span class="mf">16.0934</span></code>.</li>
+<li>O valor <code class="language-python highlight"><span class="mf">16.0934</span></code> é armazenado na variável <code class="language-python highlight"><span class="n">b</span></code></li>
+</ul>
+<p>Por fim, na linha 5, o valor armazenado na variável <code class="language-python highlight"><span class="n">b</span></code> é utilizado como argumento da função <code class="language-python highlight"><span class="nb">print</span><span class="p">()</span></code> e o valor <code class="language-python highlight"><span class="mf">16.0934</span></code> é mostrado no terminal.</p>
+<div class="admonition info">
+<p class="admonition-title">Dica Pro: use bons nomes!</p>
+<p>No dia seguinte você abre o programa mostrado acima. O que faz mesmo esse código? Acredite, é mais comum do que você imagina. Enquanto estamos desenvolvendo o programa temos muito claro para quê cada variável serve, mas não precisamos de muito tempo para olhar o mesmo código e não ter ideia do que está acontecendo.</p>
+<p>Por isso, use nomes que façam sentido para as suas variáveis e funções. Quando não estiver claro o suficiente, adicione comentários, mas as vezes boas escolhas de nomes dispensam comentários no código.</p>
+</div>
+<h2 id="outros-exercicios">Outros exercícios</h2>
+<p>Você só vai aprender a programar programando muito. O servidor possui diversos exercícios disponíveis com correção automática. Aproveite esse recurso para praticar bastante.</p>
+<div class="admonition exercise self-progress" data-slug="funcao/handout/exercise_2" id="exercise_2_0">
+<p class="admonition-title">EXERCÍCIO 2</p>
+<form class="exercise-form">
+<p>Faça o exercício <a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432159" target="_blank">Celsius para Fahrenheit</a></p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<div class="admonition exercise self-progress" data-slug="funcao/handout/exercise_3" id="exercise_3_0">
+<p class="admonition-title">EXERCÍCIO 3</p>
+<form class="exercise-form">
+<p>Faça o exercício <a href="https://us.prairielearn.com/pl/course_instance/156043/assessment/2432159" target="_blank">Área do triângulo</a></p>
+<p>Dica: uma função em Python, assim como uma função matemática multivariada, pode receber vários argumentos separados por vírgula.</p>
+<p>Não esqueça de escrever código de teste também. Pense em valores de teste que sejam interessantes. Por exemplo: e se a base for zero? E se a altura for zero? E se forem iguais?</p>
+<div class="form-elements">
+<input type="hidden" name="data" value="OK" />
+<input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
+</div>
+</form>
+</div>
+<p>Faça todos os outros exercícios disponíveis sobre funções. Quanto mais, melhor!</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../../introducao/handout/"
+               class="ah-prev"
+               title="Introdução">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">Introdução</span>
+            </a>
+          
+          
+            <a href="../../input/handout/"
+               class="ah-next"
+               title="Entrada e saída">
+              <span class="nav-label">Próximo</span>
+              <span class="nav-title">Entrada e saída</span>
+            </a>
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="../../js/tabs.js"></script><script src="../../js/termynal.js"></script><script src="../../js/custom.js"></script>
+    
+  </body>
+</html>
