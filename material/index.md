@@ -1,17 +1,9 @@
-# Welcome to MkDocs
+# Design de Software
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Boas vindas ao material sobre Design de Software (2024/2). Aqui você encontrará todo o material de apoio do curso, incluindo links para entrega dos trabalhos.
 
-## Commands
+## Links importantes
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+* [*Blackboard*](https://insper.blackboard.com/){:target="_blank"}: - Principalmente utilizado para avisos.
+* [*Regras da disciplina*](about.md): você encontrará os critérios para aprovação. Leia com atenção!
+* [*Calendário*](https://www.insper.edu.br/portaldoprofessor/wp-content/uploads/2015/02/CALENDÁRIO-ACADÊMICO-PROFESSOR-ENG-v2-1.pdf){:target="_blank"}: - Calendário do Insper.

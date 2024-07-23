@@ -1,6 +1,6 @@
 INHERIT: active-handout.yml
 
-site_name: Dessoft - Design de Software
+site_name: DesSoft - Design de Software
 
 theme:
   name: active-handout-theme
@@ -9,6 +9,8 @@ theme:
 
 nav:
   - Home: index.md
+  - Informações:
+    - Composição da Nota: about.md
   - Conteúdo:
     - Introdução: introducao/handout.md
     - Funções: funcao/handout.md
