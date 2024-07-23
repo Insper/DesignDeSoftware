@@ -1,0 +1,390 @@
+{
+  "course": "",
+  "exercises": {
+    "arquivo/handout/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "arquivo/handout/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "arquivo/handout/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "arquivo/handout/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "arquivo/handout/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "arquivo/handout/exercise_5"
+      },
+      "exercise_6": {
+        "tags": [],
+        "slug": "arquivo/handout/exercise_6"
+      },
+      "exercise_7": {
+        "tags": [],
+        "slug": "arquivo/handout/exercise_7"
+      },
+      "exercise_8": {
+        "tags": [],
+        "slug": "arquivo/handout/exercise_8"
+      }
+    },
+    "dicionario/handout/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "dicionario/handout/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "dicionario/handout/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "dicionario/handout/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "dicionario/handout/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "dicionario/handout/exercise_5"
+      },
+      "exercise_6": {
+        "tags": [],
+        "slug": "dicionario/handout/exercise_6"
+      }
+    },
+    "for/handout/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "for/handout/exercise_1"
+      }
+    },
+    "funcao/handout/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "funcao/handout/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "funcao/handout/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "funcao/handout/exercise_3"
+      }
+    },
+    "if/handout/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "if/handout/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "if/handout/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "if/handout/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "if/handout/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "if/handout/exercise_5"
+      },
+      "exercise_6": {
+        "tags": [],
+        "slug": "if/handout/exercise_6"
+      },
+      "exercise_7": {
+        "tags": [],
+        "slug": "if/handout/exercise_7"
+      },
+      "exercise_8": {
+        "tags": [],
+        "slug": "if/handout/exercise_8"
+      },
+      "exercise_9": {
+        "tags": [],
+        "slug": "if/handout/exercise_9"
+      },
+      "exercise_10": {
+        "tags": [],
+        "slug": "if/handout/exercise_10"
+      },
+      "exercise_11": {
+        "tags": [],
+        "slug": "if/handout/exercise_11"
+      },
+      "exercise_12": {
+        "tags": [],
+        "slug": "if/handout/exercise_12"
+      },
+      "exercise_13": {
+        "tags": [],
+        "slug": "if/handout/exercise_13"
+      },
+      "exercise_14": {
+        "tags": [],
+        "slug": "if/handout/exercise_14"
+      },
+      "exercise_15": {
+        "tags": [],
+        "slug": "if/handout/exercise_15"
+      },
+      "exercise_16": {
+        "tags": [],
+        "slug": "if/handout/exercise_16"
+      }
+    },
+    "input/handout/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "input/handout/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "input/handout/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "input/handout/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "input/handout/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "input/handout/exercise_5"
+      },
+      "exercise_6": {
+        "tags": [],
+        "slug": "input/handout/exercise_6"
+      },
+      "exercise_7": {
+        "tags": [],
+        "slug": "input/handout/exercise_7"
+      }
+    },
+    "introducao/handout/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "introducao/handout/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "introducao/handout/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "introducao/handout/exercise_3"
+      }
+    },
+    "lista/handout/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "lista/handout/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "lista/handout/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "lista/handout/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "lista/handout/exercise_4"
+      },
+      "lista_del_1": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "lista/handout/lista_del_1",
+        "answer_idx": 1
+      },
+      "lista_del_2": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "lista/handout/lista_del_2",
+        "answer_idx": 1
+      },
+      "lista_append_1": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "lista/handout/lista_append_1",
+        "answer_idx": 3
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "lista/handout/exercise_5"
+      }
+    },
+    "pygame/handout/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_5"
+      },
+      "exercise_6": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_6"
+      },
+      "exercise_7": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_7"
+      },
+      "exercise_8": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_8"
+      },
+      "exercise_9": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_9"
+      },
+      "exercise_10": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_10"
+      },
+      "exercise_11": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_11"
+      },
+      "exercise_12": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_12"
+      },
+      "exercise_13": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_13"
+      },
+      "exercise_14": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_14"
+      },
+      "exercise_15": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_15"
+      },
+      "exercise_16": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_16"
+      },
+      "exercise_17": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_17"
+      },
+      "exercise_18": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_18"
+      },
+      "exercise_19": {
+        "tags": [],
+        "slug": "pygame/handout/exercise_19"
+      }
+    },
+    "string/handout/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "string/handout/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "string/handout/exercise_2"
+      },
+      "fatiamento_pares": {
+        "tags": [
+          "choice-exercise"
+        ],
+        "slug": "string/handout/fatiamento_pares",
+        "answer_idx": 1
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "string/handout/exercise_3"
+      }
+    },
+    "while/handout/": {
+      "exercise_1": {
+        "tags": [],
+        "slug": "while/handout/exercise_1"
+      },
+      "exercise_2": {
+        "tags": [],
+        "slug": "while/handout/exercise_2"
+      },
+      "exercise_3": {
+        "tags": [],
+        "slug": "while/handout/exercise_3"
+      },
+      "exercise_4": {
+        "tags": [],
+        "slug": "while/handout/exercise_4"
+      },
+      "exercise_5": {
+        "tags": [],
+        "slug": "while/handout/exercise_5"
+      },
+      "exercise_6": {
+        "tags": [],
+        "slug": "while/handout/exercise_6"
+      },
+      "exercise_7": {
+        "tags": [],
+        "slug": "while/handout/exercise_7"
+      },
+      "exercise_8": {
+        "tags": [],
+        "slug": "while/handout/exercise_8"
+      },
+      "exercise_9": {
+        "tags": [],
+        "slug": "while/handout/exercise_9"
+      },
+      "exercise_10": {
+        "tags": [],
+        "slug": "while/handout/exercise_10"
+      },
+      "exercise_11": {
+        "tags": [],
+        "slug": "while/handout/exercise_11"
+      },
+      "exercise_12": {
+        "tags": [],
+        "slug": "while/handout/exercise_12"
+      }
+    }
+  },
+  "tags": {
+    "choice-exercise": "choice-exercise"
+  }
+}

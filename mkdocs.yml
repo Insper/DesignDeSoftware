@@ -1,0 +1,46 @@
+INHERIT: active-handout.yml
+
+site_name: Dessoft - Design de Software
+
+theme:
+  name: active-handout-theme
+  locale: pt_BR
+
+
+nav:
+  - Home: index.md
+  - Conteúdo:
+    - Introdução: introducao/handout.md
+    - Funções: funcao/handout.md
+    - Entrada e saída: input/handout.md
+    - Desvios condicionais (if): if/handout.md
+    - Laços de Repetição (while): while/handout.md
+    - Armazenamento de dados em listas: lista/handout.md
+    - Iterando em coleções com "for": for/handout.md
+    - Armazenamento em dicionários: dicionario/handout.md
+    - Strings e Fatiamento: string/handout.md
+    - Armazenamento permanente em arquivos: arquivo/handout.md
+    - PyGame: pygame/handout.md
+
+
+extra:
+  custom_variables:
+    pl_funcoes: https://us.prairielearn.com/pl/course_instance/156043/assessment/2432159
+    pl_input: https://us.prairielearn.com/pl/course_instance/156043/assessment/2432161
+    pl_if: https://us.prairielearn.com/pl/course_instance/156043/assessment/2432160
+    pl_while: https://us.prairielearn.com/pl/course_instance/156043/assessment/2432164
+    pl_lista: https://us.prairielearn.com/pl/course_instance/156043/assessment/2432162
+    pl_for: https://us.prairielearn.com/pl/course_instance/156043/assessment/2432158
+    pl_dict: https://us.prairielearn.com/pl/course_instance/156043/assessment/2432156
+    pl_string: https://us.prairielearn.com/pl/course_instance/156043/assessment/2432163
+    pl_arquivos: https://us.prairielearn.com/pl/course_instance/156043/assessment/2432157
+    pl_classes: https://us.prairielearn.com/pl/course_instance/156043/assessment/2432155
+
+extra_javascript:
+  - js/tabs.js
+  - js/termynal.js
+  - js/custom.js
+
+extra_css:
+    - css/termynal.css
+    - css/custom.css
