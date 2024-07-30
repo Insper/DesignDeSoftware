@@ -5,5 +5,6 @@ Boas vindas ao material sobre Design de Software (2024/2). Aqui você encontrar�
 ## Links importantes
 
 * [*Blackboard*](https://insper.blackboard.com/){:target="_blank"}: - Principalmente utilizado para avisos.
+* [*Praerie Learn*](https://us.prairielearn.com/pl/course_instance/158255){:target="_blank"}: - Sistema com os exercícios e avaliações da disciplina.
 * [*Regras da disciplina*](about.md): você encontrará os critérios para aprovação. Leia com atenção!
 * [*Calendário*](https://www.insper.edu.br/portaldoprofessor/wp-content/uploads/2015/02/CALENDÁRIO-ACADÊMICO-PROFESSOR-ENG-v2-1.pdf){:target="_blank"}: - Calendário do Insper.
