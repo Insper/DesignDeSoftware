@@ -1,104 +1,98 @@
-# Exercício Programa 2
+# Exercício Programa - Batalha Naval Simplificada
 
-O objetivo deste exercício programa (EP) é colocar em prática os conceitos intermediários de programação em ```Python``` em um problema um pouco maior do que os exercícios de aula. **Este EP deve ser feito em duplas e utilizar o git para registrar o histórico do código e para fazer a entrega (com contribuições de ambos os membros).**
+**Este EP pode ser feito individualmente ou em duplas e deve utilizar o github para registrar o histórico do código e para fazer a entrega (com contribuições de ambos os membros, no caso de duplas).**
 
-Neste EP você vai implementar o jogo de **Fortuna DesSoft**, descrito a seguir.
+**Caso faça em dupla, defina quais exercícios cada integrante ficará responsável.**
 
-## Regras do jogo
+**Caso faça individualmente, ainda é necessário utilizar o github e fazer commits ao longo do desenvolvimento do projeto.**
 
-Você irá implementar um jogo de perguntas e respostas. Cada pergunta tem quatro alternativas e, conforme o jogador responde as perguntas corretamente, tem seu prêmio aumentado. Caso o jogador erre alguma resposta, perde o prêmio e sai sem nada! O jogo acaba quando o jogador atingir o prêmio de **1 milhão** ou escolher parar!
+Para exercitar nossas habilidades com programação, vamos desenvolver o jogo *Batalha Naval*.
 
-### Descrição geral dos passos do jogo:
-1. O jogador deve informar seu nome;
-2. O computador exibe um pequeno manual do jogo;
-3. Inicia-se o jogo de perguntas e respostas;
-4. O computador sorteia uma pergunta aleatória inédita, exibindo a questão e as opções de resposta;
-5. O usuário escolhe entre as opções: `A`, `B`, `C`, `D`, `pula` ou `ajuda`;
-6. Caso o jogador opte por `ajuda`, sorteie aleatoriamente uma ou duas (quantidade aleatória) respostas sabidamente incorretas e dê a dica de que estas são sabidamente erradas!
-7. Caso o jogador opte por `pula`, se o jogador ainda tiver pulos disponíveis, volte ao passo **4**, senão informe que não tem mais pulos e exiba a pergunta novamente
-8. Caso o jogador escolha uma resposta correta, o seu prêmio aumenta. Considere que o usuário inicia com zero reais e que sua premiação aumenta conforme a lista:
-    ```python
-    1000
-    5000
-    10000
-    30000
-    50000
-    100000
-    300000
-    500000
-    1000000
-    ```
-9. Caso o jogador escolha uma resposta errada, o jogo acaba e ele sai sem nenhum prêmio!
-10. Pergunte se o jogador quer parar ou continuar. 
+Nesse jogo, o objetivo do jogador é tentar afundar todos os navios inimigos. É preciso posicionar estrategicamente os navios no começo do jogo e contar com a sorte para afundar os navios do adversário antes dele afundar os seus.
 
-### Observações:
-- Inicialmente, o jogador tem direito a `3` pulos e `2` ajudas;
-- O jogo deve validar se a base de dados está consistente;
-- O jogo não deve sortear perguntas repetidas;
-- no passo **5**, valide se o usuário escolheu alguma opção inexistente;
-- no passo **6**, não é possível pedir ajuda mais de uma vez. Valide e exiba mensagem adequada;
+## O jogo
 
-### Da vitória:
+- O primeiro passo do jogo é posicionar um total de `#!python 10` embarcações de diversas posições em um grid de `#!python 10` por `#!python 10`.
 
-1. O jogo acaba quando o jogador atingir o prêmio de 1 milhão. Após cada pergunta correta, o jogador tem a opção de parar e sair com o prêmio já conquistado.
+<img src="raw/ep2/grid.png" alt="Grid" style="width: 30%;" />
 
-## O que você precisa fazer
+- Nesta versão do jogo trabalharemos com `#!python 4` tipos de embarcações diferentes. Cada tipo possui um tamanho, que representa quantos espaços do grid ele ocupa. Veja as embarcações e suas descrições a seguir:
 
-:::admonition{type=info title="Exemplo do Jogo"}
-[Veja um exemplo do que é esperado no EP2 neste link.](https://macielcalebe.github.io/dessoft-23-2-ferias-exemplo-ep2/)
-:::
+<img src="raw/ep2/embarcacoes.png" alt="Embarcações" width="30%" />
 
-Você deve implementar uma versão para terminal (console) do jogo, ou seja, usando `#!python print` e `#!python input` para interagir com o usuário por meio de texto. 
+___
 
-Para te auxiliar nessa tarefa, foram criados os seguintes exercícios (o resultado dos exercícios na Academia Python não afetam a nota, mas as funções criadas neles devem ser utilizadas no EP2):
+<img src="raw/ep2/embarcacoes_infos.png" alt="Embarcações e suas informações" width="80%" />
 
-- :challenge{type=code slug=222-dp-ep2-transforma-base}
-- :challenge{type=code slug=222-dp-ep2-valida-questao}
-- :challenge{type=code slug=222-dp-ep2-valida-lista-questoes}
-- :challenge{type=code slug=222-dp-ep2-sorteia-questao}
-- :challenge{type=code slug=222-dp-ep2-sorteia-questao-inedita}
-- :challenge{type=code slug=222-dp-ep2-questao-para-string}
-- :challenge{type=code slug=222-dp-ep2-gera-ajuda}
+Você deve implementar uma versão para terminal (console) do jogo, ou seja, usando `#!python print` e `#!python input` para interagir com o usuário por meio de texto.
 
-:::admonition{type=danger title="Importante"}
-As funções enviadas para os exercícios acima devem ser utilizadas pelo seu programa no EP2. Dica: crie um arquivo para adicionar essas funções. A cada modificação nesse arquivo, faça um novo commit. Assim, a evolução do programa fica registrada. Faça também um outro arquivo para as função de impressão em tela e validação de entrada de dados.
-:::
+Para te auxiliar nessa tarefa, foram criados exercícios no PrairieLearn que te ajudarão a implementar as funções necessárias para o jogo.
 
-Ainda, está sendo disponibilizado um arquivo com uma base de perguntas e resposta, que pode ser utilizado no EP. **Sugestão:** incremente a base de dados, criando novas perguntas!
+## Desenvolvimento do projeto
 
-**[Base de Perguntas e Respostas](https://github.com/macielcalebe/dessoft-23-2-ferias-exemplo-ep2)**
+- Crie um repositório **público** no github para o seu projeto e adicione sua dupla caso haja.
+- Cada exercício feito com sucesso no PrairieLearn deve ser adicionado ao repositório em um commit separado no mesmo dia. Dica: crie um arquivo para adicionar essas funções. A cada modificação nesse arquivo, faça um novo commit. Assim, a evolução do programa fica registrada.
+- As funções enviadas no PrairieLearn devem ser utilizadas pelo seu programa no EP2. Faça um outro arquivo para o programa que será responsável pela impressão em tela e validação de entrada de dados.
 
-Leia também a rubrica atentamente, pois ela pode te ajudar a entender o que precisa ser feito.
+Leia também a rubrica atentamente, pois ela irá te ajudar a entender o que precisa ser feito.
 
 ## Rubrica
 
 A tabela a seguir apresenta os requisitos esperados e seus respectivos conceitos associados para os objetivos de aprendizagem **desenvolver de programas de computador** e **identificar e desenhar estratégias algorítmicas computacionais**. Esta tabela deve ser considerada em conjunto com a tabela do objetivo **atuar em uma equipe autogerenciada de desenvolvimento**.
 
-| Conceito  |       I       |                                                                        D                                                                        |                                      C                                       |                                                                                                                                          B                                                                                                                                           |                                                                                                                                               A                                                                                                                                                |
-| --------- | :-----------: | :---------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Descrição | Não entregou. | Não entregou todas as sete funções obrigatórias (você pode, e deve, utilizar mais funções, mas as funções listadas no enunciado são obrigatórias). | Entregou as sete funções obrigatórias funcionando, mas o programa não funciona. | O programa funciona conforme o esperado, o jogo sempre apresenta para o jogador o estado atual do seu prêmio, é apresentada uma mensagem ao final de cada jogo indicando se o jogador ganhou ou perdeu e o jogador pode iniciar um novo jogo sem ter que executar o programa novamente. | Atingiu o conceito B, implementou validações para as entradas do usuário (digitou respostas válidas), adicionou mais perguntas à base e implementou alguma forma de visualização mais avançada (ex: cor diferente conforme o valor do prêmio ou de acordo com a importância de cada mensagem). |
+### Conceito I
+Não entregou
+
+### Conceito D
+Não submeteu no PrairieLearn ou não fez o commit de alguma das funções a seguir:
+
+- Define posições
+- Preenche frota
+- Faz jogada
+
+### Conceito C
+Submeteu com sucesso no PrairieLearn **E** fez o commit das funções a seguir:
+
+- Define posições
+- Preenche frota
+- Faz jogada
+
+### Conceito B
+Atingiu o conceito C
+E submeteu com sucesso no PrairieLearn **E** fez o commit das funções a seguir:
+
+- Posiciona frota
+- Afundados
+
+### Conceito A
+Atingiu o conceito B
+E submeteu com sucesso no PrairieLearn **E** fez o commit das funções a seguir:
+
+- Posição válida
+- Jogadas do jogador
+- Jogadas do oponente
+
+### Conceito A+
+Atingiu o conceito A e existem exatamente 2 arquivos no repositório (um para as funções e outro para o código do jogo. Além disso, as funções estão sendo importadas do arquivo que contém as definições das funções).
+___
 
 A tabela a seguir apresenta a rubrica do objetivo **atuar em uma equipe autogerenciada de desenvolvimento**.
 
-| Conceito  |       I       |                                     D                                      |                                                           C                                                           |                                                    B                                                    |                                                                                            A                                                                                             |
-| --------- | :-----------: | :------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Descrição | Não entregou. | Não possui nenhum commit próprio e nenhuma evidência de trabalho em grupo. | O grupo enviou todo o código de uma vez para o git (em um ou poucos commits enviados em um intervalo curto de tempo). | Todos os membros do grupo enviaram commits com partes do código, mas a evolução do código é artificial. | O grupo fez bom uso do git, enviando commits a cada funcionalidade implementada ou bug corrigido. Os commits são distribuídos ao longo de alguns dias, mostrando a evolução do trabalho. |
+| Conceito  |  Descrição |
+| --------- | :--------: |
+| I        | Não entregou. |
+| D        | Não possui nenhum commit próprio e nenhuma evidência de trabalho em grupo. |
+| C        | O grupo enviou todo o código de uma vez para o git (em um ou poucos commits enviados em um intervalo curto de tempo). |
+| B        | Todos os membros do grupo enviaram commits com partes do código, mas a evolução do código é artificial. |
+| A        | O grupo fez bom uso do git, enviando commits a cada funcionalidade implementada ou bug corrigido. Os commits são distribuídos ao longo de alguns dias, mostrando a evolução do trabalho. |
+
+
 
 **O conceito final do EP2 será dado pelo menor entre os conceitos obtidos para cada objetivo acima.** Ou seja, se você obtiver conceito C no primeiro objetivo e A no segundo, o conceito final será C. Se você obtiver conceito A+ no primeiro objetivo, mas não possuir nenhum commit e nenhuma outra evidência de trabalho em grupo (conceito D), seu conceito final será D.
 
-## Grupos
+## Entrega 27/10 até 23:59
+Será considerado o código enviado para o github até a data de entrega.
 
-É obrigatório fazer em **Dupla**. Caso não tenha time, entre em contato com o professor por email até o dia 04/07.
+O endereço do seu repositório deve ser enviado pelo Blackboard. Não façam commits após a data de entrega, pois será considerado como atraso.
 
-Utilize o link https://classroom.github.com/a/Bq8-prUt para criar o grupo e informe seu colega o nome do grupo. Apenas o primeiro membro cria o grupo, o segundo (caso exista) apenas entra no grupo já criado.
-
-
-## Entrega
-
-**Todos os membros** do grupo devem responder ao questionário https://forms.gle/BoqVJCUwvtabR82p8. Além disso, é obrigatório o envio de um vídeo de até 5 minutos que demonstre seu jogo funcionando (pode ser o mesmo vídeo para a dupla, mas ambos devem enviar o link e responder o formulário).
-
-Não façam commit após a data de entrega, será considerado como atraso.
-
-**O prazo é 18/07 às 23:59**
-
-EPs entregues com atraso terão seu conceito **limitado a D**.
+**Importante:** Caso algum integrante da dupla esqueça de enviar o endereço do repositório, será descontado conceito da nota final do projeto.

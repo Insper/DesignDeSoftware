@@ -26,5 +26,5 @@ Boas vindas ao material sobre Design de Software (2024/2). Aqui vocÃª encontrarÃ
 
 * Projetos
     * EP1: 26/08 ~ 13/09
-    * EP2: 07/10 ~ 18/10
+    * EP2: 14/10 ~ 27/10
     * Final: 28/10 ~ 18/11
