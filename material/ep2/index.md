@@ -44,7 +44,7 @@ A tabela a seguir apresenta os requisitos esperados e seus respectivos conceitos
 Não entregou
 
 ### Conceito D
-Não submeteu no PrairieLearn ou não fez o commit de alguma das funções a seguir:
+Não submeteu com sucesso no PrairieLearn ou não fez o commit de alguma das funções a seguir:
 
 - Define posições
 - Preenche frota
@@ -69,6 +69,7 @@ Atingiu o conceito B
 E submeteu com sucesso no PrairieLearn **E** fez o commit das funções a seguir:
 
 - Posição válida
+- Pergunta posicionamento da frota
 - Jogadas do jogador
 - Jogadas do oponente
 
