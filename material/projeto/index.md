@@ -25,10 +25,6 @@ Envie no BlackBoard (não perca o prazo):
 
 1. O endereço do seu repositório GitHub (faça isso logo no início do projeto);
 2. Formulário com a proposta inicial do projeto (pode mudar um pouco depois, mas é importante definir uma direção);
-3. Relatório de acompanhamento do projeto (deve ser preenchido **a cada domingo de cada semana** até às 23h59). O relatório deve ter, no mínimo, 3 linhas:
-  - o que deveria ter sido feito;
-  - o que foi feito;
-  - o que será feito.
 
 O professor irá clonar o código presente no GitHub ao final do dia de entrega (assim, se o repositório for privado, adicione o professor como colaborador). O repositório deverá conter um arquivo `README.md` com, **no mínimo**, o seguinte conteúdo:
 
