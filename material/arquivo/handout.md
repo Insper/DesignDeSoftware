@@ -133,10 +133,10 @@ Abaixo você encontra um resumo dos principais métodos de arquivos. Para mais d
 - **`writelines`**: recebe uma lista de strings e escreve todas no arquivo.
 
 !!! exercise "EXERCÍCIO"
-     Faça o exercício [Conta Palavras no Arquivo]({{pl_arquivos}}){:target="_blank"}.
+     Faça o exercício [Conta Palavras no Arquivo]({{pl_files}}){:target="_blank"}.
 
 !!! exercise "EXERCÍCIO"
-     Faça o exercício [Bananas no arquivo]({{pl_arquivos}}){:target="_blank"}.
+     Faça o exercício [Bananas no arquivo]({{pl_files}}){:target="_blank"}.
 
 ## O formato JSON
 
@@ -160,4 +160,4 @@ O JSON acima contém os nomes e notas de 3 alunos. Esse poderia ser o conteúdo 
      Baixe o arquivo [`alunos.json`](raw/arquivo/alunos.json) disponível [neste link](raw/arquivo/alunos.json). Salve-o na mesma pasta onde você está fazendo os testes deste handout. Abra o arquivo no Spyder, VS Code ou seu editor de texto favorito. Crie um novo arquivo chamado `testa_json.py` e copie o código do programa acima. Teste-o e verifique o conteúdo do arquivo `alunos.json`.
 
 !!! exercise "EXERCÍCIO"
-     Faça o exercício [Valor Total Do Estoque]({{pl_arquivos}}){:target="_blank"}.
+     Faça o exercício [Valor Total Do Estoque]({{pl_files}}){:target="_blank"}.

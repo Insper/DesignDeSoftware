@@ -89,10 +89,10 @@ Por fim, na linha 5, o valor armazenado na variável `#!python b` é utilizado c
 Você só vai aprender a programar programando muito. O servidor possui diversos exercícios disponíveis com correção automática. Aproveite esse recurso para praticar bastante.
 
 !!! exercise "EXERCÍCIO"
-    Faça o exercício [Celsius para Fahrenheit]({{pl_funcoes}}){:target="_blank"}
+    Faça o exercício [Celsius para Fahrenheit]({{pl_funcao}}){:target="_blank"}
     
 !!! exercise "EXERCÍCIO"
-    Faça o exercício [Área do triângulo]({{pl_funcoes}}){:target="_blank"}
+    Faça o exercício [Área do triângulo]({{pl_funcao}}){:target="_blank"}
 
     Dica: uma função em Python, assim como uma função matemática multivariada, pode receber vários argumentos separados por vírgula.
 

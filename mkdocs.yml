@@ -1,58 +1,50 @@
 INHERIT: active-handout.yml
-
 site_name: DesSoft - Design de Software
-
 theme:
   name: active-handout-theme
   locale: pt_BR
-
-
 nav:
-  - Home: index.md
-  - Informações:
-    - Composição da Nota: about.md
-  - Projetos:
-    - EP1: ep1/index.md
-    - EP2: ep2/index.md
-    - Final: projeto/index.md
-  - Dicas:
-    - Buscando ajuda: buscando-ajuda/index.md
-  - Conteúdo:
-    - Introdução: introducao/handout.md
-    - Funções: funcao/handout.md
-    - Entrada e saída: input/handout.md
-    - Desvios condicionais (if): if/handout.md
-    - Laços de Repetição (while): while/handout.md
-    - Armazenamento de dados em listas: lista/handout.md
-    - Iterando em coleções com "for": for/handout.md
-    - Armazenamento em dicionários: dicionario/handout.md
-    - Strings e Fatiamento: string/handout.md
-    - Armazenamento permanente em arquivos: arquivo/handout.md
-    - PyGame: pygame/handout.md
-  - Tutoriais:
-    - Usando o terminal (MacOS): terminal-macos/index.md
-    - Usando o terminal (Windows): terminal-win/index.md
-    - Controle de versões com Git: git/index.md
-
-
+- Home: index.md
+- Informações:
+  - Composição da Nota: about.md
+- Projetos:
+  - EP1: ep1/index.md
+  - EP2: ep2/index.md
+  - Final: projeto/index.md
+- Dicas:
+  - Buscando ajuda: buscando-ajuda/index.md
+- Conteúdo:
+  - Introdução: introducao/handout.md
+  - Funções: funcao/handout.md
+  - Entrada e saída: input/handout.md
+  - Desvios condicionais (if): if/handout.md
+  - Laços de Repetição (while): while/handout.md
+  - Armazenamento de dados em listas: lista/handout.md
+  - Iterando em coleções com "for": for/handout.md
+  - Armazenamento em dicionários: dicionario/handout.md
+  - Strings e Fatiamento: string/handout.md
+  - Armazenamento permanente em arquivos: arquivo/handout.md
+  - PyGame: pygame/handout.md
+- Tutoriais:
+  - Usando o terminal (MacOS): terminal-macos/index.md
+  - Usando o terminal (Windows): terminal-win/index.md
+  - Controle de versões com Git: git/index.md
 extra:
   custom_variables:
-    pl_funcoes: https://us.prairielearn.com/pl/course_instance/158255/assessment/2434799
-    pl_input: https://us.prairielearn.com/pl/course_instance/158255/assessment/2434801
-    pl_if: https://us.prairielearn.com/pl/course_instance/158255/assessment/2434800
-    pl_while: https://us.prairielearn.com/pl/course_instance/158255/assessment/2434804
-    pl_lista: https://us.prairielearn.com/pl/course_instance/158255/assessment/2434802
-    pl_for: https://us.prairielearn.com/pl/course_instance/158255/assessment/2434798
-    pl_dict: https://us.prairielearn.com/pl/course_instance/158255/assessment/2434791
-    pl_string: https://us.prairielearn.com/pl/course_instance/158255/assessment/2434803
-    pl_arquivos: https://us.prairielearn.com/pl/course_instance/158255/assessment/2434797
-    pl_classes: https://us.prairielearn.com/pl/course_instance/158255/assessment/2434790
-
+    pl_funcao: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486417
+    pl_input: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486419
+    pl_if: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486418
+    pl_while: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486422
+    pl_list: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486420
+    pl_for: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486416
+    pl_dict: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486409
+    pl_string: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486421
+    pl_files: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486415
+    pl_classes: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486408
 extra_javascript:
-  - js/tabs.js
-  - js/termynal.js
-  - js/custom.js
-
+- js/tabs.js
+- js/termynal.js
+- js/custom.js
 extra_css:
-    - css/termynal.css
-    - css/custom.css
+- css/termynal.css
+- css/custom.css

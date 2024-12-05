@@ -18,9 +18,9 @@ Vamos começar relembrando o que aprendemos na aula passada com um exercício.
 
 Caso você termine o programa acima antes da discussão com a sala, resolva os seguintes exercícios:
 
-- [Movimento retilíneo uniforme]({{pl_funcoes}}){:target="_blank"}
-- [Calcula o Volume da Esfera]({{pl_funcoes}}){:target="_blank"}
-- [Lançamento de projétil]({{pl_funcoes}}){:target="_blank"}
+- [Movimento retilíneo uniforme]({{pl_funcao}}){:target="_blank"}
+- [Calcula o Volume da Esfera]({{pl_funcao}}){:target="_blank"}
+- [Lançamento de projétil]({{pl_funcao}}){:target="_blank"}
 
 ## Pedindo dados para o usuário
 

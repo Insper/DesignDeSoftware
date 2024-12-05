@@ -63,7 +63,7 @@ Para acessar um elemento de uma lista utilizamos a sua posição (índice) entre
 Podemos utilizar a função `#!python len()` para descobrir o tamanho de uma lista, ou seja, quantos elementos estão disponíveis nessa lista.
 
 !!! exercise "EXERCÍCIO"
-    Resolva o exercício [Soma valores da lista]({{pl_lista}}){:target="_blank"}. Dica: será necessário criar pelo menos duas variáveis auxiliares, uma para guardar o índice e outra para guardar a soma.
+    Resolva o exercício [Soma valores da lista]({{pl_list}}){:target="_blank"}. Dica: será necessário criar pelo menos duas variáveis auxiliares, uma para guardar o índice e outra para guardar a soma.
 
 ## Substituindo elementos em uma lista
 
@@ -74,7 +74,7 @@ Podemos também substituir o elemento em um índice específico da lista. Por ex
 ```
 
 !!! exercise "EXERCÍCIO"
-    Resolva o exercício [Substitui valores negativos por zero]({{pl_lista}}){:target="_blank"}.
+    Resolva o exercício [Substitui valores negativos por zero]({{pl_list}}){:target="_blank"}.
 :::
 
 ## Adicionando e removendo elementos em uma lista
@@ -161,4 +161,4 @@ Além disso, também temos a opção de multiplicar uma lista por um número int
 ```
 
 !!! exercise "EXERCÍCIO"
-Como sempre, resolva os [outros exercícios disponíveis]({{pl_lista}}){:target="_blank"}.
+Como sempre, resolva os [outros exercícios disponíveis]({{pl_list}}){:target="_blank"}.
