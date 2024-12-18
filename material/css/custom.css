@@ -1,0 +1,25 @@
+.quiz, .ep1, .ep2, .p1, .p2, .ps, .epf {
+    border-radius: 5px;
+    padding: 0px 4px;
+}
+
+.p1, .p2, .ps {
+    border: 1px solid red;
+    background-color: lightpink;
+}
+.ps {
+    border: 1px solid red;
+    background-color: lightcoral;
+}
+.epf {
+    background-color: lightgreen;
+    border: 1px solid green;
+}
+.ep1, .ep2 {
+    border: 1px solid blue;
+    background-color: lightsteelblue;
+}
+.quiz {
+    border: 1px solid orange;
+    background-color: lightgoldenrodyellow;
+}

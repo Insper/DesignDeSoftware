@@ -39,6 +39,7 @@ extra:
     pl_string: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486421
     pl_files: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486415
     pl_classes: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486408
+
 extra_javascript:
 - js/tabs.js
 - js/termynal.js
