@@ -5,8 +5,8 @@ theme:
   locale: pt_BR
 nav:
 - Home: index.md
-- Informações:
-  - Composição da Nota: about.md
+# - Informações:
+#   - Composição da Nota: about.md
 - Projetos:
   - Final: projeto/noindex.md
 - Dicas:
