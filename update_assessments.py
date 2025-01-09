@@ -8,7 +8,7 @@ load_dotenv()
 
 # Obtém o token do arquivo .env
 TOKEN = os.getenv("TOKEN")
-COURSE_INSTANCE_ID = 168880  # Substitua pelo ID do curso correto
+COURSE_INSTANCE_ID = os.getenv("COURSE_INSTANCE_ID")  # Substitua pelo ID do curso correto
 API_URL = f"https://us.prairielearn.com/pl/api/v1/course_instances/{COURSE_INSTANCE_ID}/assessments"
 
 def get_assessments(token, api_url):
