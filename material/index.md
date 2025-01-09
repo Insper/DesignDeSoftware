@@ -7,8 +7,8 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 | **Turma** | 2025/1 DP-Férias |
 | **Professor** | [Humberto Sandmann](https://hsandmann.github.io){:target="_blank"} |
 | **Professora Auxiliar** | [Licia Salles](https://github.com/liciascl){:target="_blank"} |
-| **Horário** | das 08h às 12h<br>seg-sex |
-| **Atendimento** | das 13h30 às 15h<br>ter |
+| **Horário** | das 08h às 12h<br>de segunda a sexta |
+| **Atendimento** | das 13h30 às 15h<br>terça |
 
 ## Links importantes
 
