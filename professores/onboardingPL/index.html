@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>onboardingPL - DesSoft - Design de Software</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '../..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../../css/termynal.css"><link rel="stylesheet" href="../../css/custom.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href="../.."
+           title="DesSoft - Design de Software"
+           class="ah-logo"
+           aria-label="DesSoft - Design de Software">
+          DesSoft - Design de Software
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="../..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Projetos</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../projeto/noindex/">Final</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Dicas</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../buscando-ajuda/">Buscando ajuda</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Conteúdo</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../introducao/handout/">Introdução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../funcao/handout/">Funções</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../input/handout/">Entrada e saída</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../if/handout/">Desvios condicionais (if)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../while/handout/">Laços de Repetição (while)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../lista/handout/">Armazenamento de dados em listas</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../for/handout/">Iterando em coleções com "for"</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../dicionario/handout/">Armazenamento em dicionários</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../string/handout/">Strings e Fatiamento</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../arquivo/handout/">Armazenamento permanente em arquivos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../pygame/handout/">PyGame</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Tutoriais</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../../terminal-macos/">Usando o terminal (MacOS)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../terminal-win/">Usando o terminal (Windows)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../../git/">Controle de versões com Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="tutorial-onboarding-prairie-learn">Tutorial Onboarding: Prairie Learn</h1>
+<p>O <strong>Prairie Learn</strong> é uma plataforma poderosa para criar, gerenciar e aplicar avaliações e exercícios. Este tutorial fornecerá uma visão geral do sistema e guiará você pelos principais recursos para começar a usá-lo de maneira eficiente.</p>
+<hr />
+<h2 id="1-acessando-o-prairie-learn">1. Acessando o Prairie Learn</h2>
+<p>O acesso ao <strong>Prairie Learn</strong> é simples e integrado. </p>
+<p>Para começar, <strong>faça login usando seu usuário Insper</strong> através do login Microsoft:</p>
+<ol>
+<li>Acesse o site do Prairie Learn (<a href="https://us.prairielearn.com">https://us.prairielearn.com</a>).</li>
+<li>Clique em <strong>Sign in</strong>.</li>
+<li>Escolha a opção de login com Microsoft e insira suas credenciais Insper.</li>
+</ol>
+<p><strong>Pronto!</strong> Você será direcionado à página principal do sistema.</p>
+<hr />
+<h2 id="2-estrutura-do-sistema">2. Estrutura do Sistema</h2>
+<p>O Prairie Learn está organizado em duas principais hierarquias:</p>
+<h3 id="a-turmas-courses">a. Turmas (Courses)</h3>
+<ul>
+<li>Cada turma representa uma disciplina ou seção que você está ministrando. Cada semestre terá uma instância de Course nova, fazendo a separação entre os alunos de semestres diferentes. Todas as turmas (A, B e C) de um mesmo semestre acessam a mesma instância de Course.</li>
+<li>Ao entrar em uma turma, você encontrará um painel com os <strong>assessments</strong> (avaliações ou conjuntos de exercícios) disponíveis para essa turma.</li>
+</ul>
+<h3 id="b-assessments">b. Assessments</h3>
+<p>Um <strong>assessment</strong> é uma coleção de exercícios que os alunos devem completar. </p>
+<p>Ele pode representar uma prova, um trabalho prático ou qualquer outra atividade.
+Dentro de cada assessment, você pode:</p>
+<ul>
+<li>Adicionar exercícios.</li>
+<li>Configurar prazos.</li>
+<li>Ajustar permissões de acesso.</li>
+</ul>
+<p>Em DesSoft existem hoje assessments para:</p>
+<ul>
+<li>Exercícios de Handout (para prática em aula).</li>
+<li>Estudo para o Quiz (com questões de quizzes anteriores).</li>
+<li>Exercícios Programa (com os exercícios que compôem o EP).</li>
+<li>Quizzes (com questões dos quizzes aplicados na disciplina).</li>
+<li>Avaliações (com questões de avaliações aplicadas na disciplina).</li>
+</ul>
+<hr />
+<h2 id="3-entendendo-exercicios">3. Entendendo Exercícios</h2>
+<p>Os exercícios no Prairie Learn são unidades individuais que compõem um assessment.<br />
+Cada exercício pode conter:</p>
+<ul>
+<li><strong>Questões de múltipla escolha.</strong></li>
+<li><strong>Questões de programação.</strong></li>
+<li><strong>Problemas matemáticos com respostas abertas.</strong></li>
+</ul>
+<p>Os exercícios são altamente configuráveis e permitem:</p>
+<ul>
+<li><strong>Randomização de valores</strong> para reduzir plágio.</li>
+<li><strong>Feedback automático</strong> para ajudar no aprendizado.</li>
+</ul>
+<p>Em DesSoft são utilizados hoje principalmente dois tipos de exercício:</p>
+<ul>
+<li><strong>Programação</strong>: O aluno deve escrever um código que resolva um problema específico (como os da antiga academia python).</li>
+<li><strong>Interpretação de Código</strong>: O aluno deve analisar um código fornecido e responder perguntas sobre seu funcionamento.</li>
+</ul>
+<hr />
+<h2 id="4-visoes-de-staff-e-student">4. Visões de Staff e Student</h2>
+<p>O Prairie Learn permite que você visualize a plataforma de duas maneiras:</p>
+<h3 id="a-staff-view-visao-do-professor">a. Staff View (Visão do Professor)</h3>
+<ul>
+<li>Permite gerenciar a turma e os assessments.</li>
+<li>Principais ações na Staff View:</li>
+<li>Criar, editar e publicar assessments.</li>
+<li>Visualizar resultados e relatórios de desempenho.</li>
+<li>Configurar parâmetros de visibilidade para alunos.</li>
+</ul>
+<h3 id="b-student-view-visao-do-aluno">b. Student View (Visão do Aluno)</h3>
+<ul>
+<li>Mostra como o aluno verá os assessments e exercícios.</li>
+<li>Há duas variantes:</li>
+<li><strong>Sem restrição:</strong> Você vê o assessment completo, incluindo as soluções.</li>
+<li><strong>Com restrição:</strong> Simula a experiência real do aluno, onde restrições como limite de tempo e feedback aparecem conforme configurado.</li>
+</ul>
+<p>Para alternar entre as visões, use o menu no canto superior direito.</p>
+<hr />
+<h2 id="5-recursos-adicionais-para-professores">5. Recursos Adicionais para Professores</h2>
+<h3 id="estatisticas-e-relatorios">Estatísticas e Relatórios</h3>
+<ul>
+<li>O Prairie Learn gera relatórios detalhados sobre o desempenho dos alunos em cada assessment.</li>
+<li>Você pode identificar dificuldades comuns e ajustar exercícios para melhorar o aprendizado.</li>
+</ul>
+<h3 id="hospedagem-de-arquivos">Hospedagem de Arquivos</h3>
+<ul>
+<li>O prairie learn hospeda os arquivos da disciplina em um repositório próprio, permitindo fácil acesso e compartilhamento. Tudo o que pode ser feito utilizando a interface do Prairie Learn também pode ser feito diretamente no GitHub. São poucos casos onde isso será necessário, mas é bom saber que a opção existe.</li>
+<li>Sendo isso verdade, é possível utilizar o versionamento de arquivos do GitHub para manter um histórico de alterações sem a necessidade de criar cópias de arquivos.</li>
+</ul>
+<h3 id="colaboracao">Colaboração</h3>
+<ul>
+<li>O sistema permite a inclusão de outros professores e monitores na turma, possibilitando trabalho colaborativo na criação e gestão dos assessments.</li>
+</ul>
+<hr />
+<h2 id="6-dicas-praticas">6. Dicas Práticas</h2>
+<ul>
+<li><strong>Teste seus assessments na Student View</strong> antes de publicá-los.</li>
+<li>Comece com exercícios simples para se familiarizar com o sistema.</li>
+<li>Consulte a <a href="http://prairielearn.readthedocs.io/">documentação oficial do Prairie Learn</a> para explorar recursos avançados e tirar dúvidas.</li>
+<li><strong>Para criar novos exercícios, procure um exercício similar já existente e faça uma cópia</strong> para adaptar. Criar exercícios do zero causa somente dor e sofrimento.</li>
+<li>Existe uma base de exercícios prontos que podem ser utilizados como base para novos exercícios na disciplina <code>XC 101</code>. Essa base também serve para tirar possíveis dúvidas sobre a estrutura de exercícios muito específicos.</li>
+<li>Caso seu arquivo de testes seja muito grande, pode ser necessário adicioná-lo diretamente pelo GitHub. Para isso, entre em contato com algum professor da disciplina para pedir acesso.</li>
+</ul>
+<hr />
+<h2 id="7-suporte">7. Suporte</h2>
+<p>Se precisar de ajuda, você pode:</p>
+<ul>
+<li>Consultar os tutoriais e FAQs dentro da plataforma.</li>
+<li>Entrar em contato com outros professores que já utilizam a plataforma.</li>
+</ul>
+<hr />
+<p>Agora você está pronto para explorar o Prairie Learn e utilizá-lo para criar experiências de aprendizado dinâmicas e envolventes. Experimente e veja o impacto na sua turma! 😊</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="../../js/tabs.js"></script><script src="../../js/termynal.js"></script><script src="../../js/custom.js"></script>
+    
+  </body>
+</html>
