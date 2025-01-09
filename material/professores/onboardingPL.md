@@ -64,8 +64,12 @@ Os exercícios são altamente configuráveis e permitem:
 
 Em DesSoft são utilizados hoje principalmente dois tipos de exercício:
 
-- **Programação**: O aluno deve escrever um código que resolva um problema específico (como os da antiga academia python).
 - **Interpretação de Código**: O aluno deve analisar um código fornecido e responder perguntas sobre seu funcionamento.
+- **Programação**: O aluno deve escrever um código que resolva um problema específico (como os da antiga academia python).
+
+Os exercícios de interpretação de código são mais simples e a resposta geralmente envolve escolher uma opção ou prencher um campo de texto com um valor.
+
+Os exercícios de programação são mais complexos. Para resolvê-los, o aluno deve primeiramente clicar no botão `Open workspace`. Esta ação abrirá um ambiente de programação no browser onde o aluno deve escrever seu código. Enquanto cria a solução, o aluno pode testar seu código através do mecanismo de testes do VSCode como se estivesse programando localmente. Quando o aluno achar que sua solução está correta, ele deve voltar na aba anterior e clicar no botão `Save & Grade`, que enviará a solução para ser avaliada. O código será corrigido e será exibida a porcentagem de testes que passaram.
 
 ---
 
