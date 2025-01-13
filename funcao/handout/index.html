@@ -318,7 +318,7 @@
 <p>Para dizer ao Python que queremos utilizar esse pacote nós devemos utilizar o comando <code class="language-python highlight"><span class="kn">import</span></code>. Veja a seguir um exemplo de cálculo do cosseno de zero:</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">math</span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">resultado</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -349,7 +349,7 @@
 <p>Vamos começar com um exemplo de uma função que converte valores de milhas para quilômetros:</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">def</span> <span class="nf">converte_milhas_para_km</span><span class="p">(</span><span class="n">distancia_mi</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">converte_milhas_para_km</span><span class="p">(</span><span class="n">distancia_mi</span><span class="p">):</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="n">distancia_km</span> <span class="o">=</span> <span class="mf">1.60934</span> <span class="o">*</span> <span class="n">distancia_mi</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="k">return</span> <span class="n">distancia_km</span>
 </code></pre></div></td></tr></table></div>
@@ -374,7 +374,7 @@
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
 <span class="normal"><a href="#__codelineno-2-4">4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">conversoes</span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">conversoes</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="n">b</span> <span class="o">=</span> <span class="n">conversoes</span><span class="o">.</span><span class="n">converte_milhas_para_km</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
