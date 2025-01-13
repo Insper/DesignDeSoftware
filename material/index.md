@@ -14,7 +14,6 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 * [*Blackboard*](https://insper.blackboard.com/){:target="_blank"}: Principalmente utilizado para avisos.
 * [*PrairieLearn*](https://us.prairielearn.com/pl/course_instance/168880){:target="_blank"}: Sistema com os exercícios e avaliações da disciplina.
-* [*Atendimento Remoto*](https://teams.microsoft.com/l/meetup-join/19%3ameeting_M2ZkN2ZhOTEtOTM4OS00MzEwLThlOTYtNjQwMzRlOGU2YmU5%40thread.v2/0?context=%7b%22Tid%22%3a%226370a6c0-7b90-4709-bd6e-59c28ede833b%22%2c%22Oid%22%3a%225d87fcea-f08e-4d66-8277-5a3d97d593dc%22%7d){:target="_blank"}: Link para atendimento remoto.
 <!-- * [*Regras da disciplina*](about.md): Critérios para aprovação. Leia com atenção! -->
 <!-- * [*Calendário*](https://www.insper.edu.br/portaldoprofessor/wp-content/uploads/2015/02/CALENDÁRIO-ACADÊMICO-PROFESSOR-ENG-v2-1.pdf){:target="_blank"}: - Calendário do Insper. -->
 
@@ -45,8 +44,6 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
     * <span class='ep1'>EP1</span>: 08/01 ~ 14/01
     * <span class='ep2'>EP2</span>: 15/01 ~ 20/01
     * <span class='epf'>Final</span>: 21/01 ~ 28/01
-
-**Atendimento:** os atendimentos, a priori, serão feitos remotamente, através do link disponível acima. Os atendimentos ocorrerão nas **terças-feiras**, das **13h30 às 15h**.
 
 ## Critérios da Nota
 
