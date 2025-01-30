@@ -43,7 +43,10 @@ if __name__ == "__main__":
                 if key.startswith("pl_"):
                     tema = key[3:]
                     id = assessment_dict.get(tema+"/exercises")
-                    data["extra"]["custom_variables"][key] = f'https://us.prairielearn.com/pl/course_instance/{COURSE_INSTANCE_ID}/assessment/{id}'
+                    if tema == "root":
+                        data["extra"]["custom_variables"][key] = f'https://us.prairielearn.com/pl/course_instance/{COURSE_INSTANCE_ID}'
+                    else:
+                        data["extra"]["custom_variables"][key] = f'https://us.prairielearn.com/pl/course_instance/{COURSE_INSTANCE_ID}/assessment/{id}'
         with open(f'mkdocs.yml', 'w') as file:
             yaml.dump(data,file,sort_keys=False,allow_unicode=True)
         print('done!') 

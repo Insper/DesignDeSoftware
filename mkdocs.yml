@@ -5,8 +5,6 @@ theme:
   locale: pt_BR
 nav:
 - Home: index.md
-# - Informações:
-#   - Composição da Nota: about.md
 - Projetos:
   - Final: projeto/noindex.md
 - Dicas:
@@ -29,17 +27,17 @@ nav:
   - Controle de versões com Git: git/index.md
 extra:
   custom_variables:
-    pl_funcao: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486417
-    pl_input: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486419
-    pl_if: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486418
-    pl_while: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486422
-    pl_list: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486420
-    pl_for: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486416
-    pl_dict: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486409
-    pl_string: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486421
-    pl_files: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486415
-    pl_classes: https://us.prairielearn.com/pl/course_instance/168880/assessment/2486408
-
+    pl_root: https://us.prairielearn.com/pl/course_instance/173203
+    pl_funcao: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496047
+    pl_input: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496049
+    pl_if: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496048
+    pl_while: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496052
+    pl_list: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496050
+    pl_for: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496046
+    pl_dict: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496039
+    pl_string: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496051
+    pl_files: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496045
+    pl_classes: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496038
 extra_javascript:
 - js/tabs.js
 - js/termynal.js
