@@ -29,7 +29,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 * Provas
     * <span class='p1'>Avaliação Intermediária</span>: 27/03 ~ 02/04
     * <span class='p2'>Avaliação Final</span>: 29/05 ~ 04/06
-    * <span class='ps'>Avaliação substitutiva</span>: 09/05 ~ 11/05
+    * <span class='ps'>Avaliação substitutiva</span>: 09/06 ~ 11/06
 
 * Projetos
     * <span class='ep1'>EP1</span>: 12/03 ~ 14/01
