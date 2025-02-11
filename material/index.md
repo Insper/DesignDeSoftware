@@ -20,8 +20,8 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 ## Datas importantes
 
 * Quizzes
-    * <span class='quiz'>Quiz 1</span>: 19/02
-    * <span class='quiz'>Quiz 2</span>: 10/03
+    * <span class='quiz'>Quiz 1</span>: 24/02
+    * <span class='quiz'>Quiz 2</span>: 12/03
     * <span class='quiz'>Quiz 3</span>: 26/03
     * <span class='quiz'>Quiz 4</span>: 23/04
     * <span class='quiz'>Quiz 5</span>: 05/05
