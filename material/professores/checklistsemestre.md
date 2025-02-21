@@ -9,7 +9,7 @@ Para criar um novo Course no Prairie Learn, siga os passos:
 1. Acesse o site do Prairie Learn ([https://us.prairielearn.com](https://us.prairielearn.com)).
 2. Clique em **Sign in**.
 3. Escolha a opção de login com Microsoft e insira suas credenciais Insper.
-4. Acesse o `TemplateCourseInstance` de DesSoft.
+4. Acesse o Course do semestre anterior de DesSoft.
 5. Vá em `Settings` e clique em `Make a copy of this course instance`.
 6. Altere o Long Name do curso para o padrão `Design de Software 202X-Y` onde `X` é o ano e `Y` é o semestre (1 ou 2).
 7. Altere o CIID para o padrão `202X-Y` onde `X` é o ano e `Y` é o semestre (1 ou 2).
