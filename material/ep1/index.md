@@ -32,6 +32,6 @@ Este EP será corrigido **automaticamente**. Ou seja, será considerado o result
 
 ## Entrega
 
-**O prazo é XX/XX às 23:59**
+**O prazo é 11/04 às 23:59**
 
 Não serão aceitas entregas atrasadas ou fora do PrairieLearn.

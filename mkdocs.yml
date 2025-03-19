@@ -25,6 +25,8 @@ nav:
   - Usando o terminal (MacOS): terminal-macos/index.md
   - Usando o terminal (Windows): terminal-win/index.md
   - Controle de versões com Git: git/index.md
+- Projetos:
+   - EP1: ep1/index.md
 extra:
   custom_variables:
     pl_root: https://us.prairielearn.com/pl/course_instance/173203
