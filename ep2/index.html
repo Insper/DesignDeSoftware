@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+      
+        <title>EP2 - DesSoft - Design de Software</title>
+      
+    
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script>
+      // SETUP GLOBAL CONSTANTS
+      var base_url = '..';
+      
+      var telemetryEnabled = false;
+      var backendUrl = "";
+      var courseSlug = "";
+      
+      
+      var dashboardEnabled = false;
+      var tagTree = {};
+      
+
+      // SETUP PLUGIN
+      window.initialized = false;
+      if (!window.initializers) window.initializers = [];
+      window.registerInitializer = (initialize) => {
+        if (window.initialized) initialize();
+        else window.initializers.push(initialize);
+      };
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://unpkg.com/hyperscript.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    
+    <link rel="stylesheet" href="../css/termynal.css"><link rel="stylesheet" href="../css/custom.css">
+  </head>
+  <body>
+    <div class="ah-main-container">
+      <header class="ah-header">
+        <button class="ah-menu-btn ah-button ah-button--borderless"
+                aria-label="toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+</svg>
+        </button>
+        <a href=".."
+           title="DesSoft - Design de Software"
+           class="ah-logo"
+           aria-label="DesSoft - Design de Software">
+          DesSoft - Design de Software
+        </a>
+        <div class="ah-header--right">
+          
+          
+          
+          <button id="resetHandoutButton">
+            <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg></span>
+          </button>
+          
+
+          
+        </div>
+      </header>
+      <nav class="ah-navigation preload">
+        <div class="ah-nav-container">
+          <button class="ah-menu-btn ah-button ah-button--borderless close-menu"
+                  aria-label="close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+  <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+  <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+</svg>
+          </button>
+          <ul class="ah-nav-body">
+            
+              
+  
+    <li>
+      <a href="..">Home</a>
+    </li>
+  
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Projetos</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../projeto/noindex/">Final</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Dicas</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../buscando-ajuda/">Buscando ajuda</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Conteúdo</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../introducao/handout/">Introdução</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../funcao/handout/">Funções</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../input/handout/">Entrada e saída</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../if/handout/">Desvios condicionais (if)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../while/handout/">Laços de Repetição (while)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../lista/handout/">Armazenamento de dados em listas</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../for/handout/">Iterando em coleções com "for"</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../dicionario/handout/">Armazenamento em dicionários</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../string/handout/">Strings e Fatiamento</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../arquivo/handout/">Armazenamento permanente em arquivos</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../pygame/handout/">PyGame</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item">
+    <span class="ah-togglable-handle">Tutoriais</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../terminal-macos/">Usando o terminal (MacOS)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../terminal-win/">Usando o terminal (Windows)</a>
+    </li>
+  
+
+      
+        
+  
+    <li>
+      <a href="../git/">Controle de versões com Git</a>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+              
+  <li class="ah-togglable-item opened">
+    <span class="ah-togglable-handle">Projetos</span>
+    <ul>
+      
+        
+  
+    <li>
+      <a href="../ep1/">EP1</a>
+    </li>
+  
+
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">EP2</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#o-jogo">O jogo</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#desenvolvimento-do-projeto">Desenvolvimento do projeto</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#rubrica">Rubrica</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#entrega-0605-ate-2359">Entrega 06/05 até 23:59</a>
+              </li>
+            
+        
+      </ul>
+    </li>
+  
+
+      
+    </ul>
+  </li>
+
+            
+          </ul>
+        </div>
+      </nav>
+      <main class="ah-content ah-typeset">
+        
+          <div class="ah-title-box">
+            <ul class="ah-breadcrumbs">
+              
+                
+                  
+                    <li>Projetos</li>
+                  
+                
+                <li></li>
+            </ul>
+            
+            
+          </div>
+          
+            <section class="progress-section show">
+<h1 id="exercicio-programa-yacht-dice">Exercício Programa - Yacht Dice</h1>
+<p><strong>Este EP pode ser feito individualmente ou em duplas e deve utilizar o github para registrar o histórico do código e para fazer a entrega (com contribuições de ambos os membros, no caso de duplas).</strong></p>
+<p><strong>Caso faça em dupla, defina quais exercícios cada integrante ficará responsável.</strong></p>
+<p><strong>Caso faça individualmente, ainda é necessário utilizar o github e fazer commits ao longo do desenvolvimento do projeto.</strong></p>
+<p>Para exercitar nossas habilidades com programação, vamos desenvolver o jogo <em>Yacht Dice</em>.</p>
+<p>Nesse jogo, o objetivo do jogador é rolar os dados e tentar obter a maior pontuação possível. O jogador pode escolher quais dados manter e quais rolar novamente, com o objetivo de formar combinações específicas.</p>
+<h2 id="o-jogo">O jogo</h2>
+<p>O jogo é jogado com 5 dados em rodadas. Em cada rodada o jogador tem 3 chances de rolar os dados. Após cada rolagem, o jogador pode escolher quais dados manter e quais rolar novamente. O jogador pode escolher entre várias combinações de pontuação, como "sequências", "dados iguais" ou "soma de dados". O jogador deve tentar obter a maior pontuação possível em cada rodada. Ao final de cada rodada, o jogador escolhe uma combinação que esteja disponível na cartela de pontos e marca a pontuação correspondente. O jogo termina quando o jogador preenche todas as combinações disponíveis na cartela de pontos. Ao final de cada rodada, o jogador é obrigado a escolher uma das combinações disponíveis, mesmo que não tenha obtido uma boa pontuação.</p>
+<p>Veja o exemplo de uma rodada sendo jogada:</p>
+<p><img src="img/exemplo_jogada.gif" alt="Rodada do jogo" width="80%" /></p>
+<hr />
+<p>Você deve implementar uma versão para terminal (console) do jogo, ou seja, usando <code>print</code> e <code>input</code> para interagir com o usuário por meio de texto.</p>
+<p>Para te auxiliar nessa tarefa, foram criados exercícios no PrairieLearn que te ajudarão a implementar as funções necessárias para o jogo.</p>
+<p>Se quiser jogar uma partida para entender melhor o jogo, você pode acessar o site <a href="https://cardgames.io/yahtzee/">https://cardgames.io/yahtzee/</a>.</p>
+<h2 id="desenvolvimento-do-projeto">Desenvolvimento do projeto</h2>
+<ul>
+<li>Crie um repositório <strong>público</strong> no github para o seu projeto e adicione sua dupla caso haja.</li>
+<li>Cada exercício feito com sucesso no PrairieLearn deve ser adicionado ao repositório em um commit separado no mesmo dia. Dica: crie um arquivo para adicionar essas funções. A cada modificação nesse arquivo, faça um novo commit. Assim, a evolução do programa fica registrada.</li>
+<li>As funções enviadas no PrairieLearn devem ser utilizadas pelo seu programa no EP2. Faça um outro arquivo para o programa que será responsável pela impressão em tela e validação de entrada de dados.</li>
+</ul>
+<p>Leia também a rubrica atentamente, pois ela irá te ajudar a entender o que precisa ser feito.</p>
+<h2 id="rubrica">Rubrica</h2>
+<p>A tabela a seguir apresenta os requisitos esperados e seus respectivos conceitos associados para os objetivos de aprendizagem <strong>desenvolver de programas de computador</strong> e <strong>identificar e desenhar estratégias algorítmicas computacionais</strong>. Esta tabela deve ser considerada em conjunto com a tabela do objetivo <strong>atuar em uma equipe autogerenciada de desenvolvimento</strong>.</p>
+<h3 id="conceito-i">Conceito I</h3>
+<p>Não entregou</p>
+<h3 id="conceito-d">Conceito D</h3>
+<p>Não submeteu com sucesso no PrairieLearn ou não fez o commit de alguma das funções a seguir:</p>
+<ul>
+<li>Rolar dados</li>
+<li>Guardar dado</li>
+<li>Remover dado</li>
+<li>Calcula pontos na regra simples</li>
+<li>Calcula pontos na regra avançada - Soma</li>
+<li>Calcula pontos na regra avançada - Sequência baixa</li>
+<li>Calcula pontos na regra avançada - Sequência alta</li>
+</ul>
+<h3 id="conceito-c">Conceito C</h3>
+<p>Submeteu com sucesso no PrairieLearn <strong>E</strong> fez o commit das funções anteriores e das funções a seguir:</p>
+<ul>
+<li>Calcula pontos na regra avançada - Full House</li>
+<li>Calcula pontos na regra avançada - Quadra</li>
+</ul>
+<h3 id="conceito-b">Conceito B</h3>
+<p>Atingiu o conceito C
+E submeteu com sucesso no PrairieLearn <strong>E</strong> fez o commit das funções a seguir:</p>
+<ul>
+<li>Calcula pontos na regra avançada - Quina</li>
+<li>Calcula pontos na regra avançada</li>
+<li>Faz jogada</li>
+</ul>
+<h3 id="conceito-a">Conceito A</h3>
+<p>Atingiu o conceito B
+E submeteu com sucesso no PrairieLearn <strong>E</strong> fez o commit do exercício a seguir:</p>
+<ul>
+<li>Jogo</li>
+</ul>
+<h3 id="conceito-a_1">Conceito A+</h3>
+<p>Atingiu o conceito A e existem exatamente 2 arquivos no repositório (um para as funções e outro para o código do jogo). Além disso, as funções estão sendo importadas do arquivo que contém as definições das funções e não foram copiadas para o arquivo do programa.</p>
+<hr />
+<p>A tabela a seguir apresenta a rubrica do objetivo <strong>atuar em uma equipe autogerenciada de desenvolvimento</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Conceito</th>
+<th style="text-align: center;">Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I</td>
+<td style="text-align: center;">Não entregou.</td>
+</tr>
+<tr>
+<td>D</td>
+<td style="text-align: center;">Não possui nenhum commit próprio e nenhuma evidência de trabalho em grupo.</td>
+</tr>
+<tr>
+<td>C</td>
+<td style="text-align: center;">O grupo enviou todo o código de uma vez para o git (em um ou poucos commits enviados em um intervalo curto de tempo).</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align: center;">Todos os membros do grupo enviaram commits com partes do código, mas a evolução do código é artificial.</td>
+</tr>
+<tr>
+<td>A</td>
+<td style="text-align: center;">O grupo fez bom uso do git, enviando commits a cada funcionalidade implementada ou bug corrigido. Os commits são distribuídos ao longo de alguns dias, mostrando a evolução do trabalho.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>O conceito final do EP2 será dado pelo menor entre os conceitos obtidos para cada objetivo acima.</strong> Ou seja, se você obtiver conceito C no primeiro objetivo e A no segundo, o conceito final será C. Se você obtiver conceito A+ no primeiro objetivo, mas não possuir nenhum commit e nenhuma outra evidência de trabalho em grupo (conceito D), seu conceito final será D.</p>
+<h2 id="entrega-0605-ate-2359">Entrega 06/05 até 23:59</h2>
+<p>Será considerado o código enviado para o github até a data de entrega.</p>
+<p>O endereço do seu repositório deve ser enviado pelo Blackboard. Não façam commits após a data de entrega, pois será considerado como atraso.</p>
+<p><strong>Importante:</strong> Caso algum integrante da dupla esqueça de enviar o endereço do repositório, será descontado conceito da nota final do projeto.</p>
+
+
+</section>
+          
+        
+      </main>
+      <footer class="ah-footer ah-typeset">
+        <div class="ah-footer-nav">
+          
+            <a href="../ep1/"
+               class="ah-prev"
+               title="EP1">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">EP1</span>
+            </a>
+          
+          
+        </div>
+      </footer>
+    </div>
+    
+      <script src="../js/tabs.js"></script><script src="../js/termynal.js"></script><script src="../js/custom.js"></script>
+    
+  </body>
+</html>
