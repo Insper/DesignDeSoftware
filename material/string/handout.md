@@ -32,6 +32,8 @@ Vimos em aulas anteriores que é possível criar uma nova string a partir de out
 - **`strip`**: método que não recebe nenhum argumento e retorna uma nova string removendo os caracteres em branco (incluindo o caractere especial `#!python '\n'`) de ambas as pontas. Por exemplo: `#!python '   uma frase  \n'.strip()` devolve a string `#!python 'uma frase'` (note que o espaço do meio não é removido).
 - **`split`**: método que recebe uma string delimitadora (ex: `#!python ','`) e retorna uma lista formada pela separação da string original pelo delimitador. Por exemplo: `#!python 'uma palavra, outra palavra, última palavra'.split(',')` devolve a lista `#!python ['uma palavra', ' outra palavra', ' última palavra']`. Se nenhum argumento for utilizado o delimitador utilizado será o espaço em branco. Por exemplo: `#!python 'palavras separadas por espaço'.split()` devolve a lista de strings `#!python ['palavras', 'separadas', 'por', 'espaço']`.
 - **`join`**: método que recebe uma lista de strings e retorna uma única string separada pelo delimitador. Por exemplo: `#!python ' '.join(['a', 'b', 'c'])` devolve a string `#!python 'a b c'`. Outro exemplo: `#!python ','.join(['a', 'b', 'c'])` devolve a string `#!python 'a,b,c'`.
+- **`upper`**: método que não recebe nenhum argumento e retorna uma nova string com todos os caracteres em maiúsculo. Por exemplo: `#!python 'uma frase'.upper()` devolve a string `#!python 'UMA FRASE'`.
+- **`lower`**: método que não recebe nenhum argumento e retorna uma nova string com todos os caracteres em minúsculo. Por exemplo: `#!python 'Uma Frase'.lower()` devolve a string `#!python 'uma frase'`.
 
 ## Extraindo substrings com fatiamento
 
