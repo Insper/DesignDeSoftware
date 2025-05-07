@@ -1,8 +1,8 @@
 # Projeto Final
 
-Data de entrega da proposta inicial do projeto: **01/11/2024**, via Blackboard
+Data de entrega da proposta inicial do projeto: **12/11/2024**, via Blackboard
 
-Data de entrega: **18/11/2024**, via GitHub (o endereço deve ser enviado no Blackboard)
+Data de entrega: **28/11/2024**, via GitHub (o endereço deve ser enviado no Blackboard)
 
 Grupos: duplas ou trios. O critério de avaliação muda conforme o tamanho da equipe.
 
@@ -48,6 +48,24 @@ Os projetos serão examinados com fontes da internet e os projetos de outros alu
 Existe um documento no Blackboard (Orientações sobre integridade intelectual em atividades de programação) com mais detalhes. Se tiver alguma dúvida pergunte para o seu professor.
 
 Caso você utilize um trecho de código da internet, adicione um comentário no seu código: `Código extraído de https://endereco.de.onde.voce.pegou.o.codigo.com.br`.
+
+## Plugins de IA generativa (IAg)
+
+Neste projeto, pode-se utilizar ferramentas e plugins de IA generativa (IAg) **desde que você entenda o que foi criado e indique claramente no projeto**. 
+
+- Ao utilizar ferramentas de Inteligência Artificial, é de sua responsabilidade entender o que foi gerado e como isso se relaciona com o seu projeto.
+- **NÃO** é responsabilidade do professor te explicar o que foi gerado pela IAg.
+- Bugs gerados por ferramentas de IA a princípio devem ser resolvidos pelos membros do grupo recorrendo também a IA. Dúvidas relacionadas a problemas gerados por IA ficarão para o final da fila de dúvidas e atendidos quando houver disponibilidade.
+
+Quando utilizar a IAg, deve-se seguir a Política de Regime Disciplinar Discente e as seguintes diretrizes:
+
+- Utilize a ferramenta institucional de IAg disponibilizada pelo Insper. [Acesse a ferramenta:](https://chat.insper.tech/auth){:target="_blank"}.
+- Cite todo o material gerado pela IAg e explique como ele foi usado. Escreva um pequeno parágrafo ao final explicando como a IAg foi usada, e inclua a sua interação com a IAg no Anexo.
+- Verifique criticamente as informações geradas pela IAg, pois podem conter alucinações, erros e/ou viés e estereótipos.
+
+Caso haja o uso de código gerado por essas ferramentas, é necessário indicar a fonte. Para isso, adicione uma explicação ao arquivo `READMD.md` do repositório detalhando o quanto foi gerado por IA. (ex.: "A função desenha_sprint foi 100% retirada deste link http://abcxyzxyzzyz ") ou "a função calcula_mapa foi 90% gerada por IA e o histórico do chatGPT está exportado no link http://xyzxyzzyz ".
+
+- **Ferramentas de sugestão de código (ex.: Github Copilot)** - Caso utilize ferramentas de sugestão de código, como o Github copilot, você pode aceitar linhas e até loops sem precisar dar crédito. Entretanto, a partir do nível de funções e classes é importante colocar um comentário `# feito com CoPilot`
 
 ## Nota
 
