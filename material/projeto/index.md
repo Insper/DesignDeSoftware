@@ -1,8 +1,8 @@
 # Projeto Final
 
-Data de entrega da proposta inicial do projeto: **12/11/2024**, via Blackboard
+Data de entrega da proposta inicial do projeto: **12/05/2024**, via Blackboard
 
-Data de entrega: **28/11/2024**, via GitHub (o endereço deve ser enviado no Blackboard)
+Data de entrega: **28/05/2024**, via GitHub (o endereço deve ser enviado no Blackboard)
 
 Grupos: duplas ou trios. O critério de avaliação muda conforme o tamanho da equipe.
 
@@ -115,13 +115,13 @@ A tabela a seguir apresenta os requisitos esperados e seus respectivos conceitos
 
 Esta é uma sugestão de organização para o projeto de vocês. Lembrem-se que um dos objetivos é trabalhar em uma equipe autogerenciada de desenvolvimento de software. Assim, vocês devem se organizar da maneira que acharem melhor. A sugestão abaixo é mais um guia para saberem se estão atrasados (será difícil atingir o conceito B fazendo muito menos do que isso), em dia, ou avançados (buscando o conceito A).
 
-- Até 01/05: handout de PyGame concluído, projeto definido e uma primeira tela com interações iniciais funcionando (sem animações, apenas imagens estáticas se movendo pela tela). Por exemplo, em um jogo de plataforma isso significaria mover o personagem com o teclado e fazer ele perder vida/morrer ao encostar em um inimigo;
-- Até 06/05: mecânica básica do jogo concluída e início da implementação de outras telas e recursos sonoros;
-- Até 10/05: mecânica do jogo concluída (incluindo recursos interativos adicionais, como _power-ups_, vidas, movimentação dos inimigos - caso se aplique) e navegação entre telas funcionando;
-- Até 13/05: projeto concluído com os requisitos do conceito B.
+- Até 12/05: handout de PyGame concluído, projeto definido e uma primeira tela com interações iniciais funcionando (sem animações, apenas imagens estáticas se movendo pela tela). Por exemplo, em um jogo de plataforma isso significaria mover o personagem com o teclado e fazer ele perder vida/morrer ao encostar em um inimigo;
+- Até 16/05: mecânica básica do jogo concluída e início da implementação de outras telas e recursos sonoros;
+- Até 20/05: mecânica do jogo concluída (incluindo recursos interativos adicionais, como _power-ups_, vidas, movimentação dos inimigos - caso se aplique) e navegação entre telas funcionando;
+- Até 23/05: projeto concluído com os requisitos do conceito B.
 
 !!! danger "Importante"
-    Dia 18/11, das 12h00 às 13h00 teremos a **Feira de Jogos** onde apresentaremos os projetos para professores e alunos do Insper.
+    Dia 28/05, das 12h00 às 13h00 teremos a **Feira de Jogos** onde apresentaremos os projetos para professores e alunos do Insper.
     Desta forma, a presença de todos no evento é imprescindível, e havendo falta será descontado conceito sobre a nota final do projeto.
 
 ## Exemplo
