@@ -101,23 +101,6 @@
             
               
   <li class="ah-togglable-item">
-    <span class="ah-togglable-handle">Projetos</span>
-    <ul>
-      
-        
-  
-    <li>
-      <a href="../../projeto/noindex/">Final</a>
-    </li>
-  
-
-      
-    </ul>
-  </li>
-
-            
-              
-  <li class="ah-togglable-item">
     <span class="ah-togglable-handle">Dicas</span>
     <ul>
       
@@ -287,39 +270,6 @@
   </li>
 
             
-              
-  <li class="ah-togglable-item">
-    <span class="ah-togglable-handle">Projetos</span>
-    <ul>
-      
-        
-  
-    <li>
-      <a href="../../ep1/">EP1</a>
-    </li>
-  
-
-      
-        
-  
-    <li>
-      <a href="../../ep2/">EP2</a>
-    </li>
-  
-
-      
-        
-  
-    <li>
-      <a href="../../projeto/">Projeto Final</a>
-    </li>
-  
-
-      
-    </ul>
-  </li>
-
-            
           </ul>
         </div>
       </nav>
@@ -351,7 +301,7 @@
 <p>Para dizer ao Python que queremos utilizar esse pacote nós devemos utilizar o comando <code class="language-python highlight"><span class="kn">import</span></code>. Veja a seguir um exemplo de cálculo do cosseno de zero:</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">math</span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">resultado</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -382,7 +332,7 @@
 <p>Vamos começar com um exemplo de uma função que converte valores de milhas para quilômetros:</p>
 <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">def</span> <span class="nf">converte_milhas_para_km</span><span class="p">(</span><span class="n">distancia_mi</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">converte_milhas_para_km</span><span class="p">(</span><span class="n">distancia_mi</span><span class="p">):</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="n">distancia_km</span> <span class="o">=</span> <span class="mf">1.60934</span> <span class="o">*</span> <span class="n">distancia_mi</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="k">return</span> <span class="n">distancia_km</span>
 </code></pre></div></td></tr></table></div>
@@ -407,7 +357,7 @@
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
 <span class="normal"><a href="#__codelineno-2-4">4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">conversoes</span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">conversoes</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="n">b</span> <span class="o">=</span> <span class="n">conversoes</span><span class="o">.</span><span class="n">converte_milhas_para_km</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -432,7 +382,7 @@
 <div class="admonition exercise self-progress" data-slug="funcao/handout/exercise_2" id="exercise_2_0">
 <p class="admonition-title">EXERCÍCIO 2</p>
 <form class="exercise-form">
-<p>Faça o exercício <a href="https://us.prairielearn.com/pl/course_instance/173203/assessment/2496047" target="_blank">Celsius para Fahrenheit</a></p>
+<p>Faça o exercício <a href="https://us.prairielearn.com/pl/course_instance/185875/assessment/2558398" target="_blank">Celsius para Fahrenheit</a></p>
 <div class="form-elements">
 <input type="hidden" name="data" value="OK" />
 <input class="ah-button ah-button--primary" type="submit" name="Enviar" value="Marcar como feito" />
@@ -442,7 +392,7 @@
 <div class="admonition exercise self-progress" data-slug="funcao/handout/exercise_3" id="exercise_3_0">
 <p class="admonition-title">EXERCÍCIO 3</p>
 <form class="exercise-form">
-<p>Faça o exercício <a href="https://us.prairielearn.com/pl/course_instance/173203/assessment/2496047" target="_blank">Área do triângulo</a></p>
+<p>Faça o exercício <a href="https://us.prairielearn.com/pl/course_instance/185875/assessment/2558398" target="_blank">Área do triângulo</a></p>
 <p>Dica: uma função em Python, assim como uma função matemática multivariada, pode receber vários argumentos separados por vírgula.</p>
 <p>Não esqueça de escrever código de teste também. Pense em valores de teste que sejam interessantes. Por exemplo: e se a base for zero? E se a altura for zero? E se forem iguais?</p>
 <div class="form-elements">
