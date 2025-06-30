@@ -5,8 +5,8 @@ theme:
   locale: pt_BR
 nav:
 - Home: index.md
-- Projetos:
-  - Final: projeto/noindex.md
+# - Projetos:
+#   - Final: projeto/noindex.md
 - Dicas:
   - Buscando ajuda: buscando-ajuda/index.md
 - Conteúdo:
@@ -25,23 +25,23 @@ nav:
   - Usando o terminal (MacOS): terminal-macos/index.md
   - Usando o terminal (Windows): terminal-win/index.md
   - Controle de versões com Git: git/index.md
-- Projetos:
-   - EP1: ep1/index.md
-   - EP2: ep2/index.md
-   - Projeto Final: projeto/index.md
+# - Projetos:
+#   - EP1: ep1/index.md
+#   - EP2: ep2/index.md
+#   - Projeto Final: projeto/index.md
 extra:
   custom_variables:
-    pl_root: https://us.prairielearn.com/pl/course_instance/173203
-    pl_funcao: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496047
-    pl_input: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496049
-    pl_if: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496048
-    pl_while: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496052
-    pl_list: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496050
-    pl_for: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496046
-    pl_dict: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496039
-    pl_string: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496051
-    pl_files: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496045
-    pl_classes: https://us.prairielearn.com/pl/course_instance/173203/assessment/2496038
+    pl_root: https://us.prairielearn.com/pl/course_instance/185875
+    pl_funcao: https://us.prairielearn.com/pl/course_instance/185875/assessment/2558398
+    pl_input: https://us.prairielearn.com/pl/course_instance/185875/assessment/2558400
+    pl_if: https://us.prairielearn.com/pl/course_instance/185875/assessment/2558399
+    pl_while: https://us.prairielearn.com/pl/course_instance/185875/assessment/2558422
+    pl_list: https://us.prairielearn.com/pl/course_instance/185875/assessment/2558402
+    pl_for: https://us.prairielearn.com/pl/course_instance/185875/assessment/2558397
+    pl_dict: https://us.prairielearn.com/pl/course_instance/185875/assessment/2558385
+    pl_string: https://us.prairielearn.com/pl/course_instance/185875/assessment/2558421
+    pl_files: https://us.prairielearn.com/pl/course_instance/185875/assessment/2558396
+    pl_classes: https://us.prairielearn.com/pl/course_instance/185875/assessment/2558384
 extra_javascript:
 - js/tabs.js
 - js/termynal.js

@@ -4,11 +4,11 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 ## Informações Gerais
 
-|  | Turma A | Turma B | Turma C |
-|:--|:--|:--|:--|
-| **Professor** | Márcio F. Stabile Jr. | Márcio F. Stabile Jr. | Fillipe M. X. Resina |
-| **Horário** | 15:45 às 17:45<br>segunda e quarta | segunda 09:45 às 11:45<br> quarta 07:30 às 09:30 | segunda 15:45 às 17:45<br> quarta 13:30 às 15:30 | 
-| **Atendimento** | 07:30 às 09:00<br>quinta-feira | 13:30 às 15:00<br>quarta-feira | 18:00 às 19:30<br>segunda-feira |
+|  | Turma Férias |
+|:--|:--|
+| **Professor** | Maciel Vidal |
+| **Horário** | 08:00 às 10:00 e 10h00 às 12h00<br>segunda à sexta<br>09/07 é feriado (sem aula) |
+| **Atendimento** | 12h30 às 14h00 nos dias:<br>01/jul, 02/jul, 03/jul,<br>07/jul, 08/jul, 10/jul,<br>14/jul, 15/jul, 16/jul, 17/jul,<br>21/jul.|
 
 ## Links importantes
 
@@ -20,21 +20,21 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 ## Datas importantes
 
 * Quizzes
-    * <span class='quiz'>Quiz 1</span>: 24/02
-    * <span class='quiz'>Quiz 2</span>: 12/03
-    * <span class='quiz'>Quiz 3</span>: 26/03
-    * <span class='quiz'>Quiz 4</span>: 23/04
-    * <span class='quiz'>Quiz 5</span>: 05/05
+    * <span class='quiz'>Quiz 1</span>: 03/07
+    * <span class='quiz'>Quiz 2</span>: 07/07
+    * <span class='quiz'>Quiz 3</span>: 10/07
+    * <span class='quiz'>Quiz 4</span>: 16/07
+    * <span class='quiz'>Quiz 5</span>: 18/07
 
 * Provas
-    * <span class='p1'>Avaliação Intermediária</span>: 27/03 ~ 02/04
-    * <span class='p2'>Avaliação Final</span>: 29/05 ~ 04/06
-    * <span class='ps'>Avaliação substitutiva</span>: 09/06 ~ 11/06
+    * <span class='p1'>Avaliação Intermediária</span>: 11/07
+    * <span class='p2'>Avaliação Final</span>: 22/07
+    * <span class='ps'>Avaliação substitutiva</span>: 25/07
 
 * Projetos
-    * <span class='ep1'>EP1</span>: 12/03 ~ 14/01
-    * <span class='ep2'>EP2</span>: 09/04 ~ 06/05
-    * <span class='epf'>Final</span>: 07/05 ~ 28/05
+    * <span class='ep1'>EP1</span>: 08/07 23h59
+    * <span class='ep2'>EP2</span>: 14/07 23h59
+    * <span class='epf'>Final</span>: 22/07 23h59
 
 ## Critérios da Nota
 
@@ -69,14 +69,25 @@ $$
 A Nota em Grupo (**NG**) é numérica e composta via média ponderada dos:
 
 - <span class='ep1'>EP1</span> (Exercicios Programa 1), $10\%$;
-- <span class='ep2'>EP2</span> (Exercicios Programa 2), $20\%$;
-- <span class='epf'>Projeto Final - PF</span>, $70\%$.
+- <span class='ep2'>EP2</span> (Exercicios Programa 2), $30\%$;
+- <span class='epf'>Projeto Final - PF</span>, $60\%$.
 
 Tanto os **EPs** quanto o **PF** serão avaliados por conceitos segundo uma determinada rubrica e em seguida convertidos em
 nota numérica segundo a tabela oficial da Engenharia.
 
+A entrega dos **EPs** e do **PF** é obrigatória e o aluno deve obter nota pelo menos **4** em cada um deles. Caso contrário, a *Nota em Grupo será a menor nota entre os EPs e PF*. Considere a seguinte fórmula para cálculo da nota em grupo:
+
 $$
-NG = 0.1 \times EP_1 + 0.2 \times EP_2 + 0.7 \times PF
+\text{NG} = \left\{\begin{array}{lll}
+    EP_1 \geq 4 \bigwedge EP_2 \geq 4 \bigwedge PF \geq 4 &
+    \implies & 0.1 \times EP_1 + 0.3 \times EP_2 + 0.6 \times PF
+    \displaystyle 
+    \\
+    \\
+    \text{Caso contrário} &
+    \implies &
+    \min\left(EP_1, EP_2, PF\right)
+    \end{array}\right.
 $$
 
 ### Nota Final (NF):
