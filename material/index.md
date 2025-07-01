@@ -7,6 +7,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 |  | Turma Férias |
 |:--|:--|
 | **Professor** | Maciel Vidal |
+| **Auxiliar** | Elisa Malzoni |
 | **Horário** | 08:00 às 10:00 e 10h00 às 12h00<br>segunda à sexta<br>09/07 é feriado (sem aula) |
 | **Atendimento** | 12h30 às 14h00 nos dias:<br>01/jul, 02/jul, 03/jul,<br>07/jul, 08/jul, 10/jul,<br>14/jul, 15/jul, 16/jul, 17/jul,<br>21/jul.|
 
