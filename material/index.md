@@ -21,11 +21,11 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 ## Datas importantes
 
 * Quizzes
-    * <span class='quiz'>Quiz 1</span>: 03/07
-    * <span class='quiz'>Quiz 2</span>: 07/07
-    * <span class='quiz'>Quiz 3</span>: 10/07
-    * <span class='quiz'>Quiz 4</span>: 16/07
-    * <span class='quiz'>Quiz 5</span>: 18/07
+    * <span class='quiz'>Quiz 1</span>: 03/07 (Input, Funções e Condicionais)
+    * <span class='quiz'>Quiz 2</span>: 07/07 (Estruturas de Repetição)
+    * <span class='quiz'>Quiz 3</span>: 10/07 (Listas)
+    * <span class='quiz'>Quiz 4</span>: 16/07 (Dicionário)
+    * <span class='quiz'>Quiz 5</span>: 18/07 (Strings)
 
 * Provas
     * <span class='p1'>Avaliação Intermediária</span>: 11/07
