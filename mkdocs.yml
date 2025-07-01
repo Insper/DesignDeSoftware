@@ -25,8 +25,8 @@ nav:
   - Usando o terminal (MacOS): terminal-macos/index.md
   - Usando o terminal (Windows): terminal-win/index.md
   - Controle de versões com Git: git/index.md
-# - Projetos:
-#   - EP1: ep1/index.md
+- Projetos:
+  - EP1: ep1/index.md
 #   - EP2: ep2/index.md
 #   - Projeto Final: projeto/index.md
 extra:

@@ -6,11 +6,11 @@ Neste EP, sua tarefa será criar um programa que permita à uma hamburgueria ger
 
 Para te auxiliar nessa tarefa, nós criamos três exercícios:
 
-- :challenge{type=code slug=232-dp-ep1-preco-hamburguer}
-- :challenge{type=code slug=232-dp-ep1-valor-liquido-pedido}
-- :challenge{type=code slug=232-dp-ep1-faz-pedido}
+- EP1 - Preço do Hambúrguer
+- EP1 - Valor Líquido
+- EP1 - Faz Pedido Com Vários Hambúrgueres
 
-O seu objetivo é desenvolver um programa que execute o algoritmo descrito no exercício :challenge{type=code slug=232-dp-ep1-faz-pedido}, que descreve os passos para realização deu um pedido.
+O seu objetivo é desenvolver um programa que execute o algoritmo descrito no exercício **EP1 - Faz Pedido Com Vários Hambúrgueres**, que descreve os passos para realização deu um pedido.
 
 ## Rubrica
 
