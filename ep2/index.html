@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
       
-        <title>Index - DesSoft - Design de Software</title>
+        <title>EP2 - DesSoft - Design de Software</title>
       
     
     <link rel="stylesheet"
@@ -247,7 +247,7 @@
 
             
               
-  <li class="ah-togglable-item">
+  <li class="ah-togglable-item opened">
     <span class="ah-togglable-handle">Projetos</span>
     <ul>
       
@@ -255,6 +255,42 @@
   
     <li>
       <a href="../ep1/">EP1</a>
+    </li>
+  
+
+      
+        
+  
+
+    <li class="active ah-togglable-item opened">
+      <span class="ah-togglable-handle">EP2</span>
+      <ul>
+        
+          
+            
+            
+              <li class="ah-toc-item">
+                <a href="#regras-do-jogo">Regras do jogo</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#o-que-voce-precisa-fazer">O que você precisa fazer</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#rubrica">Rubrica</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#grupos">Grupos</a>
+              </li>
+            
+              <li class="ah-toc-item">
+                <a href="#entrega">Entrega</a>
+              </li>
+            
+        
+      </ul>
     </li>
   
 
@@ -272,6 +308,10 @@
             <ul class="ah-breadcrumbs">
               
                 
+                  
+                    <li>Projetos</li>
+                  
+                
                 <li></li>
             </ul>
             
@@ -279,101 +319,126 @@
           </div>
           
             <section class="progress-section show">
-<h1 id="exercicio-programa-yacht-dice">Exercício Programa - Yacht Dice</h1>
+<h1 id="exercicio-programa-fortuna-dessoft">Exercício Programa - Fortuna DesSoft!</h1>
 <p><strong>Este EP pode ser feito individualmente ou em duplas e deve utilizar o github para registrar o histórico do código e para fazer a entrega (com contribuições de ambos os membros, no caso de duplas).</strong></p>
 <p><strong>Caso faça em dupla, defina quais exercícios cada integrante ficará responsável.</strong></p>
 <p><strong>Caso faça individualmente, ainda é necessário utilizar o github e fazer commits ao longo do desenvolvimento do projeto.</strong></p>
-<p>Para exercitar nossas habilidades com programação, vamos desenvolver o jogo <em>Yacht Dice</em>.</p>
-<p>Nesse jogo, o objetivo do jogador é rolar os dados e tentar obter a maior pontuação possível. O jogador pode escolher quais dados manter e quais rolar novamente, com o objetivo de formar combinações específicas.</p>
-<h2 id="o-jogo">O jogo</h2>
-<p>O jogo é jogado com 5 dados em rodadas. Em cada rodada o jogador tem 3 chances de rolar os dados. Após cada rolagem, o jogador pode escolher quais dados manter e quais rolar novamente. O jogador pode escolher entre várias combinações de pontuação, como "sequências", "dados iguais" ou "soma de dados". O jogador deve tentar obter a maior pontuação possível em cada rodada. Ao final de cada rodada, o jogador escolhe uma combinação que esteja disponível na cartela de pontos e marca a pontuação correspondente. O jogo termina quando o jogador preenche todas as combinações disponíveis na cartela de pontos. Ao final de cada rodada, o jogador é obrigado a escolher uma das combinações disponíveis, mesmo que não tenha obtido uma boa pontuação.</p>
-<p>Veja o exemplo de uma rodada sendo jogada:</p>
-<p><img src="img/exemplo_jogada.gif" alt="Rodada do jogo" width="80%" /></p>
-<hr />
-<p>Você deve implementar uma versão para terminal (console) do jogo, ou seja, usando <code>print</code> e <code>input</code> para interagir com o usuário por meio de texto.</p>
-<p>Para te auxiliar nessa tarefa, foram criados exercícios no PrairieLearn que te ajudarão a implementar as funções necessárias para o jogo.</p>
-<p>Se quiser jogar uma partida para entender melhor o jogo, você pode acessar o site <a href="https://cardgames.io/yahtzee/">https://cardgames.io/yahtzee/</a>.</p>
-<h2 id="desenvolvimento-do-projeto">Desenvolvimento do projeto</h2>
+<p>O objetivo deste exercício programa (EP) é colocar em prática os conceitos intermediários de programação em <code>Python</code> em um problema um pouco maior do que os exercícios de aula. <strong>Este EP deve ser feito em duplas e utilizar o git para registrar o histórico do código e para fazer a entrega (com contribuições de ambos os membros).</strong></p>
+<p>Neste EP você vai implementar o jogo de <strong>Fortuna DesSoft</strong>, descrito a seguir.</p>
+<h2 id="regras-do-jogo">Regras do jogo</h2>
+<p>Você irá implementar um jogo de perguntas e respostas. Cada pergunta tem quatro alternativas e, conforme o jogador responde as perguntas corretamente, tem seu prêmio aumentado. Caso o jogador erre alguma resposta, perde o prêmio e sai sem nada! O jogo acaba quando o jogador atingir o prêmio de <strong>1 milhão</strong> ou escolher parar!</p>
+<h3 id="descricao-geral-dos-passos-do-jogo">Descrição geral dos passos do jogo:</h3>
+<ol>
+<li>O jogador deve informar seu nome;</li>
+<li>O computador exibe um pequeno manual do jogo;</li>
+<li>Inicia-se o jogo de perguntas e respostas;</li>
+<li>O computador sorteia uma pergunta aleatória inédita, exibindo a questão e as opções de resposta;</li>
+<li>O usuário escolhe entre as opções: <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>, <code>pula</code> ou <code>ajuda</code>;</li>
+<li>Caso o jogador opte por <code>ajuda</code>, sorteie aleatoriamente uma ou duas (quantidade aleatória) respostas sabidamente incorretas e dê a dica de que estas são sabidamente erradas!</li>
+<li>Caso o jogador opte por <code>pula</code>, se o jogador ainda tiver pulos disponíveis, volte ao passo <strong>4</strong>, senão informe que não tem mais pulos e exiba a pergunta novamente</li>
+<li>Caso o jogador escolha uma resposta correta, o seu prêmio aumenta. Considere que o usuário inicia com zero reais e que sua premiação aumenta conforme a lista:
+    <div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="mi">1000</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="mi">5000</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="mi">10000</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="mi">30000</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="mi">50000</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="mi">100000</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="mi">300000</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="mi">500000</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="mi">1000000</span>
+</code></pre></div></li>
+<li>Caso o jogador escolha uma resposta errada, o jogo acaba e ele sai sem nenhum prêmio!</li>
+<li>Pergunte se o jogador quer parar ou continuar. </li>
+</ol>
+<h3 id="observacoes">Observações:</h3>
 <ul>
-<li>Crie um repositório <strong>público</strong> no github para o seu projeto e adicione sua dupla caso haja.</li>
-<li>Cada exercício feito com sucesso no PrairieLearn deve ser adicionado ao repositório em um commit separado no mesmo dia. Dica: crie um arquivo para adicionar essas funções. A cada modificação nesse arquivo, faça um novo commit. Assim, a evolução do programa fica registrada.</li>
-<li>As funções enviadas no PrairieLearn devem ser utilizadas pelo seu programa no EP2. Faça um outro arquivo para o programa que será responsável pela impressão em tela e validação de entrada de dados.</li>
+<li>Inicialmente, o jogador tem direito a <code>3</code> pulos e <code>2</code> ajudas;</li>
+<li>O jogo deve validar se a base de dados está consistente;</li>
+<li>O jogo não deve sortear perguntas repetidas;</li>
+<li>no passo <strong>5</strong>, valide se o usuário escolheu alguma opção inexistente;</li>
+<li>no passo <strong>6</strong>, não é possível pedir ajuda mais de uma vez. Valide e exiba mensagem adequada;</li>
 </ul>
-<p>Leia também a rubrica atentamente, pois ela irá te ajudar a entender o que precisa ser feito.</p>
+<h3 id="da-vitoria">Da vitória:</h3>
+<ol>
+<li>O jogo acaba quando o jogador atingir o prêmio de 1 milhão. Após cada pergunta correta, o jogador tem a opção de parar e sair com o prêmio já conquistado.</li>
+</ol>
+<h2 id="o-que-voce-precisa-fazer">O que você precisa fazer</h2>
+<div style="background-color: #fff3cd; color: #856404; padding: 12px; border-left: 5px solid #ffeeba; border-radius: 4px;">
+<a href="https://macielcalebe.github.io/dessoft-ferias-exemplo-ep2/">Veja um exemplo do que é esperado no EP2 <strong>neste link</strong></a>
+</div>
+
+<p>Você deve implementar uma versão para terminal (console) do jogo, ou seja, usando <code class="language-python highlight"><span class="nb">print</span></code> e <code class="language-python highlight"><span class="nb">input</span></code> para interagir com o usuário por meio de texto. </p>
+<p>Para te auxiliar nessa tarefa, foram criados os seguintes exercícios (o resultado dos exercícios na Academia Python não afetam a nota, mas as funções criadas neles devem ser utilizadas no EP2):</p>
+<ul>
+<li><strong>EP2 Transforma Base</strong></li>
+<li><strong>EP2 Valida Questão</strong></li>
+<li><strong>EP2 Valida Lista de Questões</strong></li>
+<li><strong>EP2 Sorteia Questão</strong></li>
+<li><strong>EP2 Sorteia Questão Inedita</strong></li>
+<li><strong>EP2 Questão para String</strong></li>
+<li><strong>EP2 Gera Ajuda</strong></li>
+</ul>
+<p><strong>Atenção</strong>: As funções enviadas para os exercícios acima devem ser utilizadas pelo seu programa no <strong>EP2</strong>. Dica: crie um ou mais arquivos para adicionar essas funções. A cada modificação nesse arquivo, faça um novo commit. Assim, a evolução do programa fica registrada. As função de impressão em tela e validação de entrada de dados podem ficar em arquivos separados.</p>
+<p>Ainda, está sendo disponibilizado um arquivo com uma base de perguntas e resposta, que pode ser utilizado no EP. <strong>Sugestão:</strong> incremente a base de dados, criando novas perguntas!</p>
+<p><strong><a href="https://github.com/macielcalebe/dessoft-ferias-exemplo-ep2/blob/main/lib_questoes.py">Base de Perguntas e Respostas</a></strong></p>
+<p>Leia também a rubrica atentamente, pois ela pode te ajudar a entender o que precisa ser feito.</p>
 <h2 id="rubrica">Rubrica</h2>
 <p>A tabela a seguir apresenta os requisitos esperados e seus respectivos conceitos associados para os objetivos de aprendizagem <strong>desenvolver de programas de computador</strong> e <strong>identificar e desenhar estratégias algorítmicas computacionais</strong>. Esta tabela deve ser considerada em conjunto com a tabela do objetivo <strong>atuar em uma equipe autogerenciada de desenvolvimento</strong>.</p>
-<h3 id="conceito-i">Conceito I</h3>
-<p>Não entregou</p>
-<h3 id="conceito-d">Conceito D</h3>
-<p>Não submeteu com sucesso no PrairieLearn ou não fez o commit de alguma das funções a seguir:</p>
-<ul>
-<li>Rolar dados</li>
-<li>Guardar dado</li>
-<li>Remover dado</li>
-<li>Calcula pontos na regra simples</li>
-<li>Calcula pontos na regra avançada - Soma</li>
-<li>Calcula pontos na regra avançada - Sequência baixa</li>
-<li>Calcula pontos na regra avançada - Sequência alta</li>
-</ul>
-<h3 id="conceito-c">Conceito C</h3>
-<p>Submeteu com sucesso no PrairieLearn <strong>E</strong> fez o commit das funções anteriores e das funções a seguir:</p>
-<ul>
-<li>Calcula pontos na regra avançada - Full House</li>
-<li>Calcula pontos na regra avançada - Quadra</li>
-</ul>
-<h3 id="conceito-b">Conceito B</h3>
-<p>Atingiu o conceito C
-E submeteu com sucesso no PrairieLearn <strong>E</strong> fez o commit das funções a seguir:</p>
-<ul>
-<li>Calcula pontos na regra avançada - Quina</li>
-<li>Calcula pontos na regra avançada</li>
-<li>Faz jogada</li>
-</ul>
-<h3 id="conceito-a">Conceito A</h3>
-<p>Atingiu o conceito B
-E submeteu com sucesso no PrairieLearn <strong>E</strong> fez o commit do exercício a seguir:</p>
-<ul>
-<li>Jogo</li>
-</ul>
-<h3 id="conceito-a_1">Conceito A+</h3>
-<p>Atingiu o conceito A e existem exatamente 2 arquivos no repositório (um para as funções e outro para o código do jogo). Além disso, as funções estão sendo importadas do arquivo que contém as definições das funções e não foram copiadas para o arquivo do programa.</p>
-<hr />
+<table>
+<thead>
+<tr>
+<th>Conceito</th>
+<th style="text-align: center;">I</th>
+<th style="text-align: center;">D</th>
+<th style="text-align: center;">C</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td style="text-align: center;">Não entregou.</td>
+<td style="text-align: center;">Não entregou todas as sete funções obrigatórias (você pode, e deve, utilizar mais funções, mas as funções listadas no enunciado são obrigatórias).</td>
+<td style="text-align: center;">Entregou as sete funções obrigatórias funcionando, mas o programa não funciona.</td>
+<td style="text-align: center;">O programa funciona conforme o esperado, o jogo sempre apresenta para o jogador o estado atual do seu prêmio, é apresentada uma mensagem ao final de cada jogo indicando se o jogador ganhou ou perdeu e o jogador pode iniciar um novo jogo sem ter que executar o programa novamente.</td>
+<td style="text-align: center;">Atingiu o conceito B, implementou validações para as entradas do usuário (digitou respostas válidas), adicionou mais perguntas à base e implementou alguma forma de visualização mais avançada (ex: cor diferente conforme o valor do prêmio ou de acordo com a importância de cada mensagem).</td>
+</tr>
+</tbody>
+</table>
 <p>A tabela a seguir apresenta a rubrica do objetivo <strong>atuar em uma equipe autogerenciada de desenvolvimento</strong>.</p>
 <table>
 <thead>
 <tr>
 <th>Conceito</th>
-<th style="text-align: center;">Descrição</th>
+<th style="text-align: center;">I</th>
+<th style="text-align: center;">D</th>
+<th style="text-align: center;">C</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">A</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>I</td>
+<td>Descrição</td>
 <td style="text-align: center;">Não entregou.</td>
-</tr>
-<tr>
-<td>D</td>
 <td style="text-align: center;">Não possui nenhum commit próprio e nenhuma evidência de trabalho em grupo.</td>
-</tr>
-<tr>
-<td>C</td>
 <td style="text-align: center;">O grupo enviou todo o código de uma vez para o git (em um ou poucos commits enviados em um intervalo curto de tempo).</td>
-</tr>
-<tr>
-<td>B</td>
 <td style="text-align: center;">Todos os membros do grupo enviaram commits com partes do código, mas a evolução do código é artificial.</td>
-</tr>
-<tr>
-<td>A</td>
 <td style="text-align: center;">O grupo fez bom uso do git, enviando commits a cada funcionalidade implementada ou bug corrigido. Os commits são distribuídos ao longo de alguns dias, mostrando a evolução do trabalho.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>O conceito final do EP2 será dado pelo menor entre os conceitos obtidos para cada objetivo acima.</strong> Ou seja, se você obtiver conceito C no primeiro objetivo e A no segundo, o conceito final será C. Se você obtiver conceito A+ no primeiro objetivo, mas não possuir nenhum commit e nenhuma outra evidência de trabalho em grupo (conceito D), seu conceito final será D.</p>
-<h2 id="entrega-0605-ate-2359">Entrega 06/05 até 23:59</h2>
-<p>Será considerado o código enviado para o github até a data de entrega.</p>
-<p>O endereço do seu repositório deve ser enviado pelo Blackboard. Não façam commits após a data de entrega, pois será considerado como atraso.</p>
-<p><strong>Importante:</strong> Caso algum integrante da dupla esqueça de enviar o endereço do repositório, será descontado conceito da nota final do projeto.</p>
+<h2 id="grupos">Grupos</h2>
+<p>É indicado fazer em <strong>Dupla</strong> (mas individual também será aceito    ). Caso não tenha time, entre em contato com o professor por email até o dia 08/07.</p>
+<p>Utilize o link <a href="https://classroom.github.com/a/CuUZQ8K_"><strong>https://classroom.github.com/a/CuUZQ8K_</strong></a> para criar o grupo e informe seu colega o nome do grupo. Apenas o primeiro membro cria o grupo, o segundo (caso exista) apenas entra no grupo já criado.</p>
+<h2 id="entrega">Entrega</h2>
+<p><strong>Todos os membros</strong> do grupo devem responder ao questionário <a href="https://forms.gle/udrEhcGTMWNqTTWe9"><strong>https://forms.gle/udrEhcGTMWNqTTWe9</strong></a>.</p>
+<p>Além disso, é <strong>obrigatório</strong> o envio de um <strong>vídeo de até 5 minutos</strong> que demonstre seu jogo funcionando (pode ser o mesmo vídeo para a dupla, mas ambos devem enviar o link e responder o formulário).</p>
+<p>Não façam commit após a data de entrega, será considerado como atraso.</p>
+<p><strong>O prazo é 14/07 às 23:59</strong></p>
+<p>EPs entregues com atraso terão seu conceito <strong>limitado a D</strong> (sem garantia de que será aceito, caso ocorra atraso, converse com os professores de forma urgente).</p>
 
 
 </section>
@@ -382,6 +447,13 @@ E submeteu com sucesso no PrairieLearn <strong>E</strong> fez o commit do exerc�
       </main>
       <footer class="ah-footer ah-typeset">
         <div class="ah-footer-nav">
+          
+            <a href="../ep1/"
+               class="ah-prev"
+               title="EP1">
+              <span class="nav-label">Anterior</span>
+              <span class="nav-title">EP1</span>
+            </a>
           
           
         </div>
