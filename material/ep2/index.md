@@ -105,6 +105,6 @@ Além disso, é **obrigatório** o envio de um **vídeo de até 5 minutos** que 
 
 Não façam commit após a data de entrega, será considerado como atraso.
 
-**O prazo é 14/07 às 23:59**
+**O prazo é 15/07 às 23:59**
 
 EPs entregues com atraso terão seu conceito **limitado a D** (sem garantia de que será aceito, caso ocorra atraso, converse com os professores de forma urgente).
