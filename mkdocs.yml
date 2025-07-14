@@ -28,7 +28,7 @@ nav:
 - Projetos:
   - EP1: ep1/index.md
   - EP2: ep2/index.md
-#   - Projeto Final: projeto/index.md
+  - Projeto Final: projeto/index.md
 extra:
   custom_variables:
     pl_root: https://us.prairielearn.com/pl/course_instance/185875
