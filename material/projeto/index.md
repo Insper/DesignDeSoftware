@@ -43,7 +43,13 @@ O repositório deverá conter um arquivo `README.md` com, **no mínimo**, o segu
 4. Nomes dos membros;
 5. Explicação de como rodar o jogo;
 6. Endereço de um **vídeo curto** apresentando o seu jogo (você pode colocar o vídeo onde preferir: YouTube, Vimeo, GoogleDrive, etc. mas o professor precisa ter acesso através do link). Esse vídeo (pode ser de um a cinco minutos) deve mostrar o seu projeto funcionando.
-7. Preenchimento da rubrica.
+7. Preenchimento da rubrica, com uma auto-avaliação declarando qual **o conceito desenvolvido** pelo grupo nos objetivos 1, 2 e 3. Utilize o formato:
+
+```console
+- Objetivo 1: A
+- Objetivo 2: C
+- Objetivo 3: A
+```
 
 Recomendamos que vocês também incluam no `README.md` instruções de como instalar as dependências (se usar alguma biblioteca adicional, como o PyGame). Esses pontos são recomendados em qualquer projeto.
 
