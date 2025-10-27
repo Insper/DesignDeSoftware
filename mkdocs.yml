@@ -25,6 +25,7 @@ nav:
   - Controle de versões com Git: git/index.md
 - Projetos:
    - EP2: ep2/index.md
+   - Pygame: pygame-projeto/index.md
 extra:
   custom_variables:
     pl_root: https://us.prairielearn.com/pl/course_instance/188218
