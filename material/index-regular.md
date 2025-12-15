@@ -4,35 +4,34 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 ## Informações Gerais
 
-|  | Turma Férias |
-|:--|:--|
-| **Professor** | Fillipe M. X. Resina |
-| **Auxiliar** |  |
-| **Horário** | XX:00 às XX:00 e XX:00 às XX:00<br>segunda à sexta |
-| **Atendimento** | XX às XX nos dias:<br>.|
+|  | Turma A | Turma B | 
+|:--|:--|:--|
+| **Professor** | Fillipe M. X. Resina | Márcio F. Stabile Jr. |
+| **Horário** | segunda e quarta<br>16:30 às 18:30 | segunda e quarta<br>09:45 às 11:45 |
+| **Atendimento** | 08:15 às 09:45<br>segunda-feira | 07:30 às 09:00<br>sexta-feira |
 
 ## Links importantes
 
 * [*Blackboard*](https://insper.blackboard.com/){:target="_blank"}: Principalmente utilizado para avisos.
 * [*PrairieLearn*]({{pl_root}}){:target="_blank"}: Sistema com os exercícios e avaliações da disciplina.
-<!-- * [*Regras da disciplina*](about.md): Critérios para aprovação. Leia com atenção! -->
-<!-- * [*Calendário*](https://www.insper.edu.br/portaldoprofessor/wp-content/uploads/2015/02/CALENDÁRIO-ACADÊMICO-PROFESSOR-ENG-v2-1.pdf){:target="_blank"}: - Calendário do Insper. -->
+* [*Regras da disciplina*](about.md): Critérios para aprovação. Leia com atenção!
+* [*Calendário*](https://portaldoprofessor.insper.edu.br/wp-content/uploads/2024/12/CALENDARIO-GRADUACAO-2025_ENG-E-CIECOMP-567-E-8_PROFESSOR-1.pdf){:target="_blank"}: Calendário do Insper.
 
 ## Datas importantes
 
-<!-- * Quizzes
-    * <span class='quiz'>Quiz 1</span>: 03/07 (Input, Funções e Condicionais)
-    * <span class='quiz'>Quiz 2</span>: 07/07 (Estruturas de Repetição)
-    * <span class='quiz'>Quiz 3</span>: 10/07 (Listas)
-    * <span class='quiz'>Quiz 4</span>: 16/07 (Dicionário)
-    * <span class='quiz'>Quiz 5</span>: 18/07 (Strings)
+* Quizzes
+    * <span class='quiz'>Quiz 1</span>: 01/09 (Input, Funções e Condicionais)
+    * <span class='quiz'>Quiz 2</span>: 10/09 (Estruturas de Repetição)
+    * <span class='quiz'>Quiz 3</span>: 24/09 (Listas)
+    * <span class='quiz'>Quiz 4</span>: 13/10 (Dicionário)
+    * <span class='quiz'>Quiz 5</span>: 22/10 (Strings)
 
 * Provas
-    * <span class='p1'>Avaliação Intermediária</span>: 11/07
-    * <span class='p2'>Avaliação Final</span>: 22/07
-    * <span class='ps'>Avaliação substitutiva</span>: 25/07
+    * <span class='p1'>Avaliação Intermediária</span>: 25/09 ~ 01/10
+    * <span class='p2'>Avaliação Final</span>: 17/11 ~ 25/11
+    * <span class='ps'>Avaliação substitutiva</span>: 01/12 ~ 03/12
 
-* Projetos
+<!-- * Projetos
     * <span class='ep1'>EP1</span>: 08/07 23h59
     * <span class='ep2'>EP2</span>: 15/07 23h59
     * <span class='epf'>Final</span>: 23/07 12h00 -->
@@ -109,6 +108,6 @@ $$
     \end{array}\right.
 $$
 
-<!-- - Caso a média individual do aluno (média da avaliação intermediária e avaliação final) fique entre 4 e 5, este deverá realizar a
+- Caso a média individual do aluno (média da avaliação intermediária e avaliação final) fique entre 4 e 5, este deverá realizar a
 prova delta. A prova delta não aumenta a NI, somente permite a aprovação no caso em que a média individual ficar entre 4 e 5,
-e a média aritmética entre NI e NG for maior que 5. -->
+e a média aritmética entre NI e NG for maior que 5.
