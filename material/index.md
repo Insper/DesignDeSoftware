@@ -13,8 +13,8 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 ## Links importantes
 
-* [*Blackboard*](https://insper.blackboard.com/){:target="_blank"}: Principalmente utilizado para avisos.
-* [*PrairieLearn*]({{pl_root}}){:target="_blank"}: Sistema com os exercícios e avaliações da disciplina.
+* [*Blackboard*](https://insper.blackboard.com/ultra/courses/_54718_1/outline){:target="_blank"}: Principalmente utilizado para avisos.
+* [*PrairieLearn*](https://us.prairielearn.com/pl/course_instance/201187){:target="_blank"}: Sistema com os exercícios e avaliações da disciplina.
 <!-- * [*Regras da disciplina*](about.md): Critérios para aprovação. Leia com atenção! -->
 <!-- * [*Calendário*](https://www.insper.edu.br/portaldoprofessor/wp-content/uploads/2015/02/CALENDÁRIO-ACADÊMICO-PROFESSOR-ENG-v2-1.pdf){:target="_blank"}: - Calendário do Insper. -->
 
