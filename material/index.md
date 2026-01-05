@@ -20,22 +20,22 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 ## Datas importantes
 
-<!-- * Quizzes
-    * <span class='quiz'>Quiz 1</span>: 03/07 (Input, Funções e Condicionais)
-    * <span class='quiz'>Quiz 2</span>: 07/07 (Estruturas de Repetição)
-    * <span class='quiz'>Quiz 3</span>: 10/07 (Listas)
-    * <span class='quiz'>Quiz 4</span>: 16/07 (Dicionário)
-    * <span class='quiz'>Quiz 5</span>: 18/07 (Strings)
+* Quizzes
+    * <span class='quiz'>Quiz 1</span>: 09/01 (Input, Funções e Condicionais)
+    * <span class='quiz'>Quiz 2</span>: 13/01 (Estruturas de Repetição)
+    * <span class='quiz'>Quiz 3</span>: 15/01 (Listas)
+    * <span class='quiz'>Quiz 4</span>: 21/01 (Dicionário)
+    * <span class='quiz'>Quiz 5</span>: 23/01 (Strings)
 
 * Provas
-    * <span class='p1'>Avaliação Intermediária</span>: 11/07
-    * <span class='p2'>Avaliação Final</span>: 22/07
-    * <span class='ps'>Avaliação substitutiva</span>: 25/07
+    * <span class='p1'>Avaliação Intermediária</span>: 16/01 (Aula 02)
+    * <span class='p2'>Avaliação Final</span>: 29/01 (Aula 02)
+    * <span class='ps'>Avaliação substitutiva</span>: 03/02
 
 * Projetos
-    * <span class='ep1'>EP1</span>: 08/07 23h59
-    * <span class='ep2'>EP2</span>: 15/07 23h59
-    * <span class='epf'>Final</span>: 23/07 12h00 -->
+    * <span class='ep1'>EP1</span>: 16/07 23h59 - a ajustar
+    * <span class='ep2'>EP2</span>: 23/07 23h59 - a ajustar
+    * <span class='epf'>Final</span>: 29/01 23h59
 
 ## Critérios da Nota
 
