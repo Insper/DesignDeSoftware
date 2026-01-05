@@ -8,8 +8,8 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 |:--|:--|
 | **Professor** | Fillipe M. X. Resina |
 | **Auxiliar** |  |
-| **Horário** | XX:00 às XX:00 e XX:00 às XX:00<br>segunda à sexta |
-| **Atendimento** | XX às XX nos dias:<br>.|
+| **Horário** | 08h00 às 09h30 e 09h45 às 11h15<br>segunda à sexta |
+| **Atendimento** | 11h30 às 13h00 todos os dias<br> (exceto dias de AI e AF).|
 
 ## Links importantes
 
