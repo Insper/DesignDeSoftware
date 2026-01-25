@@ -33,8 +33,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
     * <span class='ps'>Avaliação substitutiva</span>: 03/02
 
 * Projetos
-    * <span class='ep1'>EP1</span>: 14/07 23h59 - a ajustar
-    * <span class='ep2'>EP2</span>: 21/07 23h59 - a ajustar
+    * <span class='ep1'>EP</span>: 31/01 23h59
     * <span class='epf'>Final</span>: 29/01 23h59
 
 ## Critérios da Nota
@@ -44,7 +43,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 As atividades avaliativas são:
 
 - <span class='quiz'>Quizzes</span>: avaliações rápidas e individuais, com questões objetivas, que ocorrerão ao longo do curso.
-- <span class='ep1'>Exercícios Programa - EP</span>: pequenos projetos nos quais serão construídos programas mais elaborados, mas com requisitos
+- <span class='ep1'>Exercício Programa - EP</span>: pequeno projeto no qual será construído um programa mais elaborado, mas com requisitos
 definidos a priori.
 - <span class='p1'>Provas</span>: 2 avaliações individuais cujo conteúdo é acumulativo. As Provas 1 e 2 coincidirão com as datas da Avaliação Intermediária
 e Avaliação Final do calendário oficial.
@@ -69,25 +68,24 @@ $$
 
 A Nota em Grupo (**NG**) é numérica e composta via média ponderada dos:
 
-- <span class='ep1'>EP1</span> (Exercicios Programa 1), $10\%$;
-- <span class='ep2'>EP2</span> (Exercicios Programa 2), $30\%$;
-- <span class='epf'>Projeto Final - PF</span>, $60\%$.
+- <span class='ep1'>EP</span> (Exercicio-Programa), $30\%$;
+- <span class='epf'>Projeto Final - PF</span>, $70\%$.
 
-Tanto os **EPs** quanto o **PF** serão avaliados por conceitos segundo uma determinada rubrica e em seguida convertidos em
+Tanto o **EP** quanto o **PF** serão avaliados por conceitos segundo uma determinada rubrica e em seguida convertidos em
 nota numérica segundo a tabela oficial da Engenharia.
 
-A entrega dos **EPs** e do **PF** é obrigatória e o aluno deve obter nota pelo menos **4** em cada um deles. Caso contrário, a *Nota em Grupo será a menor nota entre os EPs e PF*. Considere a seguinte fórmula para cálculo da nota em grupo:
+As entregas do **EP** e do **PF** são obrigatórias e o aluno deve obter nota pelo menos **4** em cada um deles. Caso contrário, a *Nota em Grupo será a menor nota entre o EP e PF*. Considere a seguinte fórmula para cálculo da nota em grupo:
 
 $$
 \text{NG} = \left\{\begin{array}{lll}
-    EP_1 \geq 4 \bigwedge EP_2 \geq 4 \bigwedge PF \geq 4 &
-    \implies & 0.1 \times EP_1 + 0.3 \times EP_2 + 0.6 \times PF
+    EP \geq 4 \bigwedge PF \geq 4 &
+    \implies & 0.3 \times EP + 0.7 \times PF
     \displaystyle 
     \\
     \\
     \text{Caso contrário} &
     \implies &
-    \min\left(EP_1, EP_2, PF\right)
+    \min\left(EP, PF\right)
     \end{array}\right.
 $$
 
