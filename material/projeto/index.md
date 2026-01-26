@@ -1,8 +1,8 @@
 # Projeto Final
 
-Data de entrega da proposta inicial do projeto: **29/10/2024**, via Blackboard
+<!-- Data de entrega da proposta inicial do projeto: **29/01/2026**, via Blackboard -->
 
-Data de entrega: **12/11/2024**, via GitHub (o endereço deve ser enviado no Blackboard)
+Data de entrega: **29/01/2026**, via GitHub (o endereço deve ser enviado no Blackboard)
 
 Grupos: duplas ou trios. O critério de avaliação muda conforme o tamanho da equipe.
 
@@ -24,7 +24,7 @@ O objetivo é colocar em prática o que você aprendeu sobre programação com P
 Envie no BlackBoard (não perca o prazo):
 
 1. O endereço do seu repositório GitHub (faça isso logo no início do projeto);
-2. Formulário com a proposta inicial do projeto (pode mudar um pouco depois, mas é importante definir uma direção);
+<!-- 2. Formulário com a proposta inicial do projeto (pode mudar um pouco depois, mas é importante definir uma direção); -->
 
 O professor irá clonar o código presente no GitHub ao final do dia de entrega (assim, se o repositório for privado, adicione o professor como colaborador). O repositório deverá conter um arquivo `README.md` com, **no mínimo**, o seguinte conteúdo:
 
@@ -120,9 +120,9 @@ Esta é uma sugestão de organização para o projeto de vocês. Lembrem-se que 
 - Até 20/05: mecânica do jogo concluída (incluindo recursos interativos adicionais, como _power-ups_, vidas, movimentação dos inimigos - caso se aplique) e navegação entre telas funcionando;
 - Até 23/05: projeto concluído com os requisitos do conceito B. -->
 
-!!! danger "Importante"
+<!-- !!! danger "Importante"
     Dia 12/11, das 12h00 às 13h00 teremos a **Feira de Jogos** onde apresentaremos os projetos para professores e alunos do Insper.
-    Desta forma, a presença de todos no evento é imprescindível, e havendo falta será descontado conceito sobre a nota final do projeto.
+    Desta forma, a presença de todos no evento é imprescindível, e havendo falta será descontado conceito sobre a nota final do projeto. -->
 
 ## Exemplo
 
