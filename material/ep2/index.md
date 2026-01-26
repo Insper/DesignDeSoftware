@@ -49,15 +49,13 @@ O jogo pode ser jogado por $2$, $3$ ou $4$ participantes. No início do jogo, ca
 
 ## O que você precisa fazer
 
-[Veja um exemplo do que é esperado no EP2 neste link.](https://hsandmann.github.io/domino/)
+[Veja um exemplo do que é esperado no EP neste link.](https://hsandmann.github.io/domino/)
 
 Você deve implementar uma versão para terminal (console) do jogo de dominó, ou seja, usando `#!python print` e `#!python input` para interagir com o usuário por meio de texto. 
 
 Para te auxiliar nessa tarefa, foram criados exercícios no PrairieLearn que te ajudarão a implementar as funções necessárias para o jogo.
 
-:::admonition{type=danger title="Importante"}
 As funções enviadas para os exercícios acima devem ser utilizadas pelo seu programa no EP. Crie um arquivo para adicionar essas funções. A cada modificação nesse arquivo, faça um novo commit. Assim, a evolução do programa fica registrada.
-:::
 
 Leia também a rubrica atentamente, pois ela pode te ajudar a entender o que precisa ser feito.
 
@@ -82,5 +80,6 @@ A tabela a seguir apresenta a rubrica do objetivo **atuar em uma equipe autogere
 O endereço do seu repositório deve ser enviado pelo Blackboard. Será considerado o último commit antes do horário de entrega. **Em caso de duplas, ambos devem enviar o mesmo endereço no Blackboard.**
 
 **O prazo é 01/02 às 23:59**
+
 
 
