@@ -262,6 +262,106 @@
           </div>
           
             <section class="progress-section show">
+<h1 id="exercicio-programa">Exercício Programa</h1>
+<p>O objetivo deste exercício programa (EP) é colocar em prática os conceitos intermediários de programação em <code>Python</code> em um problema um pouco maior do que os exercícios de aula. <strong>Este EP pode ser feito individualmente ou em duplas e deve utilizar o git para registrar o histórico do código e para fazer a entrega (com contribuições de ambos os membros, no caso de duplas).</strong></p>
+<p>Neste EP você vai implementar o jogo de <a href="https://pt.wikipedia.org/wiki/Domin%C3%B3">dominó</a>, descrito a seguir.</p>
+<h2 id="regras-do-jogo">Regras do jogo</h2>
+<p>O jogo pode ser jogado por <span class="arithmatex">\(2\)</span>, <span class="arithmatex">\(3\)</span> ou <span class="arithmatex">\(4\)</span> participantes. No início do jogo, cada participante recebe <span class="arithmatex">\(7\)</span> peças de dominó para iniciar o jogo. No total são <span class="arithmatex">\(28\)</span> peças, onde cada peça é uma combinação de dois números entre <span class="arithmatex">\(0\)</span> a <span class="arithmatex">\(6\)</span>, sem repetições. São peças:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">[</span><span class="mi">0</span><span class="o">|</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="o">|</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="o">|</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="o">|</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="o">|</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="o">|</span><span class="mi">6</span><span class="p">],</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">[</span><span class="mi">1</span><span class="o">|</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">|</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">|</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">|</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">|</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="o">|</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="o">|</span><span class="mi">2</span><span class="p">],</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">[</span><span class="mi">2</span><span class="o">|</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="o">|</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="o">|</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="o">|</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="o">|</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="o">|</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="o">|</span><span class="mi">5</span><span class="p">],</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">[</span><span class="mi">3</span><span class="o">|</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="o">|</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="o">|</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="o">|</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="o">|</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="o">|</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="o">|</span><span class="mi">6</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="inicio-do-jogo">Início do jogo:</h3>
+<ol>
+<li>Todas as peças são misturadas, ou seja, assumem posições aleatórias;</li>
+<li>Define-se o número de jogadores: <span class="arithmatex">\(2\)</span>, <span class="arithmatex">\(3\)</span> ou <span class="arithmatex">\(4\)</span>;</li>
+<li>Cada jogador recebe <span class="arithmatex">\(7\)</span> peças; se houver menos de <span class="arithmatex">\(4\)</span> jogadores, então, as peças remanecentes devem ir para o <strong>monte</strong>;</li>
+<li>Aleatoriamente um dos jogadores inicia o jogo, colocando uma peça sobre a mesa;</li>
+<li>Vez do próximo jogador.</li>
+</ol>
+<h3 id="movimentos-possiveis">Movimentos possíveis:</h3>
+<ol>
+<li>Na vez de um jogador, esse deve observar as peças posicionadas nas pontas da montagem sobre a mesa e seus valores;</li>
+<li>O jogador deve escolher uma peça de sua posse que tenha um dos números de alguma das pontas das peças da mesa;</li>
+<li>Se tiver uma peça possível, então, o jogador deve colocar a peça na mesa e está encerrada sua jogada nessa rodada;</li>
+<li>Caso o jogador não tenha peças possíveis para a mesa, então, se houver <strong>monte</strong>, deve pegar uma do monte. </li>
+<li>O passo <span class="arithmatex">\(4\)</span> deve ser repetido até que o jogador tenha uma peça que cumpra o passo <span class="arithmatex">\(2\)</span>.</li>
+<li>Caso o jogador não tenha peça possível e também esteja esgotado o <strong>monte</strong>, então, esse deve passar sua vez para o próximo jogador.</li>
+</ol>
+<h3 id="da-vitoria">Da vitória:</h3>
+<ol>
+<li>O jogador vitorioso é aquele que conseguir colocar todas suas peças na mesa, respeitando as regras dos valores das pontas, antes dos demais jogadores;</li>
+<li>Quanto algum jogador ganhar, o jogo deve parar e o vencedor deve ser anunciado.</li>
+</ol>
+<h3 id="do-empate">Do empate:</h3>
+<ol>
+<li>Existe a possibilidade de nenhum jogador colocar peças em toda uma rodada, isso porque o jogo pode estar fechado e sem <strong>monte</strong>. Nesse caso, o jogo está encerrado;</li>
+<li>Para efeito de vitória, os participantes devem contar os valores das faces das peças em sua posse;</li>
+<li>Ganha o jogador que tiver a menor contagem de pontos, sendo possível empate.</li>
+</ol>
+<h3 id="da-automacao-de-jogadores">Da automação de jogadores:</h3>
+<ol>
+<li>O jogador <strong>humano</strong> deve escolher as peças que irá colocar sobre a mesa, ou seja, a cada jogada esse jogador deve escolher as peças e, se for o caso, ser informado do <strong>monte</strong> ou <strong>pulo</strong> da vez;</li>
+<li>Todo os demais jogadores devem ser automatizados, ou seja, o computador deve jogar por eles. A estratégia de escolha de peças para um jogador automatizado pode ser qualquer uma desde que respeite as regras do jogo, destacadas em <a href="#movimentos-possíveis"><strong>movimentos possíveis</strong></a> (dica: utilize estratégia aleatória dos possíveis inicialmente).</li>
+</ol>
+<h2 id="o-que-voce-precisa-fazer">O que você precisa fazer</h2>
+<p><a href="https://hsandmann.github.io/domino/">Veja um exemplo do que é esperado no EP neste link.</a></p>
+<p>Você deve implementar uma versão para terminal (console) do jogo de dominó, ou seja, usando <code class="language-python highlight"><span class="nb">print</span></code> e <code class="language-python highlight"><span class="nb">input</span></code> para interagir com o usuário por meio de texto. </p>
+<p>Para te auxiliar nessa tarefa, foram criados exercícios no PrairieLearn que te ajudarão a implementar as funções necessárias para o jogo.</p>
+<p>As funções enviadas para os exercícios acima devem ser utilizadas pelo seu programa no EP. Crie um arquivo para adicionar essas funções. A cada modificação nesse arquivo, faça um novo commit. Assim, a evolução do programa fica registrada.</p>
+<p>Leia também a rubrica atentamente, pois ela pode te ajudar a entender o que precisa ser feito.</p>
+<h2 id="rubrica">Rubrica</h2>
+<p>A tabela a seguir apresenta os requisitos esperados e seus respectivos conceitos associados para os objetivos de aprendizagem <strong>desenvolver de programas de computador</strong> e <strong>identificar e desenhar estratégias algorítmicas computacionais</strong>. Esta tabela deve ser considerada em conjunto com a tabela do objetivo <strong>atuar em uma equipe autogerenciada de desenvolvimento</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Conceito</th>
+<th style="text-align: center;">I</th>
+<th style="text-align: center;">D</th>
+<th style="text-align: center;">C</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td style="text-align: center;">Não entregou ou não entregou as 6 funções funcionando.</td>
+<td style="text-align: center;">Entregou todas as 6 funções obrigatórias (você pode, e deve, utilizar mais funções, mas as funções listadas no enunciado são obrigatórias) mas não há programa ou não funciona.</td>
+<td style="text-align: center;">Entregou as 6 funções obrigatórias funcionando e o programa funciona minimamente.</td>
+<td style="text-align: center;">O programa funciona conforme o esperado, o jogo sempre apresenta para o jogador o estado atual das suas peças e das peças sobre a mesa, é apresentada uma mensagem ao final de cada jogo indicando se o jogador ganhou ou perdeu e o jogador pode iniciar um novo jogo sem ter que executar o programa novamente.</td>
+<td style="text-align: center;">Atingiu o conceito B, implementou validações para as entradas do usuário (digitou posições válidas, verifica se o movimento pode ser realizado, etc.) e implementou alguma forma de visualização mais avançada (ex: cores diferentes para cada naipe, desenhou as cartas com ASCII art, etc.).</td>
+</tr>
+</tbody>
+</table>
+<p>A tabela a seguir apresenta a rubrica do objetivo <strong>atuar em uma equipe autogerenciada de desenvolvimento</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Conceito</th>
+<th style="text-align: center;">I</th>
+<th style="text-align: center;">D</th>
+<th style="text-align: center;">C</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td style="text-align: center;">Não entregou.</td>
+<td style="text-align: center;">Não possui nenhum commit próprio e nenhuma evidência de trabalho em grupo.</td>
+<td style="text-align: center;">O grupo enviou todo o código de uma vez para o git (em um ou poucos commits enviados em um intervalo curto de tempo).</td>
+<td style="text-align: center;">Todos os membros do grupo enviaram commits com partes do código, mas a evolução do código é artificial.</td>
+<td style="text-align: center;">O grupo fez bom uso do git, enviando commits a cada funcionalidade implementada ou bug corrigido. Os commits são distribuídos ao longo de alguns dias, mostrando a evolução do trabalho.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>O conceito final do EP será dado pelo menor entre os conceitos obtidos para cada objetivo acima.</strong> Ou seja, se você obtiver conceito C no primeiro objetivo e A no segundo, o conceito final será C. Se você obtiver conceito A+ no primeiro objetivo, mas não possuir nenhum commit e nenhuma outra evidência de trabalho em grupo (conceito D), seu conceito final será D.</p>
+<h2 id="entrega">Entrega</h2>
+<p>O endereço do seu repositório deve ser enviado pelo Blackboard. Será considerado o último commit antes do horário de entrega. <strong>Em caso de duplas, ambos devem enviar o mesmo endereço no Blackboard.</strong></p>
+<p><strong>O prazo é 01/02 às 23:59</strong></p>
 
 
 </section>
