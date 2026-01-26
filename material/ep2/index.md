@@ -90,4 +90,5 @@ A tabela a seguir apresenta a rubrica do objetivo **atuar em uma equipe autogere
 
 O endereço do seu repositório deve ser enviado pelo Blackboard. Será considerado o último commit antes do horário de entrega. **Em caso de duplas, ambos devem enviar o mesmo endereço no Blackboard.**
 
-**O prazo é 31/01 às 23:59**
+**O prazo é 01/02 às 23:59**
+
