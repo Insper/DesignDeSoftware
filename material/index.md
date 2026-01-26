@@ -33,7 +33,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
     * <span class='ps'>Avaliação substitutiva</span>: 03/02
 
 * Projetos
-    * <span class='ep1'>EP</span>: 31/01 23h59
+    * <span class='ep1'>EP</span>: 01/02 23h59
     * <span class='epf'>Final</span>: 29/01 23h59
 
 ## Critérios da Nota
