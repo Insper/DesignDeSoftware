@@ -9,6 +9,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 | **Professor** | Márcio F. Stabile Jr. | Márcio F. Stabile Jr. | Fillipe M. X. Resina |
 | **Horário** | segunda e quarta<br>16:30 às 18:30 | segunda e quarta<br>09:45 às 11:45 | segunda 14:14 às 16:15<br>quarta 16:30 às 18:30 |
 | **Atendimento** | 07:30 às 09:00<br>segunda-feira | 07:30 às 09:00<br>sexta-feira | 09:45 às 11:15<br>segunda-feira |
+
 ## Links importantes
 
 * [*Blackboard*](https://insper.blackboard.com/){:target="_blank"}: Principalmente utilizado para avisos.
