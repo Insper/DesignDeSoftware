@@ -7,7 +7,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 |  | Turma A | Turma B | Turma C | 
 |:--|:--|:--|:--|
 | **Professor** | Márcio F. Stabile Jr. | Márcio F. Stabile Jr. | Fillipe M. X. Resina |
-| **Horário** | segunda e quarta<br>16:30 às 18:30 | segunda e quarta<br>09:45 às 11:45 | segunda 14:14 às 16:15<br>quarta 16:30 às 18:30 |
+| **Horário** | segunda e quarta<br>16:30 às 18:30 | segunda e quarta<br>09:45 às 11:45 | segunda 16:30 às 18:30<br>quarta 14:15 às 16:15 |
 | **Atendimento** | 07:30 às 09:00<br>segunda-feira | 07:30 às 09:00<br>sexta-feira | 09:45 às 11:15<br>segunda-feira |
 
 ## Links importantes
@@ -29,7 +29,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 * Provas
     * <span class='p1'>Avaliação Intermediária</span>: 25/03 ~ 31/03
     * <span class='p2'>Avaliação Final</span>: 27/05 ~ 02/06
-    * <span class='ps'>Avaliação substitutiva</span>: 10/06 ~ 12/06
+    * <span class='ps'>Avaliação Substitutiva</span>: 10/06 ~ 12/06
 
 <!-- * Projetos
     * <span class='ep1'>EP1</span>: 08/07 23h59
