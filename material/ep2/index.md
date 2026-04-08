@@ -92,7 +92,7 @@ A tabela a seguir apresenta a rubrica do objetivo **atuar em uma equipe autogere
 
 **O conceito final do EP2 será dado pelo menor entre os conceitos obtidos para cada objetivo acima.** Ou seja, se você obtiver conceito C no primeiro objetivo e A no segundo, o conceito final será C. Se você obtiver conceito A+ no primeiro objetivo, mas não possuir nenhum commit e nenhuma outra evidência de trabalho em grupo (conceito D), seu conceito final será D.
 
-## Entrega 06/05 até 23:59
+## Entrega 01/05 até 23:59
 Será considerado o código enviado para o github até a data de entrega.
 
 O endereço do seu repositório deve ser enviado pelo Blackboard. Não façam commits após a data de entrega, pois será considerado como atraso.
