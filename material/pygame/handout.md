@@ -41,6 +41,10 @@ Abra o seu terminal (Linux ou MacOS) ou Anaconda Prompt (Windows) e digite:
 
     pip install pygame
 
+<span style="color:red">Caso esse comando apresente algum erro, digite:</span>
+
+    pip install pygame-ce
+
 ## Preparo para o tutorial
 
 Antes de seguir com o tutorial de pygame, faça o download do arquivo [`referencia.zip` (disponível neste link)](raw/pygame/referencia.zip). Descompacte os arquivos em uma pasta, sem alterar a estrutura de pastas.
@@ -559,7 +563,7 @@ Abra o arquivo `#!python jogo_21.py`. Onde está todo aquele código? O código 
 - `#!python sprites.py` - definição das classes do jogo;
 
 ??? info "referencia/sprites.py"
-        
+
     ```python linenums="1"
     --8<-- "pygame/raw/pygame/referencia/sprites.py"
     ```
@@ -567,7 +571,7 @@ Abra o arquivo `#!python jogo_21.py`. Onde está todo aquele código? O código 
 - `#!python assets.py` - função de carregamento de assets do jogo;
 
 ??? info "Código `referencia/assets.py`"
-        
+
     ```python linenums="1"
     --8<-- "pygame/raw/pygame/referencia/assets.py"
     ```
