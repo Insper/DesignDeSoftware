@@ -121,7 +121,7 @@ Esta é uma sugestão de organização para o projeto de vocês. Lembrem-se que 
 - Até 23/05: projeto concluído com os requisitos do conceito B. -->
 
 !!! danger "Importante"
-    Dia 12/11, das 12h00 às 13h00 teremos a **Feira de Jogos** onde apresentaremos os projetos para professores e alunos do Insper.
+    Dia 25/05/2026, das 12h00 às 13h00 teremos a **Feira de Jogos** onde apresentaremos os projetos para professores e alunos do Insper.
     Desta forma, a presença de todos no evento é imprescindível, e havendo falta será descontado conceito sobre a nota final do projeto.
 
 ## Exemplo
