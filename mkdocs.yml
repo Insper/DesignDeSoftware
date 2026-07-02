@@ -24,21 +24,21 @@ nav:
   - Usando o terminal (Windows): terminal-win/index.md
   - Controle de versões com Git: git/index.md
 - Projetos:
-   - EP2: ep2/index.md
-   - Projeto Final: projeto/index.md
+  - EP2: ep2/index.md
+  - Projeto Final: projeto/index.md
 extra:
   custom_variables:
-    pl_root: https://us.prairielearn.com/pl/course_instance/206137
-    pl_funcao: https://us.prairielearn.com/pl/course_instance/206137/assessment/2634296
-    pl_input: https://us.prairielearn.com/pl/course_instance/206137/assessment/2634298
-    pl_if: https://us.prairielearn.com/pl/course_instance/206137/assessment/2634297
-    pl_while: https://us.prairielearn.com/pl/course_instance/206137/assessment/2634317
-    pl_list: https://us.prairielearn.com/pl/course_instance/206137/assessment/2634300
-    pl_for: https://us.prairielearn.com/pl/course_instance/206137/assessment/2634295
-    pl_dict: https://us.prairielearn.com/pl/course_instance/206137/assessment/2634284
-    pl_string: https://us.prairielearn.com/pl/course_instance/206137/assessment/2634316
-    pl_files: https://us.prairielearn.com/pl/course_instance/206137/assessment/2634294
-    pl_classes: https://us.prairielearn.com/pl/course_instance/206137/assessment/2634283
+    pl_root: https://us.prairielearn.com/pl/course_instance/219634
+    pl_funcao: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697362
+    pl_input: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697364
+    pl_if: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697363
+    pl_while: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697386
+    pl_list: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697366
+    pl_for: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697361
+    pl_dict: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697349
+    pl_string: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697385
+    pl_files: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697360
+    pl_classes: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697348
 extra_javascript:
 - js/tabs.js
 - js/termynal.js
