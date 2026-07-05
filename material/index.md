@@ -13,7 +13,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 ## Links importantes
 
-* [*Blackboard*](https://insper.blackboard.com/ultra/courses/_54718_1/outline){:target="_blank"}: Principalmente utilizado para avisos.
+* [*Blackboard*](https://insper.blackboard.com/ultra/courses/_56034_1/outline){:target="_blank"}: Principalmente utilizado para avisos.
 * [*PrairieLearn*](https://us.prairielearn.com/pl/course_instance/219634){:target="_blank"}: Sistema com os exercícios e avaliações da disciplina.
 <!-- * [*Regras da disciplina*](about.md): Critérios para aprovação. Leia com atenção! -->
 <!-- * [*Calendário*](https://www.insper.edu.br/portaldoprofessor/wp-content/uploads/2015/02/CALENDÁRIO-ACADÊMICO-PROFESSOR-ENG-v2-1.pdf){:target="_blank"}: - Calendário do Insper. -->
@@ -21,15 +21,15 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 ## Datas importantes
 
 * Quizzes
-    * <span class='quiz'>Quiz 1</span>: 08/07 (Input, Funções e Condicionais)
-    * <span class='quiz'>Quiz 2</span>: 14/07 (Estruturas de Repetição)
-    * <span class='quiz'>Quiz 3</span>: 16/07 (Listas)
-    * <span class='quiz'>Quiz 4</span>: 23/07 (Dicionário)
-    * <span class='quiz'>Quiz 5</span>: 27/07 (Strings)
+    * <span class='quiz'>Quiz 1</span>: 08/07 13h00 (Input, Funções e Condicionais)
+    * <span class='quiz'>Quiz 2</span>: 14/07 13h00 (Estruturas de Repetição)
+    * <span class='quiz'>Quiz 3</span>: 16/07 13h00 (Listas)
+    * <span class='quiz'>Quiz 4</span>: 23/07 13h00 (Dicionário)
+    * <span class='quiz'>Quiz 5</span>: 27/07 13h00 (Strings)
 
 * Provas
-    * <span class='p1'>Avaliação Intermediária</span>: 13/07 (Aula 01)
-    * <span class='p2'>Avaliação Final</span>: 29/07 (Aula 01)
+    * <span class='p1'>Avaliação Intermediária</span>: 20/07 09h30
+    * <span class='p2'>Avaliação Final</span>: 29/07 09h30
     * <span class='ps'>Avaliação substitutiva</span>: 03/08
 
 * Projetos
@@ -58,7 +58,7 @@ A Nota de Avaliação (**NA**) é numérica e composta via média ponderada por 
 Ou seja:
 
 $$
-NI = 0.3 \times Prova_{1} + 0.6 \times Prova_{2} + 0.1 \times Quizzes
+NA = 0.3 \times Prova_{1} + 0.6 \times Prova_{2} + 0.1 \times Quizzes
 $$
 
 ### Nota de Projeto (NP):
