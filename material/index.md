@@ -23,7 +23,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 * Quizzes
     * <span class='quiz'>Quiz 1</span>: 08/07 13h00 (Input, Funções e Condicionais)
     * <span class='quiz'>Quiz 2</span>: 14/07 13h00 (Estruturas de Repetição)
-    * <span class='quiz'>Quiz 3</span>: 16/07 13h00 (Listas)
+    * <span class='quiz'>Quiz 3</span>: 17/07 13h00 (Listas)
     * <span class='quiz'>Quiz 4</span>: 23/07 13h00 (Dicionário)
     * <span class='quiz'>Quiz 5</span>: 27/07 13h00 (Strings)
 
