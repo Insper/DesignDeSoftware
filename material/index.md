@@ -34,7 +34,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 * Projetos
     * <span class='ep1'>EP1</span>: 19/07 23h59
-    * <span class='ep1'>EP2</span>: 27/07 23h59
+    * <span class='ep1'>EP2</span>: 28/07 23h59
 
 ## Critérios da Nota
 

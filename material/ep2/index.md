@@ -54,7 +54,7 @@ Você irá implementar um jogo de perguntas e respostas. Cada pergunta tem quatr
 
 Você deve implementar uma versão para terminal (console) do jogo, ou seja, usando `#!python print` e `#!python input` para interagir com o usuário por meio de texto. 
 
-Para te auxiliar nessa tarefa, foram criados os seguintes exercícios (o resultado dos exercícios na Academia Python não afetam a nota, mas as funções criadas neles devem ser utilizadas no EP2):
+Para te auxiliar nessa tarefa, foram criados os seguintes exercícios (o resultado dos exercícios no Prairie Learn não afetam a nota, mas as funções criadas neles devem ser utilizadas no EP2):
 
 - **EP2 Transforma Base**
 - **EP2 Valida Questão**
