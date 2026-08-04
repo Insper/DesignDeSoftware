@@ -4,39 +4,38 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 ## Informações Gerais
 
-|  | Turma Férias |
-|:--|:--|
-| **Professor** | Raul Ikeda |
-| **Auxiliar** | Elisa Malzoni |
-| **Horário** | 09h30 às 11h30 e 13h00 às 15h00<br>segunda à sexta |
-| **Atendimento** | 15h00 às 16h30 todos os dias<br> (exceto dias de AI e AF).|
+|  | Turma A | Turma B | Turma C | 
+|:--|:--|:--|:--|
+| **Professor** | Fillipe M. X. Resina | Márcio F. Stabile Jr. | Humberto Sandmann |
+| **Horário** | segunda e quarta<br>16:30 às 18:30 | segunda e quarta<br>09:45 às 11:45 | segunda 16:30 às 18:30<br>quarta 14:15 às 16:15 |
+| **Atendimento** | 12:30 às 14:00<br>segunda-feira | 07:30 às 09:00<br>sexta-feira | 12:00 às 13:30<br>segunda-feira |
 
 ## Links importantes
 
-* [*Blackboard*]: Principalmente utilizado para avisos.
-* [*PrairieLearn*]: Sistema com os exercícios e avaliações da disciplina.
-<!-- * [*Blackboard*](https://insper.blackboard.com/ultra/courses/_56034_1/outline){:target="_blank"}: Principalmente utilizado para avisos. -->
-<!-- * [*PrairieLearn*](https://us.prairielearn.com/pl/course_instance/219634){:target="_blank"}: Sistema com os exercícios e avaliações da disciplina. -->
-<!-- * [*Regras da disciplina*](about.md): Critérios para aprovação. Leia com atenção! -->
-<!-- * [*Calendário*](https://www.insper.edu.br/portaldoprofessor/wp-content/uploads/2015/02/CALENDÁRIO-ACADÊMICO-PROFESSOR-ENG-v2-1.pdf){:target="_blank"}: - Calendário do Insper. -->
+* [*Blackboard*](https://insper.blackboard.com/){:target="_blank"}: Principalmente utilizado para avisos.
+* [*PrairieLearn*]({{pl_root}}){:target="_blank"}: Sistema com os exercícios e avaliações da disciplina.
+* [*Regras da disciplina*](about.md): Critérios para aprovação. Leia com atenção!
+<!-- * [*Calendário*](https://portaldoprofessor.insper.edu.br/wp-content/uploads/2024/12/CALENDARIO-GRADUACAO-2025_ENG-E-CIECOMP-567-E-8_PROFESSOR-1.pdf){:target="_blank"}: Calendário do Insper. -->
 
 ## Datas importantes
 
 * Quizzes
-    * <span class='quiz'>Quiz 1</span>: 08/07 13h00 (Input, Funções e Condicionais)
-    * <span class='quiz'>Quiz 2</span>: 14/07 13h00 (Estruturas de Repetição)
-    * <span class='quiz'>Quiz 3</span>: 17/07 13h00 (Listas)
-    * <span class='quiz'>Quiz 4</span>: 23/07 13h00 (Dicionário)
-    * <span class='quiz'>Quiz 5</span>: 27/07 13h00 (Strings)
+    * <span class='quiz'>Quiz 1</span>: 04/03 (Input, Funções e Condicionais)
+    * <span class='quiz'>Quiz 2</span>: 16/03 (Estruturas de Repetição)
+    * <span class='quiz'>Quiz 3</span>: Não haverá
+    * <span class='quiz'>Quiz 4</span>: 15/04 (Dicionário)
+    * <span class='quiz'>Quiz 5</span>: 29/04 (Strings)
 
 * Provas
-    * <span class='p1'>Avaliação Intermediária</span>: 20/07 09h30
-    * <span class='p2'>Avaliação Final</span>: 29/07 09h30
-    * <span class='ps'>Avaliação substitutiva</span>: 03/08
+    * <span class='p1'>Avaliação Intermediária</span>: 25/03 ~ 31/03
+    * <span class='p2'>Avaliação Final</span>: 27/05 ~ 02/06
+    * <span class='ps'>Avaliação Substitutiva</span>: 10/06 ~ 12/06
 
 * Projetos
-    * <span class='ep1'>EP1</span>: 19/07 23h59
-    * <span class='ep1'>EP2</span>: 28/07 23h59
+    * <span class='ep1'>EP1</span>: 08/07 23h59
+    * <span class='ep2'>EP2</span>: 15/07 23h59
+    * <span class='epf'>Final</span>: 23/11 12h00
+    * <span class='epf'>Prova do Projeto Final</span>: 25/11
 
 ## Critérios da Nota
 
@@ -45,67 +44,77 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 As atividades avaliativas são:
 
 - <span class='quiz'>Quizzes</span>: avaliações rápidas e individuais, com questões objetivas, que ocorrerão ao longo do curso.
-- <span class='ep1'>Exercício Programa - EP</span>: pequeno projeto individual no qual será construído um programa mais elaborado, mas com requisitos definidos a priori.
-- <span class='p1'>Provas</span>: 2 avaliações individuais cujo conteúdo é acumulativo. As Provas 1 e 2 coincidirão com as datas da Avaliação Intermediária e Avaliação Final do calendário oficial.
-<!-- - <span class='epf'>Projeto Final - PF</span>: Projeto aberto proposto por um grupo de 2 a 3 membros, com escopos definidos pelo conteúdo ministrado na disciplina. -->
+- <span class='ep1'>Exercícios Programa - EP</span>: pequenos projetos nos quais serão construídos programas mais elaborados, mas com requisitos
+definidos a priori.
+- <span class='p1'>Provas</span>: 2 avaliações individuais cujo conteúdo é acumulativo. As Provas 1 e 2 coincidirão com as datas da Avaliação Intermediária
+e Avaliação Final do calendário oficial.
+- <span class='epf'>Projeto Final - PF</span>: Projeto aberto proposto por um grupo de 2 a 3 membros, com escopos definidos pelo conteúdo ministrado na
+disciplina.
 
-### Nota de Avaliação (NA):
+### Nota Individual (NI):
 
-A Nota de Avaliação (**NA**) é numérica e composta via média ponderada por 2 provas e quizzes:
+A Nota Individual (**NI**) é numérica e composta via média ponderada por 2 provas e quizzes:
 
-- <span class='p1'>Prova 1</span> (Avaliação Intermediária), $30\%$;
+- <span class='p1'>Prova 1</span> (Avaliação Intermediária), $35\%$;
 - <span class='p2'>Prova 2</span> (Avaliação Final), $60\%$;
-- <span class='quiz'>Quizzes</span> (média dos quizzes, descartado o de menor valor), $10\%$.
+- <span class='quiz'>Quizzes</span> (média dos quizzes, descartado o de menor valor), $5\%$.
 
 Ou seja:
 
 $$
-NA = 0.3 \times Prova_{1} + 0.6 \times Prova_{2} + 0.1 \times Quizzes
+NI = 0.35 \times Prova_{1} + 0.6 \times Prova_{2} + 0.05 \times Quizzes
 $$
 
-### Nota de Projeto (NP):
+### Nota em Grupo (NG):
 
-A Nota de Projeto (**NP**) é numérica e composta via média ponderada dos:
+A Nota em Grupo (**NG**) é numérica e composta via média ponderada dos:
 
-- <span class='ep1'>EP1</span> (Exercicio-Programa), $40\%$;
-- <span class='ep1'>EP2</span>, $60\%$.
-<!-- - <span class='epf'>Projeto Final - PF</span>, $70\%$. -->
+- <span class='ep1'>EP1</span> (Exercicios Programa 1), $10\%$;
+- <span class='ep2'>EP2</span> (Exercicios Programa 2), $30\%$;
+- <span class='epf'>Projeto Final - PF</span>, $60\%$ | <span class='epf'>PF</span> = min(Entregue, Prova).
 
-Tanto o **EP1** quanto o **EP2** serão avaliados por conceitos segundo uma determinada rubrica e em seguida convertidos em
-nota numérica segundo a tabela oficial da Engenharia.
+Onde, a **PF** é MENOR nota entre a **Nota do Projeto Entregue** e a **Nota da Prova do Projeto**.
 
-As entregas do **EP1** e do **EP2** são obrigatórias e o aluno deve obter nota pelo menos **4** em cada um deles. Caso contrário, a *Nota de Projeto será a menor nota entre o EP1 e EP2*. Considere a seguinte fórmula para cálculo da nota de projeto:
+Tanto os **EPs** quanto o **PF** serão avaliados por conceitos segundo uma determinada rubrica e em seguida convertidos em nota numérica segundo a tabela oficial da Engenharia.
+
+A entrega dos **EPs** e do **PF** é obrigatória e o aluno deve obter nota pelo menos **4** em cada um deles. Caso contrário, a *Nota em Grupo será a menor nota entre os EPs e PF*. Considere a seguinte fórmula para cálculo da nota em grupo:
 
 $$
-\text{NP} = \left\{\begin{array}{lll}
-    EP1 \geq 4 \bigwedge EP2 \geq 4 &
-    \implies & 0.4 \times EP1 + 0.6 \times EP2
+\text{NG} = \left\{\begin{array}{lll}
+    EP_1 \geq 4 \bigwedge EP_2 \geq 4 \bigwedge PF \geq 4 &
+    \implies & 0.1 \times EP_1 + 0.3 \times EP_2 + 0.6 \times PF
     \displaystyle 
     \\
     \\
     \text{Caso contrário} &
     \implies &
-    \min\left(EP1, EP2\right)
+    \min\left(EP_1, EP_2, PF\right)
     \end{array}\right.
 $$
 
 ### Nota Final (NF):
 
-A Nota Final (**NF**) é definida por uma média aritmética entre **NA** e **NP** *se e somente se* **NA** e **NP** forem maiores ou iguais a $5$. Caso contrário, *a Nota final será a menor nota ente NA e NP*. Ou seja:
+A Nota Final (**NF**) é definida por uma média aritmética entre **NI** e **NG** *se e somente se* **NI** e **NG** forem maiores ou iguais a $5$. Caso
+contrário, *a Nota final será a menor nota ente NI e NG*. Ou seja:
 
 $$
 \text{Nota Final} = \left\{\begin{array}{lll}
-    \text{NA} \geq 5 \bigwedge \text{NP} \geq 5 &
+    \text{NI} \geq 5 \bigwedge \text{NG} \geq 5 &
     \implies &
-    \displaystyle \frac{ \text{NA} + \text{NP} } {2}
+    \displaystyle \frac{ \text{NI} + \text{NG} } {2}
     \\
     \\
     \text{Caso contrário} &
     \implies &
-    \min\left(\text{NA}, \text{NP}\right)
+    \min\left(\text{NI}, \text{NG}\right)
     \end{array}\right.
 $$
 
-<!-- - Caso a média individual do aluno (média da avaliação intermediária e avaliação final) fique entre 4 e 5, este deverá realizar a
+- Caso a média individual do aluno (média da avaliação intermediária e avaliação final) fique entre 4 e 5, este deverá realizar a
 prova delta. A prova delta não aumenta a NI, somente permite a aprovação no caso em que a média individual ficar entre 4 e 5,
-e a média aritmética entre NI e NG for maior que 5. -->
+e a média aritmética entre NI e NG for maior que 5.
+
+
+!!! danger "ARGUIÇÃO"
+
+    **TODAS AS NOTAS** da disciplina estão sujeitas a arguição a fim de validação. Em caso de resultado negativo na arguição a nota específica será **ZERADA**.
