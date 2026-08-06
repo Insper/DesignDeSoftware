@@ -117,4 +117,4 @@ e a média aritmética entre NI e NG for maior que 5.
 
 !!! danger "ARGUIÇÃO"
 
-    **TODAS AS NOTAS** da disciplina estão sujeitas a arguição a fim de validação. Em caso de resultado negativo na arguição a nota específica será **ZERADA**.
+    **TODAS AS NOTAS** da disciplina estão sujeitas a arguição a fim de validação. Em caso de resultado negativo na arguição, a nota específica será **ZERADA**.
