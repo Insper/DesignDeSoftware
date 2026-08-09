@@ -14,8 +14,6 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 * [*Blackboard*](https://insper.blackboard.com/){:target="_blank"}: Principalmente utilizado para avisos.
 * [*PrairieLearn*]({{pl_root}}){:target="_blank"}: Sistema com os exercícios e avaliações da disciplina.
-* [*Regras da disciplina*](about.md): Critérios para aprovação. Leia com atenção!
-<!-- * [*Calendário*](https://portaldoprofessor.insper.edu.br/wp-content/uploads/2024/12/CALENDARIO-GRADUACAO-2025_ENG-E-CIECOMP-567-E-8_PROFESSOR-1.pdf){:target="_blank"}: Calendário do Insper. -->
 
 ## Datas importantes
 
@@ -39,7 +37,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 ## Critérios da Nota
 
-## Composição da Nota
+> Critérios para aprovação. Leia com atenção!
 
 As atividades avaliativas são:
 
