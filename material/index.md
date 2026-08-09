@@ -20,20 +20,20 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 ## Datas importantes
 
 * Quizzes
-    * <span class='quiz'>Quiz 1</span>: 04/03 (Input, Funções e Condicionais)
-    * <span class='quiz'>Quiz 2</span>: 16/03 (Estruturas de Repetição)
-    * <span class='quiz'>Quiz 3</span>: Não haverá
-    * <span class='quiz'>Quiz 4</span>: 15/04 (Dicionário)
-    * <span class='quiz'>Quiz 5</span>: 29/04 (Strings)
+    * <span class='quiz'>Quiz 1</span>: 31/08 (Input, Funções e Condicionais)
+    * <span class='quiz'>Quiz 2</span>: 14/09 (Estruturas de Repetição)
+    * <span class='quiz'>Quiz 3</span>: 23/09 (Listas)
+    * <span class='quiz'>Quiz 4</span>: 21/10 (Dicionário)
+    * <span class='quiz'>Quiz 5</span>: 04/11 (Strings)
 
 * Provas
-    * <span class='p1'>Avaliação Intermediária</span>: 25/03 ~ 31/03
-    * <span class='p2'>Avaliação Final</span>: 27/05 ~ 02/06
-    * <span class='ps'>Avaliação Substitutiva</span>: 10/06 ~ 12/06
+    * <span class='p1'>Avaliação Intermediária</span>: 28/09 ~ 30/09
+    * <span class='p2'>Avaliação Final</span>: 30/11 ~ 02/12
+    * <span class='ps'>Avaliação Substitutiva</span>: 07/12 ~ 09/12
 
 * Projetos
-    * <span class='ep1'>EP1</span>: 08/07 23h59
-    * <span class='ep2'>EP2</span>: 15/07 23h59
+    <!-- * <span class='ep1'>EP1</span>: 08/07 23h59
+    * <span class='ep2'>EP2</span>: 15/07 23h59 -->
     * <span class='epf'>Final</span>: 23/11 12h00
     * <span class='epf'>Prova do Projeto Final</span>: 25/11
 

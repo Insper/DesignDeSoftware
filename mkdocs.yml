@@ -27,17 +27,17 @@ nav:
   - EP2: ep2/index.md
 extra:
   custom_variables:
-    pl_root: https://us.prairielearn.com/pl/course_instance/219634
-    pl_funcao: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697362
-    pl_input: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697364
-    pl_if: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697363
-    pl_while: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697386
-    pl_list: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697366
-    pl_for: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697361
-    pl_dict: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697349
-    pl_string: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697385
-    pl_files: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697360
-    pl_classes: https://us.prairielearn.com/pl/course_instance/219634/assessment/2697348
+    pl_root: https://us.prairielearn.com/pl/course_instance/224287
+    pl_funcao: https://us.prairielearn.com/pl/course_instance/224287/assessment/2714094
+    pl_input: https://us.prairielearn.com/pl/course_instance/224287/assessment/2714096
+    pl_if: https://us.prairielearn.com/pl/course_instance/224287/assessment/2714095
+    pl_while: https://us.prairielearn.com/pl/course_instance/224287/assessment/2714118
+    pl_list: https://us.prairielearn.com/pl/course_instance/224287/assessment/2714098
+    pl_for: https://us.prairielearn.com/pl/course_instance/224287/assessment/2714093
+    pl_dict: https://us.prairielearn.com/pl/course_instance/224287/assessment/2714082
+    pl_string: https://us.prairielearn.com/pl/course_instance/224287/assessment/2714117
+    pl_files: https://us.prairielearn.com/pl/course_instance/224287/assessment/2714092
+    pl_classes: https://us.prairielearn.com/pl/course_instance/224287/assessment/2714081
 extra_javascript:
 - js/tabs.js
 - js/termynal.js
