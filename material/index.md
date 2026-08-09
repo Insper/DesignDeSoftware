@@ -34,7 +34,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 * Projetos
     * <span class='ep1'>EP1</span>
     * <span class='ep2'>EP2</span>
-    * <span class='epf'>Final</span>: 23/11 12h00
+    * <span class='epf'>Final</span>: 23/11 12h00 (Antes da Feira de Jogos)
     * <span class='epf'>Prova do Projeto Final</span>: 25/11
 
 ## Critérios da Nota
