@@ -32,8 +32,8 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
     * <span class='ps'>Avaliação Substitutiva</span>: 07/12 ~ 09/12
 
 * Projetos
-    <!-- * <span class='ep1'>EP1</span>: 08/07 23h59
-    * <span class='ep2'>EP2</span>: 15/07 23h59 -->
+    * <span class='ep1'>EP1</span>
+    * <span class='ep2'>EP2</span>
     * <span class='epf'>Final</span>: 23/11 12h00
     * <span class='epf'>Prova do Projeto Final</span>: 25/11
 
