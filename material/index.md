@@ -7,7 +7,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 |  | Turma A | Turma B | Turma C | 
 |:--|:--|:--|:--|
 | **Professor** | Fillipe M. X. Resina | Márcio F. Stabile Jr. | Humberto Sandmann |
-| **Horário** | segunda e quarta<br>16:30 às 18:30 | segunda e quarta<br>09:45 às 11:45 | segunda 16:30 às 18:30<br>quarta 14:15 às 16:15 |
+| **Horário** | segunda e quarta<br>16:30 às 18:30 | segunda e quarta<br>09:45 às 11:45 | segunda<br>16:30 às 18:30<br><br>quarta<br>14:15 às 16:15 |
 | **Atendimento** | segunda-feira<br>12:30 às 14:00 | sexta-feira<br>07:30 às 09:00 | segunda-feira<br>12:00 às 13:30 |
 
 ## Links importantes
