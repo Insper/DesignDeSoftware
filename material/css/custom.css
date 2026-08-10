@@ -34,10 +34,6 @@
 .q4 { background-color: #FFD700; }
 .q5 { background-color: #F2BC12; }
 
-/* Calendário -------------------------------------------------------------
-   Same layout as https://insper.github.io/ML/pt/2026.2/#calendario, adapted
-   from the .md-typeset selectors that site uses to this theme's .ah-typeset. */
-
 /* the calendar table and its legend sit side by side */
 .ah-typeset .calendar-wrap {
     display: flex;
@@ -53,7 +49,7 @@
     min-width: 0;
     table-layout: auto;
     margin-inline: 0;
-    font-size: .8em;
+    font-size: .9em;
 }
 
 /* 1em of cell padding is far too much for single-day cells */
@@ -87,7 +83,7 @@
     padding: .5rem .6rem;
     border: .05rem solid var(--clr-table-background-2);
     border-radius: .2rem;
-    font-size: .8em;
+    font-size: .9em;
 }
 
 .ah-typeset .calendar-legend-title {
