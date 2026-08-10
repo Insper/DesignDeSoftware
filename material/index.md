@@ -17,6 +17,51 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 ## Datas importantes
 
+<div class="calendar-wrap" markdown>
+
+<div class="table-fit" markdown>
+
+| | Dom | Seg | Ter | Qua | Qui | Sex | Sáb |
+|-|-|-|-|-|-|-|-|
+| Ago |    | 10 |    | 12 |    |    |    |
+|     |    | 17 |    | 19 |    |    |    |
+|     |    | 24 |    | 26 |    |    |    |
+|     |    | 31 |    |    |    |    |    |
+| Set |    |    |    | 02 |    |    |    |
+|     |    |    |    | 09 |    |    |    |
+|     |    | 14 |    | 16 |    |    |    |
+|     |    | 21 |    | 23 | <span class='calendar-mexam'>24</span> | <span class='calendar-mexam'>25</span> |    |
+|     |    | <span class='calendar-mexam'>28</span> | <span class='calendar-mexam'>29</span> |  <span class='calendar-mexam'>30</span> |    |    |    |
+| Out |    | 05 |    | 07 |    |    |    |
+|     |    |    |    | 14 |    |    |    |
+|     |    | 19 |    | 21 |    |    |    |
+|     |    | 26 |    | 28 |    |    |    |
+| Nov |    |    |    | 04 |    |    |    |
+|     |    | 09 |    | 11 |    |    |    |
+|     |    | 16 |    | 18 |    |    |    |
+|     |    | 23 |    | 25 | <span class='calendar-fexam'>26</span> | <span class='calendar-fexam'>27</span> |    |
+|     |    | <span class='calendar-fexam'>30</span> |    |    |    |    |    |
+| Dez |    |    | <span class='calendar-fexam'>01</span> | <span class='calendar-fexam'>02</span> |    |    |    |
+|     |    | <span class='calendar-sexam'>07</span> | <span class='calendar-sexam'>08</span> | <span class='calendar-sexam'>09</span> |    |    |    |
+
+</div>
+
+<div class="calendar-legend" markdown>
+
+<div class="calendar-legend-box" markdown>
+
+<p class="calendar-legend-title">Individual</p>
+
+<span class='calendar-mexam'>Avaliação Intermediária</span>
+<span class='calendar-fexam'>Avaliação Final</span>
+<span class='calendar-sexam'>Avaliação Substitutiva</span>
+
+</div>
+
+</div>
+
+</div>
+
 * Quizzes
     * <span class='quiz'>Quiz 1</span>: 31/08 (Input, Funções e Condicionais)
     * <span class='quiz'>Quiz 2</span>: 14/09 (Estruturas de Repetição)
