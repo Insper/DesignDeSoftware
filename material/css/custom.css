@@ -1,16 +1,14 @@
-.quiz, .q1, .q2, .q3, .q4, .q5, .ep1, .ep2, .p1, .p2, .ps, .epf, .epp {
+.quiz, .q1, .q2, .q3, .q4, .q5, .ep1, .ep2, .provas, .p1, .p2, .ps, .epf, .epp {
     border-radius: 5px;
     padding: 0px 4px;
 }
-
-.p1, .p2, .ps {
+.provas, .p1, .p2, .ps {
     border: 1px solid red;
-    background-color: lightpink;
+    background-color: #FE7F9C;
 }
-.ps {
-    border: 1px solid red;
-    background-color: lightcoral;
-}
+.p1 { background-color: #FF9F70; }
+.p2 { background-color: #FF8367; }
+.ps { background-color: #FF8888; }
 .epf {
     background-color: lightgreen;
     border: 1px solid green;
@@ -24,6 +22,7 @@
     border: 1px solid blue;
     background-color: lightsteelblue;
 }
+.ep2 { background-color: #AAAAFF; }
 .quiz, .q1, .q2, .q3, .q4, .q5 {
     border: 1px solid orange;
     background-color: lightgoldenrodyellow;
