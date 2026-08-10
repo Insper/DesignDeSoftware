@@ -1,25 +1,109 @@
-.quiz, .ep1, .ep2, .p1, .p2, .ps, .epf {
+.quiz, .q1, .q2, .q3, .q4, .q5, .ep1, .ep2, .provas, .p1, .p2, .ps, .epf, .epp {
     border-radius: 5px;
     padding: 0px 4px;
 }
-
-.p1, .p2, .ps {
+.provas, .p1, .p2, .ps {
     border: 1px solid red;
-    background-color: lightpink;
+    background-color: #FE7F9C;
 }
-.ps {
-    border: 1px solid red;
-    background-color: lightcoral;
-}
+.p1 { background-color: #FF9F70; }
+.p2 { background-color: #FF8367; }
+.ps { background-color: #FF8888; }
 .epf {
     background-color: lightgreen;
     border: 1px solid green;
+}
+.epp {
+    background-color: #009900;
+    border: 1px solid green;
+    color: white;
 }
 .ep1, .ep2 {
     border: 1px solid blue;
     background-color: lightsteelblue;
 }
-.quiz {
+.ep2 { background-color: #AAAAFF; }
+.quiz, .q1, .q2, .q3, .q4, .q5 {
     border: 1px solid orange;
     background-color: lightgoldenrodyellow;
+}
+
+.q1 { background-color: #FFFDD0; }
+.q2 { background-color: #FFFF80; }
+.q3 { background-color: #FFFF00; }
+.q4 { background-color: #FFD700; }
+.q5 { background-color: #F2BC12; }
+
+/* Calendário -------------------------------------------------------------
+   Same layout as https://insper.github.io/ML/pt/2026.2/#calendario, adapted
+   from the .md-typeset selectors that site uses to this theme's .ah-typeset. */
+
+/* the calendar table and its legend sit side by side */
+.ah-typeset .calendar-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: .8rem 1.6rem;
+}
+
+/* the theme centers tables and lays them out fixed-width; a calendar should
+   instead shrink to its content and stay flush left inside the flex row */
+.ah-typeset .table-fit table {
+    width: auto;
+    min-width: 0;
+    table-layout: auto;
+    margin-inline: 0;
+    font-size: .8em;
+}
+
+/* 1em of cell padding is far too much for single-day cells */
+.ah-typeset .table-fit th,
+.ah-typeset .table-fit td {
+    min-width: 0;
+    padding: .25em .5em;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* the month column labels the row, so keep it left aligned */
+.ah-typeset .table-fit th:first-child,
+.ah-typeset .table-fit td:first-child {
+    text-align: left;
+    font-weight: 700;
+}
+
+.ah-typeset .calendar-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1em;
+}
+
+/* framed group inside the legend */
+.ah-typeset .calendar-legend-box {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    padding: .5rem .6rem;
+    border: .05rem solid var(--clr-table-background-2);
+    border-radius: .2rem;
+    font-size: .8em;
+}
+
+.ah-typeset .calendar-legend-title {
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    opacity: .65;
+    font-size: .7em;
+}
+
+/* one entry per line, however many spans the paragraph holds */
+.ah-typeset .calendar-legend p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .35rem;
+    margin: 0;
 }
