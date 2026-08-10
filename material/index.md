@@ -26,23 +26,23 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 | Ago |    | 10 |    | 12 |    |    |    |
 |     |    | 17 |    | 19 |    |    |    |
 |     |    | 24 |    | 26 |    |    |    |
-|     |    | 31 |    |    |    |    |    |
+|     |    | <span class='q1'>31</span> |    |    |    |    |    |
 | Set |    |    |    | 02 |    |    |    |
 |     |    |    |    | 09 |    |    |    |
-|     |    | 14 |    | 16 |    |    |    |
-|     |    | 21 |    | 23 | <span class='calendar-mexam'>24</span> | <span class='calendar-mexam'>25</span> |    |
-|     |    | <span class='calendar-mexam'>28</span> | <span class='calendar-mexam'>29</span> |  <span class='calendar-mexam'>30</span> |    |    |    |
+|     |    | <span class='q2'>14</span> |    | 16 |    |    |    |
+|     |    | 21 |    | <span class='q3'>23</span> | <span class='p1'>24</span> | <span class='p1'>25</span> |    |
+|     |    | <span class='p1'>28</span> | <span class='p1'>29</span> | <span class='p1'>30</span> |    |    |    |
 | Out |    | 05 |    | 07 |    |    |    |
 |     |    |    |    | 14 |    |    |    |
-|     |    | 19 |    | 21 |    |    |    |
+|     |    | 19 |    | <span class='q4'>21</span> |    |    |    |
 |     |    | 26 |    | 28 |    |    |    |
-| Nov |    |    |    | 04 |    |    |    |
+| Nov |    |    |    | <span class='q5'>04</span> |    |    |    |
 |     |    | 09 |    | 11 |    |    |    |
 |     |    | 16 |    | 18 |    |    |    |
-|     |    | 23 |    | 25 | <span class='calendar-fexam'>26</span> | <span class='calendar-fexam'>27</span> |    |
-|     |    | <span class='calendar-fexam'>30</span> |    |    |    |    |    |
-| Dez |    |    | <span class='calendar-fexam'>01</span> | <span class='calendar-fexam'>02</span> |    |    |    |
-|     |    | <span class='calendar-sexam'>07</span> | <span class='calendar-sexam'>08</span> | <span class='calendar-sexam'>09</span> |    |    |    |
+|     |    | <span class='epf'>23</span> |    | <span class='epp'>25</span> | <span class='p2'>26</span> | <span class='p2'>27</span> |    |
+|     |    | <span class='p2'>30</span> |    |    |    |    |    |
+| Dez |    |    | <span class='p2'>01</span> | <span class='p2'>02</span> |    |    |    |
+|     |    | <span class='ps'>07</span> | <span class='ps'>08</span> | <span class='ps'>09</span> |    |    |    |
 
 </div>
 
@@ -50,35 +50,40 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 <div class="calendar-legend-box" markdown>
 
-<p class="calendar-legend-title">Individual</p>
+<p class="calendar-legend-title">Quizzes</p>
 
-<span class='calendar-mexam'>Avaliação Intermediária</span>
-<span class='calendar-fexam'>Avaliação Final</span>
-<span class='calendar-sexam'>Avaliação Substitutiva</span>
+<span class='q1'>Quiz 1: Input, Funções e Condicionais</span>
+<span class='q2'>Quiz 2: Estruturas de Repetição</span>
+<span class='q3'>Quiz 3: Listas</span>
+<span class='q4'>Quiz 4: Dicionários</span>
+<span class='q5'>Quiz 5: Strings</span>
+
+</div>
+
+<div class="calendar-legend-box" markdown>
+
+<p class="calendar-legend-title">Provas</p>
+
+<span class='p1'>Avaliação Intermediária</span>
+<span class='p2'>Avaliação Final</span>
+<span class='ps'>Avaliação Substitutiva</span>
+
+</div>
+
+<div class="calendar-legend-box" markdown>
+
+<p class="calendar-legend-title">Projetos</p>
+
+<span class='ep1'>EP1</span>
+<span class='ep2'>EP2</span>
+<span class='epf'>Final (até 12h00, antes da Feira)</span>
+<span class='epp'>Prova do Projeto Final</span>
 
 </div>
 
 </div>
 
 </div>
-
-* Quizzes
-    * <span class='quiz'>Quiz 1</span>: 31/08 (Input, Funções e Condicionais)
-    * <span class='quiz'>Quiz 2</span>: 14/09 (Estruturas de Repetição)
-    * <span class='quiz'>Quiz 3</span>: 23/09 (Listas)
-    * <span class='quiz'>Quiz 4</span>: 21/10 (Dicionário)
-    * <span class='quiz'>Quiz 5</span>: 04/11 (Strings)
-
-* Provas
-    * <span class='p1'>Avaliação Intermediária</span>: 28/09 ~ 30/09
-    * <span class='p2'>Avaliação Final</span>: 30/11 ~ 02/12
-    * <span class='ps'>Avaliação Substitutiva</span>: 07/12 ~ 09/12
-
-* Projetos
-    * <span class='ep1'>EP1</span>
-    * <span class='ep2'>EP2</span>
-    * <span class='epf'>Final</span>: 23/11 12h00 (Antes da Feira de Jogos)
-    * <span class='epf'>Prova do Projeto Final</span>: 25/11
 
 ## Critérios da Nota
 
@@ -114,7 +119,7 @@ A Nota em Grupo (**NG**) é numérica e composta via média ponderada dos:
 
 - <span class='ep1'>EP1</span> (Exercicios Programa 1), $10\%$;
 - <span class='ep2'>EP2</span> (Exercicios Programa 2), $30\%$;
-- <span class='epf'>Projeto Final - PF</span>, $60\%$ | <span class='epf'>PF</span> = min(Entregue, Prova).
+- <span class='epf'>Projeto Final - PF</span>, $60\%$ | <span class='epf'>PF</span> = min(<span class='epf'>Entregue</span>, <span class='epp'>Prova</span>).
 
 Onde, a **PF** é MENOR nota entre a **Nota do Projeto Entregue** e a **Nota da Prova do Projeto**.
 

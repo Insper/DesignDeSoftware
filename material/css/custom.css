@@ -1,4 +1,4 @@
-.quiz, .ep1, .ep2, .p1, .p2, .ps, .epf {
+.quiz, .q1, .q2, .q3, .q4, .q5, .ep1, .ep2, .p1, .p2, .ps, .epf, .epp {
     border-radius: 5px;
     padding: 0px 4px;
 }
@@ -15,14 +15,25 @@
     background-color: lightgreen;
     border: 1px solid green;
 }
+.epp {
+    background-color: #009900;
+    border: 1px solid green;
+    color: white;
+}
 .ep1, .ep2 {
     border: 1px solid blue;
     background-color: lightsteelblue;
 }
-.quiz {
+.quiz, .q1, .q2, .q3, .q4, .q5 {
     border: 1px solid orange;
     background-color: lightgoldenrodyellow;
 }
+
+.q1 { background-color: #FFFDD0; }
+.q2 { background-color: #FFFF80; }
+.q3 { background-color: #FFFF00; }
+.q4 { background-color: #FFD700; }
+.q5 { background-color: #F2BC12; }
 
 /* Calendário -------------------------------------------------------------
    Same layout as https://insper.github.io/ML/pt/2026.2/#calendario, adapted
@@ -77,6 +88,7 @@
     padding: .5rem .6rem;
     border: .05rem solid var(--clr-table-background-2);
     border-radius: .2rem;
+    font-size: .8em;
 }
 
 .ah-typeset .calendar-legend-title {
@@ -96,13 +108,3 @@
     gap: .35rem;
     margin: 0;
 }
-
-.calendar-mexam, .calendar-fexam, .calendar-sexam {
-    padding: 2px 4px;
-    border-radius: 4px;
-    color: white;
-}
-
-.calendar-mexam { background-color: #EE0F0F; }
-.calendar-fexam { background-color: crimson; }
-.calendar-sexam { background-color: coral; }
