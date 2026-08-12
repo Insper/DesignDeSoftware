@@ -498,7 +498,7 @@
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
 <span class="normal"><a href="#__codelineno-3-4">4</a></span>
 <span class="normal"><a href="#__codelineno-3-5">5</a></span>
-<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">testa_x_y</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">def</span> <span class="nf">testa_x_y</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a>        <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3"></a>            <span class="n">resultado</span> <span class="o">=</span> <span class="mi">1</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4"></a>        <span class="k">return</span> <span class="n">resultado</span>
@@ -585,9 +585,9 @@
 <a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">if</span> <span class="n">numero</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;0 não é nem par, nem ímpar&#39;</span><span class="p">)</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="k">elif</span> <span class="n">numero</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Resto da divisão de número por 2</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> é par&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">))</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">numero</span><span class="si">}</span><span class="s1"> é par&#39;</span><span class="p">)</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> é ímpar&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">numero</span><span class="p">))</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">numero</span><span class="si">}</span><span class="s1"> é ímpar&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>O que deve acontecer se o número <code class="language-python highlight"><span class="mi">0</span></code> for digitado? E o número <code class="language-python highlight"><span class="mi">11</span></code>? E o número <code class="language-python highlight"><span class="mi">10000</span></code>?</p>
 <div class="form-elements">
@@ -639,7 +639,7 @@
 <span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-6-10">10</a></span>
 <span class="normal"><a href="#__codelineno-6-11">11</a></span>
-<span class="normal"><a href="#__codelineno-6-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">testa_maioridade</span><span class="p">(</span><span class="n">idade</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">def</span> <span class="nf">testa_maioridade</span><span class="p">(</span><span class="n">idade</span><span class="p">):</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2"></a>    <span class="k">if</span> <span class="n">idade</span> <span class="o">&gt;=</span> <span class="mi">21</span><span class="p">:</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3"></a>        <span class="k">return</span> <span class="s1">&#39;Maior nos EUA e BRASIL&#39;</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4"></a>    <span class="k">else</span><span class="p">:</span>

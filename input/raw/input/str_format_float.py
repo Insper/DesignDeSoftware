@@ -1,3 +1,3 @@
 import math
 
-print('pi é {0} mais ou menos'.format(math.pi))
+print(f'pi é {math.pi} mais ou menos')

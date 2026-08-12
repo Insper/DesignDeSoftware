@@ -472,17 +472,15 @@
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O retângulo de lados </span><span class="si">{0}</span><span class="s1"> e </span><span class="si">{1}</span><span class="s1"> tem área </span><span class="si">{2}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;O retângulo de lados </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> e </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1"> tem área </span><span class="si">{</span><span class="n">z</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Usamos o <code class="language-python highlight"><span class="o">.</span><span class="n">format</span><span class="p">()</span></code> para escrever valores no meio do texto. É importante notar que:</p>
-<ol>
-<li>A sequência dos argumentos (conteúdo dentro dos parênteses do <code class="language-python highlight"><span class="o">.</span><span class="n">format</span><span class="p">()</span></code>) é importante.</li>
-<li>O primeiro argumento (<code class="language-python highlight"><span class="n">x</span></code>) será inserido no lugar do <code class="language-python highlight"><span class="p">{</span><span class="mi">0</span><span class="p">}</span></code>, o segundo argumento (<code class="language-python highlight"><span class="n">y</span></code>) será inserido no lugar do <code class="language-python highlight"><span class="p">{</span><span class="mi">1</span><span class="p">}</span></code> e o terceiro argumento (<code class="language-python highlight"><span class="n">z</span></code>) será inserido no lugar do <code class="language-python highlight"><span class="p">{</span><span class="mi">2</span><span class="p">}</span></code>.</li>
-<li>Em Python (e em programação em geral) começamos a contar a partir do zero, ou seja, 0 é o primeiro, 1 é o segundo, 2 é o terceiro e assim por diante.</li>
-<li>O <code class="language-python highlight"><span class="o">.</span><span class="n">format</span><span class="p">()</span></code> é executado primeiro, escrevendo os valores no meio do texto, e depois o resultado é utilizado pela função <code>print()</code>, mostrando o resultado na tela.</li>
-</ol>
+<p>Podemos também imprimir o conteúdo de uma variável dentro de um texto. Para isso, utilizamos <code>f-strings</code>, que são strings (textos) que começam com a letra <code>f</code> antes das aspas. Dentro de uma f-string, podemos colocar o conteúdo de uma variável dentro de chaves <code>{}</code>. Por exemplo:</p>
+<div class="language-python highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;O valor de x é </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Isso vai imprimir: <code>O valor de x é 5</code>.</p>
 </div>
 
 

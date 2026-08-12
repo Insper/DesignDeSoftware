@@ -6,4 +6,4 @@ for nome_e_telefone in lista:
     nome = nome_e_telefone[0]
     if nome == nome_selecionado:
         telefone = nome_e_telefone[1]
-        print("Telefone de {0} é: {1}".format(nome, telefone))
+        print(f"Telefone de {nome} é: {telefone}")
