@@ -202,7 +202,7 @@ Isso define uma classe `#!python Point` que possui coordenadas `#!python x` e `#
 
 ```python
 ponto = Point()
-print('O ponto está nas coordenadas x={0} e y={1}'.format(ponto.x, ponto.y))
+print(f'O ponto está nas coordenadas x={ponto.x} e y={ponto.y}')
 ```
 
 O código acima vai imprimir: `#!python O ponto está nas coordenadas x=0 e y=0`. O `#!python x` e `#!python y` são variáveis (chamamos de atributos) que estão ligadas àquele `#!python ponto` específico. Podemos inclusive mudar o seu valor:
@@ -211,7 +211,7 @@ O código acima vai imprimir: `#!python O ponto está nas coordenadas x=0 e y=0`
 ponto = Point()
 ponto.x = 2
 ponto.y = 5
-print('O ponto está nas coordenadas x={0} e y={1}'.format(ponto.x, ponto.y))
+print(f'O ponto está nas coordenadas x={ponto.x} e y={ponto.y}')
 ```
 
 Esse novo código vai imprimir: `#!python O ponto está nas coordenadas x=2 e y=5`. Podemos modificar a nossa classe para que ela receba como argumentos os valores das coordenadas assim que um novo ponto é criado:
@@ -223,7 +223,7 @@ class Point:
         self.y = y_coord
 
 ponto = Point(4, 1)
-print('O ponto está nas coordenadas x={0} e y={1}'.format(ponto.x, ponto.y))
+print(f'O ponto está nas coordenadas x={ponto.x} e y={ponto.y}')
 ```
 
 Esse novo código vai imprimir: `#!python O ponto está nas coordenadas x=4 e y=1`. A função `#!python __init__` é um tipo de função especial que é chamada quando o novo ponto é criado. Duas observações importantes:
@@ -247,7 +247,7 @@ class Point:
 p1 = Point(4, 1)
 p2 = Point(7, 5)
 d = p1.distance_to(p2)
-print('A distância de ({0}, {1}) a ({2}, {3}) é {4}'.format(p1.x, p1.y, p2.x, p2.y, d))
+print(f'A distância de ({p1.x}, {p1.y}) a ({p2.x}, {p2.y}) é {d}')
 ```
 
 O programa acima vai imprimir: `#!python A distância de (4, 1) a (7, 5) é 5`. Considere o comando na penúltima linha: `#!python d = p1.distance_to(p2)`. Ele segue uma estrutura muito parecida com o que já fazíamos com strings, por exemplo:

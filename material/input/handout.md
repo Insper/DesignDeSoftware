@@ -99,7 +99,7 @@ O comando `#!python int(3.14)` gerou o número inteiro `#!python 3`. Mas será q
 
 ## Formatação de strings
 
-Na aula passada vimos que podemos formatar uma string utilizando a função `#!python .format()` para incluir os valores armazenados em variáveis. Por exemplo:
+Na aula passada vimos que podemos formatar uma string utilizando `f-strings` para incluir os valores armazenados em variáveis. Por exemplo:
 
 ```python linenums="1"
 --8<-- "input/raw/input/str_format.py"
@@ -113,7 +113,17 @@ Esse programa vai imprimir `#!python a vale 10, b vale 7 e a + b = 17` no termin
 
 Quantas casas decimais do número pi foram apresentadas? E se quisermos mostrar apenas as 3 primeiras?
 
-Para isso podemos usar [diretivas de formatação](https://docs.python.org/3.7/library/string.html#formatspec), que podem ser especificadas com um "`#!python :`" (dois pontos) depois do índice. Por exemplo `#!python '{0:.1f}, {1:.4f}'.format(1.23456, 7.89123)` vai gerar a string `#!python '1.2, 7.8912'`. Vamos por partes:
+Para isso podemos usar [diretivas de formatação](https://docs.python.org/3.13/library/string.html#formatspec), que podem ser especificadas com um "`#!python :`" (dois pontos) depois do índice. Por exemplo:
+
+```python linenums="1"
+x = 1.23456
+y = 7.89123
+print(f'x = {x:.1f}, y = {y:.4f}')
+```
+
+Vai imprimir `x = 1.2, y = 7.8912`. A diretiva `#!python .1f` significa "mostre apenas 1 casa decimal do número" e a diretiva `#!python .4f` significa "mostre apenas 4 casas decimais do número".
+
+Vamos por partes:
 
 <img src="../raw/input/str_format.png" alt="Exemplo de formatação de strings" width="60%" />
 
