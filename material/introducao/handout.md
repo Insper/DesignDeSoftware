@@ -159,9 +159,11 @@ Podemos usar variáveis dentro de outras expressões. Por exemplo:
 
 !!! info
 
-    Usamos o `#!python .format()` para escrever valores no meio do texto. É importante notar que:
+    Podemos também imprimir o conteúdo de uma variável dentro de um texto. Para isso, utilizamos `f-strings`, que são strings (textos) que começam com a letra `f` antes das aspas. Dentro de uma f-string, podemos colocar o conteúdo de uma variável dentro de chaves `{}`. Por exemplo:
 
-    1. A sequência dos argumentos (conteúdo dentro dos parênteses do `#!python .format()`) é importante.
-    2. O primeiro argumento (`#!python x`) será inserido no lugar do `#!python {0}`, o segundo argumento (`#!python y`) será inserido no lugar do `#!python {1}` e o terceiro argumento (`#!python z`) será inserido no lugar do `#!python {2}`.
-    3. Em Python (e em programação em geral) começamos a contar a partir do zero, ou seja, 0 é o primeiro, 1 é o segundo, 2 é o terceiro e assim por diante.
-    4. O `#!python .format()` é executado primeiro, escrevendo os valores no meio do texto, e depois o resultado é utilizado pela função `print()`, mostrando o resultado na tela.
+    ```python
+    x = 5
+    print(f"O valor de x é {x}")
+    ```
+
+    Isso vai imprimir: `O valor de x é 5`.
