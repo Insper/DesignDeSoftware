@@ -195,5 +195,5 @@ de
 
 # Referências
 
-- https://docs.python.org/3.7/tutorial/inputoutput.html
-- https://docs.python.org/3.7/library/string.html#formatspec
+- https://docs.python.org/3.13/tutorial/inputoutput.html
+- https://docs.python.org/3.13/library/string.html#formatspec
