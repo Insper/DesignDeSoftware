@@ -32,10 +32,10 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 |     |    | <span class='q2'>14</span> |    | 16 |    |    |    |
 |     |    | 21 |    | <span class='q3'>23</span> | <span class='p1'>24</span> | <span class='p1'>25</span> |    |
 |     |    | <span class='p1'>28</span> | <span class='p1'>29</span> | <span class='p1'>30</span> |    |    |    |
-| Out |    | 05 |    | 07 |    |    |    |
+| Out |    | <span class='ep1'>05</span> |    | 07 |    |    |    |
 |     |    |    |    | 14 |    |    |    |
 |     |    | 19 |    | <span class='q4'>21</span> |    |    |    |
-|     |    | 26 |    | 28 |    |    |    |
+|     |    | 26 |    | <span class='ep2'>28</span> |    |    |    |
 | Nov |    |    |    | <span class='q5'>04</span> |    |    |    |
 |     |    | 09 |    | 11 |    |    |    |
 |     |    | 16 |    | 18 |    |    |    |
