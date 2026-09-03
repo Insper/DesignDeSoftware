@@ -1,14 +1,17 @@
-.quiz, .q1, .q2, .q3, .q4, .q5, .ep1, .ep2, .provas, .p1, .p2, .ps, .epf, .epp {
+.quiz, .q1, .q2, .q3, .q4, .q5, .ep1, .ep2, .provas, .p1, .p2, .ps, .epf, .epp, .p1w, .p2w, .psw {
     border-radius: 5px;
     padding: 0px 4px;
 }
-.provas, .p1, .p2, .ps {
+.provas, .p1, .p2, .ps, .p1w, .p2w, .psw {
     border: 1px solid red;
     background-color: #FE7F9C;
 }
 .p1 { background-color: #FF9F70; }
 .p2 { background-color: #FF8367; }
 .ps { background-color: #FF8888; }
+.p1w { background-color: #FFAFA5; border: 1px solid #FFAFA0; color: white; }
+.p2w { background-color: #FFB39C; border: 1px solid #FFB397; color: white; }
+.psw { background-color: #FFB8BD; border: 1px solid #FFB8B8; color: white; }
 .epf {
     background-color: lightgreen;
     border: 1px solid green;

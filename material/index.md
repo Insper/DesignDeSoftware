@@ -30,8 +30,8 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 | Set |    |    |    | 02 |    |    |    |
 |     |    |    |    | 09 |    |    |    |
 |     |    | <span class='q2'>14</span> |    | 16 |    |    |    |
-|     |    | 21 |    | <span class='q3'>23</span> | <span class='p1'>24</span> | <span class='p1'>25</span> |    |
-|     |    | <span class='p1'>28</span> | <span class='p1'>29</span> | <span class='p1'>30</span> |    |    |    |
+|     |    | 21 |    | <span class='q3'>23</span> | <span class='p1w'>24</span> | <span class='p1w'>25</span> |    |
+|     |    | <span class='p1'>28</span> | <span class='p1w'>29</span> | <span class='p1'>30</span> |    |    |    |
 | Out |    | <span class='ep1'>05</span> |    | 07 |    |    |    |
 |     |    |    |    | 14 |    |    |    |
 |     |    | 19 |    | <span class='q4'>21</span> |    |    |    |
@@ -39,9 +39,9 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 | Nov |    |    |    | <span class='q5'>04</span> |    |    |    |
 |     |    | 09 |    | 11 |    |    |    |
 |     |    | 16 |    | 18 |    |    |    |
-|     |    | <span class='epf'>23</span> |    | <span class='epp'>25</span> | <span class='p2'>26</span> | <span class='p2'>27</span> |    |
+|     |    | <span class='epf'>23</span> |    | <span class='epp'>25</span> | <span class='p2w'>26</span> | <span class='p2w'>27</span> |    |
 |     |    | <span class='p2'>30</span> |    |    |    |    |    |
-| Dez |    |    | <span class='p2'>01</span> | <span class='p2'>02</span> |    |    |    |
+| Dez |    |    | <span class='p2w'>01</span> | <span class='p2'>02</span> |    |    |    |
 |     |    | <span class='ps'>07</span> | <span class='ps'>08</span> | <span class='ps'>09</span> |    |    |    |
 
 </div>
