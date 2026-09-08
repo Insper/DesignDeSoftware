@@ -31,7 +31,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 |     |    |    |    | 09 |    |    |    |
 |     |    | <span class='q2'>14</span> |    | 16 |    |    |    |
 |     |    | 21 |    | <span class='q3'>23</span> | <span class='p1w'>24</span> | <span class='p1w'>25</span> |    |
-|     |    | <span class='p1'>28</span> | <span class='p1w'>29</span> | <span class='p1'>30</span> |    |    |    |
+|     |    | <span class='p1w'>28</span> | <span class='p1w'>29</span> | <span class='p1'>30</span> |    |    |    |
 | Out |    | <span class='ep1'>05</span> |    | 07 |    |    |    |
 |     |    |    |    | 14 |    |    |    |
 |     |    | 19 |    | <span class='q4'>21</span> |    |    |    |
