@@ -75,7 +75,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 <p class="calendar-legend-title">Projetos</p>
 
 <span class='ep1'>EP1</span>
-<span class='ep2'>EP2</span>
+<!-- <span class='ep2'>EP2</span> -->
 <span class='epf'>Final (até 12h00, antes da Feira)</span>
 <span class='epp'>Prova do Projeto Final</span>
 
@@ -117,9 +117,9 @@ $$
 
 A Nota em Grupo (**NG**) é numérica e composta via média ponderada dos:
 
-- <span class='ep1'>EP1</span> (Exercicios Programa 1), $10\%$;
-- <span class='ep2'>EP2</span> (Exercicios Programa 2), $30\%$;
-- <span class='epf'>Projeto Final - PF</span>, $60\%$ | <span class='epf'>PF</span> = min(<span class='epf'>Entregue</span>, <span class='epp'>Prova</span>).
+- <span class='ep1'>EP1</span> (Exercicios Programa 1), $35\%$;
+<!-- - <span class='ep2'>EP2</span> (Exercicios Programa 2), $30\%$; -->
+- <span class='epf'>Projeto Final - PF</span>, $65\%$ | <span class='epf'>PF</span> = min(<span class='epf'>Entregue</span>, <span class='epp'>Prova</span>).
 
 Onde, a **PF** é MENOR nota entre a **Nota do Projeto Entregue** e a **Nota da Prova do Projeto**.
 
