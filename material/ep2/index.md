@@ -1,93 +1,98 @@
-# Exercício Programa - Fortuna DesSoft!
+# Exercício Programa - Batalha Naval Simplificada
 
-**Este EP deve ser feito individualmente e deve utilizar o github para registrar o histórico do código e para fazer a entrega.**
+**Este EP pode ser feito individualmente ou em duplas e deve utilizar o github para registrar o histórico do código e para fazer a entrega (com contribuições de ambos os membros, no caso de duplas).**
 
-**É necessário utilizar o github e fazer commits ao longo do desenvolvimento do projeto.**
+**Caso faça em dupla, defina quais exercícios cada integrante ficará responsável.**
 
-O objetivo deste exercício programa (EP) é colocar em prática os conceitos intermediários de programação em ```Python``` em um problema um pouco maior do que os exercícios de aula. **Este EP deve ser feito individualmente e utilizar o git para registrar o histórico do código e para fazer a entrega (com contribuições parciais).**
+**Caso faça individualmente, ainda é necessário utilizar o github e fazer commits ao longo do desenvolvimento do projeto.**
 
-Neste EP você vai implementar o jogo de **Fortuna DesSoft**, descrito a seguir.
+Para exercitar nossas habilidades com programação, vamos desenvolver o jogo *Batalha Naval*.
 
-## Regras do jogo
+Nesse jogo, o objetivo do jogador é tentar afundar todos os navios inimigos. É preciso posicionar estrategicamente os navios no começo do jogo e contar com a sorte para afundar os navios do adversário antes dele afundar os seus.
 
-Você irá implementar um jogo de perguntas e respostas. Cada pergunta tem quatro alternativas e, conforme o jogador responde as perguntas corretamente, tem seu prêmio aumentado. Caso o jogador erre alguma resposta, perde o prêmio e sai sem nada! O jogo acaba quando o jogador atingir o prêmio de **1 milhão** ou escolher parar!
+## O jogo
 
-### Descrição geral dos passos do jogo:
-1. O jogador deve informar seu nome;
-2. O computador exibe um pequeno manual do jogo;
-3. Inicia-se o jogo de perguntas e respostas;
-4. O computador sorteia uma pergunta aleatória inédita, exibindo a questão e as opções de resposta;
-5. O usuário escolhe entre as opções: `A`, `B`, `C`, `D`, `pula` ou `ajuda`;
-6. Caso o jogador opte por `ajuda`, sorteie aleatoriamente uma ou duas (quantidade aleatória) respostas sabidamente incorretas e dê a dica de que estas são sabidamente erradas!
-7. Caso o jogador opte por `pula`, se o jogador ainda tiver pulos disponíveis, volte ao passo **4**, senão informe que não tem mais pulos e exiba a pergunta novamente
-8. Caso o jogador escolha uma resposta correta, o seu prêmio aumenta. Considere que o usuário inicia com zero reais e que sua premiação aumenta conforme a lista:
-    ```python
-    1000
-    5000
-    10000
-    30000
-    50000
-    100000
-    300000
-    500000
-    1000000
-    ```
-9. Caso o jogador escolha uma resposta errada, o jogo acaba e ele sai sem nenhum prêmio!
-10. Pergunte se o jogador quer parar ou continuar. 
+- O primeiro passo do jogo é posicionar um total de `#!python 10` embarcações de diversas posições em um grid de `#!python 10` por `#!python 10`.
 
-### Observações:
-- Inicialmente, o jogador tem direito a `3` pulos e `2` ajudas;
-- O jogo deve validar se a base de dados está consistente;
-- O jogo não deve sortear perguntas repetidas;
-- no passo **5**, valide se o usuário escolheu alguma opção inexistente;
-- no passo **6**, não é possível pedir ajuda mais de uma vez. Valide e exiba mensagem adequada;
+<img src="raw/ep2/grid.png" alt="Grid" style="width: 30%;" />
 
-### Da vitória:
+- Nesta versão do jogo trabalharemos com `#!python 4` tipos de embarcações diferentes. Cada tipo possui um tamanho, que representa quantos espaços do grid ele ocupa. Veja as embarcações e suas descrições a seguir:
 
-1. O jogo acaba quando o jogador atingir o prêmio de 1 milhão. Após cada pergunta correta, o jogador tem a opção de parar e sair com o prêmio já conquistado.
+<img src="raw/ep2/embarcacoes.png" alt="Embarcações" width="30%" />
 
-## O que você precisa fazer
+___
 
-<div style="background-color: #fff3cd; color: #856404; padding: 12px; border-left: 5px solid #ffeeba; border-radius: 4px;">
-<a href="https://macielcalebe.github.io/dessoft-ferias-exemplo-ep2/">Veja um exemplo do que é esperado no EP2 <strong>neste link</strong></a>
-</div>
+<img src="raw/ep2/embarcacoes_infos.png" alt="Embarcações e suas informações" width="80%" />
 
-Você deve implementar uma versão para terminal (console) do jogo, ou seja, usando `#!python print` e `#!python input` para interagir com o usuário por meio de texto. 
+Você deve implementar uma versão para terminal (console) do jogo, ou seja, usando `#!python print` e `#!python input` para interagir com o usuário por meio de texto.
 
-Para te auxiliar nessa tarefa, foram criados os seguintes exercícios (o resultado dos exercícios no Prairie Learn não afetam a nota, mas as funções criadas neles devem ser utilizadas no EP2):
+Para te auxiliar nessa tarefa, foram criados exercícios no PrairieLearn que te ajudarão a implementar as funções necessárias para o jogo.
 
-- **EP2 Transforma Base**
-- **EP2 Valida Questão**
-- **EP2 Valida Lista de Questões**
-- **EP2 Sorteia Questão**
-- **EP2 Sorteia Questão Inedita**
-- **EP2 Questão para String**
-- **EP2 Gera Ajuda**
+## Desenvolvimento do projeto
 
-**Atenção**: As funções enviadas para os exercícios acima devem ser utilizadas pelo seu programa no **EP2**. Dica: crie um ou mais arquivos para adicionar essas funções. A cada modificação nesse arquivo, faça um novo commit. Assim, a evolução do programa fica registrada. As função de impressão em tela e validação de entrada de dados podem ficar em arquivos separados.
+- Crie um repositório **público** no github para o seu projeto e adicione sua dupla caso haja.
+- Cada exercício feito com sucesso no PrairieLearn deve ser adicionado ao repositório em um commit separado no mesmo dia. Dica: crie um arquivo para adicionar essas funções. A cada modificação nesse arquivo, faça um novo commit. Assim, a evolução do programa fica registrada.
+- As funções enviadas no PrairieLearn devem ser utilizadas pelo seu programa no EP. Faça um outro arquivo para o programa que será responsável pela impressão em tela e validação de entrada de dados.
 
-Ainda, está sendo disponibilizado um arquivo com uma base de perguntas e resposta, que pode ser utilizado no EP. **Sugestão:** incremente a base de dados, criando novas perguntas!
-
-**[Base de Perguntas e Respostas](https://github.com/macielcalebe/dessoft-ferias-exemplo-ep2/blob/main/lib_questoes.py)**
-
-Leia também a rubrica atentamente, pois ela pode te ajudar a entender o que precisa ser feito.
+Leia também a rubrica atentamente, pois ela irá te ajudar a entender o que precisa ser feito.
 
 ## Rubrica
 
-A tabela a seguir apresenta os requisitos esperados e seus respectivos conceitos associados para os objetivos de aprendizagem **desenvolver de programas de computador** e **identificar e desenhar estratégias algorítmicas computacionais**. 
+A tabela a seguir apresenta os requisitos esperados e seus respectivos conceitos associados para os objetivos de aprendizagem **desenvolver de programas de computador** e **identificar e desenhar estratégias algorítmicas computacionais**. Esta tabela deve ser considerada em conjunto com a tabela do objetivo **atuar em uma equipe autogerenciada de desenvolvimento**.
 
-| Conceito  |       I       |                                                                        D                                                                        |                                      C                                       |                                                                                                                                          B                                                                                                                                           |                                                                                                                                               A                                                                                                                                                |
-| --------- | :-----------: | :---------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Descrição | Não entregou. | Não entregou todas as sete funções obrigatórias (você pode, e deve, utilizar mais funções, mas as funções listadas no enunciado são obrigatórias). | Entregou as sete funções obrigatórias funcionando, mas o programa não funciona. | O programa funciona conforme o esperado, o jogo sempre apresenta para o jogador o estado atual do seu prêmio, é apresentada uma mensagem ao final de cada jogo indicando se o jogador ganhou ou perdeu e o jogador pode iniciar um novo jogo sem ter que executar o programa novamente. | Atingiu o conceito B, implementou validações para as entradas do usuário (digitou respostas válidas), adicionou mais perguntas à base e implementou alguma forma de visualização mais avançada (ex: cor diferente conforme o valor do prêmio ou de acordo com a importância de cada mensagem). |
+### Conceito I
+Não entregou
 
-## Entrega
+### Conceito D
+Não submeteu com sucesso no PrairieLearn ou não fez o commit de alguma das funções a seguir:
 
-Você irá criar um repositório e entregar o endereço deste repositório no Blackboard.
+- Define posições
+- Preenche frota
+- Faz jogada
 
-Além disso, é **obrigatório** o envio via Blackboard de um **vídeo de até 5 minutos** que demonstre seu jogo funcionando.
+### Conceito C
+Submeteu com sucesso no PrairieLearn **E** fez o commit das funções a seguir:
 
-Não façam commit após a data de entrega, será considerado como atraso.
+- Define posições
+- Preenche frota
+- Faz jogada
 
-**O prazo é 28/07 às 23:59**
+### Conceito B
+Atingiu o conceito C
+E submeteu com sucesso no PrairieLearn **E** fez o commit das funções a seguir:
 
-EPs entregues com atraso terão seu conceito **limitado a D** (sem garantia de que será aceito, caso ocorra atraso, converse com os professores de forma urgente).
+- Posiciona frota
+- Afundados
+
+### Conceito A
+Atingiu o conceito B
+E submeteu com sucesso no PrairieLearn **E** fez o commit das funções a seguir:
+
+- Posição válida
+- Pergunta posicionamento da frota
+- Jogadas do jogador
+- Jogadas do oponente
+
+### Conceito A+
+Atingiu o conceito A e existem exatamente 2 arquivos no repositório (um para as funções e outro para o código do jogo. Além disso, as funções estão sendo importadas do arquivo que contém as definições das funções).
+___
+
+A tabela a seguir apresenta a rubrica do objetivo **atuar em uma equipe autogerenciada de desenvolvimento**.
+
+| Conceito  |  Descrição |
+| --------- | :--------: |
+| I        | Não entregou. |
+| D        | Não possui nenhum commit próprio e nenhuma evidência de trabalho em grupo. |
+| C        | O grupo enviou todo o código de uma vez para o git (em um ou poucos commits enviados em um intervalo curto de tempo). |
+| B        | Todos os membros do grupo enviaram commits com partes do código, mas a evolução do código é artificial. |
+| A        | O grupo fez bom uso do git, enviando commits a cada funcionalidade implementada ou bug corrigido. Os commits são distribuídos ao longo de alguns dias, mostrando a evolução do trabalho. |
+
+
+**O conceito final do EP será dado pelo menor entre os conceitos obtidos para cada objetivo acima.** Ou seja, se você obtiver conceito C no primeiro objetivo e A no segundo, o conceito final será C. Se você obtiver conceito A+ no primeiro objetivo, mas não possuir nenhum commit e nenhuma outra evidência de trabalho em grupo (conceito D), seu conceito final será D.
+
+## Entrega 04/11 até 23:59
+Será considerado o código enviado para o github e a submissão no PrairieLearn até a data de entrega.
+
+O endereço do seu repositório deve ser enviado pelo Blackboard. Não façam commits após a data de entrega, pois será considerado como atraso.
+
+**Importante:** Caso algum integrante da dupla esqueça de enviar o endereço do repositório, será descontado conceito da nota final do projeto.
