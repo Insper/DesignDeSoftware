@@ -32,11 +32,11 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 |     |    | <span class='q2'>14</span> |    | 16 |    |    |    |
 |     |    | 21 |    | <span class='q3'>23</span> | <span class='p1w'>24</span> | <span class='p1w'>25</span> |    |
 |     |    | <span class='p1w'>28</span> | <span class='p1w'>29</span> | <span class='p1'>30</span> |    |    |    |
-| Out |    | <span class='ep1'>05</span> |    | 07 |    |    |    |
+| Out |    | 05 |    | 07 |    |    |    |
 |     |    |    |    | 14 |    |    |    |
 |     |    | 19 |    | <span class='q4'>21</span> |    |    |    |
 |     |    | 26 |    | 28 |    |    |    |
-| Nov |    |    |    | <span class='ep2'>0</span><span class='q5'>4</span> |    |    |    |
+| Nov |    |    |    | <span class='ep1'>0</span><span class='q5'>4</span> |    |    |    |
 |     |    | 09 |    | 11 |    |    |    |
 |     |    | 16 |    | 18 |    |    |    |
 |     |    | <span class='epf'>23</span> |    | <span class='epp'>25</span> | <span class='p2w'>26</span> | <span class='p2w'>27</span> |    |
@@ -74,7 +74,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 
 <p class="calendar-legend-title">Projetos</p>
 
-<span class='ep1'>EP1</span>
+<span class='ep1'>EP</span>
 <!-- <span class='ep2'>EP2</span> -->
 <span class='epf'>Final (até 12h00, antes da Feira)</span>
 <span class='epp'>Prova do Projeto Final</span>
