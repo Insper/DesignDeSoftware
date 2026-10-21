@@ -36,8 +36,8 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 |     |    |    |    | 14 |    |    |    |
 |     |    | 19 |    | 21 |    |    |    |
 |     |    | <span class='q4'>26</span> |    | 28 |    |    |    |
-| Nov |    |    |    | <span class='ep1'>0</span><span class='q5'>4</span> |    |    |    |
-|     |    | 09 |    | 11 |    |    |    |
+| Nov |    |    |    | <span class='ep1'>04</span> |    |    |    |
+|     |    | <span class='q5'>09</span> |    | 11 |    |    |    |
 |     |    | 16 |    | 18 |    |    |    |
 |     |    | <span class='epf'>23</span> |    | <span class='epp'>25</span> | <span class='p2w'>26</span> | <span class='p2w'>27</span> |    |
 |     |    | <span class='p2'>30</span> |    |    |    |    |    |
