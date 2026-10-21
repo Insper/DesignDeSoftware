@@ -35,7 +35,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 | Out |    | 05 |    | 07 |    |    |    |
 |     |    |    |    | 14 |    |    |    |
 |     |    | 19 |    | <span class='q4'>21</span> |    |    |    |
-|     |    | 26 |    | 28 |    |    |    |
+|     |    | <span class='q4'>26</span> |    | 28 |    |    |    |
 | Nov |    |    |    | <span class='ep1'>0</span><span class='q5'>4</span> |    |    |    |
 |     |    | 09 |    | 11 |    |    |    |
 |     |    | 16 |    | 18 |    |    |    |
@@ -55,7 +55,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 <span class='q1'>Quiz 1: Input, Funções e Condicionais</span>
 <span class='q2'>Quiz 2: Estruturas de Repetição</span>
 <span class='q3'>Quiz 3: Listas</span>
-<span class='q4'>Quiz 4: Dicionários</span>
+<span class='q4'>Quiz 4: Dicionários (Turma C: 26/10)</span>
 <span class='q5'>Quiz 5: Strings</span>
 
 </div>
