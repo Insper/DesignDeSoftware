@@ -1,10 +1,16 @@
 # Projeto Final
 
-Data de entrega da proposta inicial do projeto: **08/05/2026**, via Blackboard
-
-Data de entrega: **25/05/2026**, via GitHub (o endereço deve ser enviado no Blackboard)
+| Etapa | Data | Onde |
+|:--|:--|:--|
+| Proposta inicial do projeto | **09/11/2026** | Blackboard |
+| <span class='epf'>Entrega do projeto</span> | **23/11/2026, até 12h00** (antes da Feira de Jogos) | GitHub (o endereço deve ser enviado no Blackboard) |
+| Feira de Jogos | **23/11/2026, das 12h00 às 14h00** | Insper |
+| <span class='epp'>Prova do Projeto Final</span> | **25/11/2026** | [PrairieLearn]({{pl_root}}){:target="_blank"} |
 
 Grupos: duplas ou trios. O critério de avaliação muda conforme o tamanho da equipe.
+
+!!! warning "Atenção: nota do projeto"
+    A nota do Projeto Final (**PF**) é a **menor** nota entre a **nota do projeto entregue** e a **nota da prova do projeto**. Veja a seção [Nota](#nota).
 
 ## Objetivo do Projeto
 
@@ -26,7 +32,7 @@ Envie no BlackBoard (não perca o prazo):
 1. O endereço do seu repositório GitHub (faça isso logo no início do projeto);
 2. Formulário com a proposta inicial do projeto (pode mudar um pouco depois, mas é importante definir uma direção);
 
-O professor irá clonar o código presente no GitHub ao final do dia de entrega (assim, se o repositório for privado, adicione o professor como colaborador). O repositório deverá conter um arquivo `README.md` com, **no mínimo**, o seguinte conteúdo:
+O professor irá clonar o código presente no GitHub às **12h00 do dia 23/11/2026** (commits posteriores não serão considerados; assim, se o repositório for privado, adicione o professor como colaborador). O repositório deverá conter um arquivo `README.md` com, **no mínimo**, o seguinte conteúdo:
 
 1. Título do projeto;
 2. Nomes dos membros do seu grupo;
@@ -71,45 +77,73 @@ Caso haja o uso de código gerado por essas ferramentas, é necessário indicar 
 
 **O projeto é necessariamente EM GRUPO**, é um requisito apresentado no iníco do curso que **DEVE** ser cumprido. No caso de algum aluno não encontrar um grupo ao tempo do início, então, o professor irá sortear os alunos sem grupo entre os grupo já estabelecidos, até 3 alunos por grupo. **Trabalhos individuais serão zerados**.
 
-A nota do projeto será dada pelo seguinte critério:
+Neste semestre, a nota do Projeto Final (**PF**) é composta por **duas notas**:
+
+1. <span class='epf'>Nota do Projeto Entregue</span>: avaliação do jogo entregue pelo grupo no GitHub, segundo a [rubrica](#rubrica) abaixo;
+2. <span class='epp'>Nota da Prova do Projeto</span>: prova individual realizada em **25/11/2026** no [PrairieLearn]({{pl_root}}){:target="_blank"}, sobre o projeto entregue pelo seu grupo. O objetivo é verificar que cada membro entende e domina o código e as decisões do jogo que o grupo entregou.
+
+A nota do Projeto Final é a **MENOR** entre as duas:
+
+$$
+PF = \min\left(\text{Entregue}, \text{Prova}\right)
+$$
+
+Ou seja, não basta o grupo entregar um bom jogo: cada aluno precisa demonstrar na prova que entende o que foi feito. Por exemplo, se o projeto entregue receber nota $8$ e o aluno tirar $5$ na prova do projeto, a nota do PF desse aluno será $5$. Da mesma forma, se o aluno tirar $9$ na prova, mas o projeto entregue receber $6$, a nota do PF será $6$. Isso vale também para trechos gerados com IA: você precisa entender todo o código do seu projeto.
+
+Lembre-se de que o PF compõe a **Nota em Grupo (NG)** e que a nota mínima exigida no PF é **4**. Consulte as regras completas nos [Critérios da Nota](../index.md#criterios-da-nota) da página principal.
+
+### Nota do projeto entregue
+
+A nota do projeto entregue será dada pelo seguinte critério:
 
 - Se a equipe obteve conceito I ou D em algum objetivo de aprendizado, o conceito final será dado pelo menor conceito obtido. Por exemplo: se todas as features foram implementadas, e o código está impecável, mas um aluno fez tudo (conforme evidenciado no git), a nota será D (ou até mesmo I).
 - Se todos os conceitos forem iguais ou superiores a C, o conceito final será obtido pela média ponderada dos conceitos obtidos para os objetivos de aprendizado:
-  $$0.25 * Objetivo 1 + 0.5 * Objetivo 2 + 0.25 * Objetivo 3$$
 
-### Rubrica
+$$
+0.25 \times \text{Objetivo}_1 + 0.5 \times \text{Objetivo}_2 + 0.25 \times \text{Objetivo}_3
+$$
 
-A tabela a seguir apresenta os requisitos esperados e seus respectivos conceitos associados para os 3 objetivos de aprendizagem.
+O conceito obtido é convertido em nota numérica segundo a tabela oficial da Engenharia.
 
-#### Objetivo 1: Desenvolver programas de computador
+#### Rubrica
 
-| Conceito | Descrição                                                                                                                                                                                                                                                                                                                                                                                |
-|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| I        | Código não roda, mesmo havendo algumas rotinas sem erros de sintaxe, não é possível uma execução completa. Documentação basicamente nula, nem no código, nem externa.                                                                                                                                                                                                                    |
-| D        | Código apresenta erros de sintaxe que inviabilizam o uso do programa de forma completa. Embora haja alguns comentários no código, esses não permitem minimamente entendê-lo.                                                                                                                                                                                                             |
-| C        | O código é funcional e faz o que se propõe fazer, código não apresenta erros de sintaxe. Existe uma documentação em algumas linhas de código, porém alguns blocos de código não possuem descrição do que fazem.                                                                                                                                                                          |
-| B        | Código organizado em uma série de funções que permitem uma clara compreensão da estratégia do jogo. Os principais blocos de código estão documentados de forma clara. Rotinas não possuem chamadas inúteis. Disponibilizou um arquivo README contendo as informações básicas (autores, descrição do projeto e uma explicação de como executar o jogo - qual arquivo deve ser executado). |
-| A        | Atingiu o conceito B. Código organizado de forma apropriada em orientação a objetos de forma que auxilia a compreensão, reuso e manutenção do código. Separou responsabilidades em arquivos diferentes. Código documentado com [ docstrings ]( https://realpython.com/documenting-python-code/ ). Rotinas são eficientes e sem chamadas inúteis.                                         |
+As abas a seguir apresentam os requisitos esperados e seus respectivos conceitos associados para cada um dos 3 objetivos de aprendizagem.
 
-#### Objetivo 2: Identificar e programar estratégias computacionais de resolução de problemas práticos
+=== "Objetivo 1"
 
-| Conceito | Descrição                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| I        | Jogo não apresenta uma jogabilidade mínima. Não há interações que funcionem como esperado para um jogo 2D ou 3D.                                                                                                                                                                                                                                                                                                                         |
-| D        | Possível visualizar uma cena de jogo, porém não possui nenhum recurso de interação incorporado. Basicamente é um passeio em um cenário.                                                                                                                                                                                                                                                                                                  |
-| C        | Foi criado um jogo que possui apenas uma ou duas telas. O jogo possui algumas formas de interação, mas não em tempo real (ou seja, não são ações instantâneas com fazer um personagem pular ou clicar em um botão).                                                                                                                                                                                                                      |
-| B        | O programa desenvolvido permite a interação com vários objetos (gráficos) na cena de forma coerente com a proposta do jogo. Mais de uma tela é apresentada para o usuário, incluindo telas informativas e tela de início e fim). Possui um som ambiente e/ou de efeito sonoro de personagens. Diferentes interações em tempo real são possíveis. Aplicativo está fluido.                                                                 |
-| A        | Atingiu o conceito B. Cenário elaborado com riqueza de detalhes e objetos do jogo possuem animações. O jogo possui um bom acabamento, se aproximando de um produto. Serão aceitos jogos menos acabados no caso de utilização de algum recurso avançado como comunicação por rede ou outros dispositivos externos (ex: controles, câmeras, etc.). Som presente no jogo de diversas formas. Jogo está fluido e não trava em momento algum. |
+    **Desenvolver programas de computador**<br>Peso: **25%**
 
-#### Objetivo 3: Atuar em uma equipe de desenvolvimento de software
+    | Conceito | Descrição                                                                                                                                                                                                                                                                                                                                                                                |
+    |----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | I        | Código não roda, mesmo havendo algumas rotinas sem erros de sintaxe, não é possível uma execução completa. Documentação basicamente nula, nem no código, nem externa.                                                                                                                                                                                                                    |
+    | D        | Código apresenta erros de sintaxe que inviabilizam o uso do programa de forma completa. Embora haja alguns comentários no código, esses não permitem minimamente entendê-lo.                                                                                                                                                                                                             |
+    | C        | O código é funcional e faz o que se propõe fazer, código não apresenta erros de sintaxe. Existe uma documentação em algumas linhas de código, porém alguns blocos de código não possuem descrição do que fazem.                                                                                                                                                                          |
+    | B        | Código organizado em uma série de funções que permitem uma clara compreensão da estratégia do jogo. Os principais blocos de código estão documentados de forma clara. Rotinas não possuem chamadas inúteis. Disponibilizou um arquivo README contendo as informações básicas (autores, descrição do projeto e uma explicação de como executar o jogo - qual arquivo deve ser executado). |
+    | A        | Atingiu o conceito B. Código organizado de forma apropriada em orientação a objetos de forma que auxilia a compreensão, reuso e manutenção do código. Separou responsabilidades em arquivos diferentes. Código documentado com [ docstrings ]( https://realpython.com/documenting-python-code/ ). Rotinas são eficientes e sem chamadas inúteis.                                         |
 
-| Conceito | Descrição                                                                                                                                                                                                                                                                                                                                                                                                     |
-|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| I        | Grupo não conseguiu entregar código pelo Github. O código foi entregue em arquivos sem sentido, e com pedaços de código inútil e/ou ilegível. Implementação do jogo foi muito limitada para o tamanho do grupo.                                                                                                                                                                                               |
-| D        | Grupo conseguiu entregar código pelo Github, porém possuíam commits só de um usuário e limitado a um número reduzido de commits. Os arquivos entregues não possuíam uma organização básica. Implementação do jogo foi limitada para o tamanho do grupo.  **OU**  Não existem evidências de que o aluno teve alguma contribuição significativa no projeto.                                                     |
-| C        | Código entregue pelo Github, porém se percebe uma contribuição forçada, pois o código relevante foi postado por basicamente um usuário. Implementação do jogo proposto foi mínima para o tamanho do grupo.  **OU**  O aluno não preencheu mais de um dos formulários de acompanhamento do projeto.                                                                                                            |
-| B        | Código entregue pelo Github, onde se percebe uma contribuição balanceada dos membros do grupo. Implementação do jogo proposto foi adequada para o tamanho do grupo.                                                                                                                                                                                                                                           |
-| A        | Código entregue pelo Github, onde se percebe uma contribuição balanceada dos membros do grupo. Além do código se percebe que os membros do grupo trabalharam juntos em outros evidências de discussão do projeto, como o design do jogo (se tiverem rascunhos, coloquem no README), geração e coleta de imagens (sprites), etc. Implementação do jogo proposto foi acima do esperado para o tamanho do grupo. |
+=== "Objetivo 2"
+
+    **Identificar e programar estratégias computacionais de resolução de problemas práticos**<br>Peso: **50%**
+
+    | Conceito | Descrição                                                                                                                                                                                                                                                                                                                                                                                                                                |
+    |----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | I        | Jogo não apresenta uma jogabilidade mínima. Não há interações que funcionem como esperado para um jogo 2D ou 3D.                                                                                                                                                                                                                                                                                                                         |
+    | D        | Possível visualizar uma cena de jogo, porém não possui nenhum recurso de interação incorporado. Basicamente é um passeio em um cenário.                                                                                                                                                                                                                                                                                                  |
+    | C        | Foi criado um jogo que possui apenas uma ou duas telas. O jogo possui algumas formas de interação, mas não em tempo real (ou seja, não são ações instantâneas com fazer um personagem pular ou clicar em um botão).                                                                                                                                                                                                                      |
+    | B        | O programa desenvolvido permite a interação com vários objetos (gráficos) na cena de forma coerente com a proposta do jogo. Mais de uma tela é apresentada para o usuário, incluindo telas informativas e tela de início e fim). Possui um som ambiente e/ou de efeito sonoro de personagens. Diferentes interações em tempo real são possíveis. Aplicativo está fluido.                                                                 |
+    | A        | Atingiu o conceito B. Cenário elaborado com riqueza de detalhes e objetos do jogo possuem animações. O jogo possui um bom acabamento, se aproximando de um produto. Serão aceitos jogos menos acabados no caso de utilização de algum recurso avançado como comunicação por rede ou outros dispositivos externos (ex: controles, câmeras, etc.). Som presente no jogo de diversas formas. Jogo está fluido e não trava em momento algum. |
+
+=== "Objetivo 3"
+
+    **Atuar em uma equipe de desenvolvimento de software**<br>Peso: **25%**
+
+    | Conceito | Descrição                                                                                                                                                                                                                                                                                                                                                                                                     |
+    |----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | I        | Grupo não conseguiu entregar código pelo Github. O código foi entregue em arquivos sem sentido, e com pedaços de código inútil e/ou ilegível. Implementação do jogo foi muito limitada para o tamanho do grupo.                                                                                                                                                                                               |
+    | D        | Grupo conseguiu entregar código pelo Github, porém possuíam commits só de um usuário e limitado a um número reduzido de commits. Os arquivos entregues não possuíam uma organização básica. Implementação do jogo foi limitada para o tamanho do grupo.  **OU**  Não existem evidências de que o aluno teve alguma contribuição significativa no projeto.                                                     |
+    | C        | Código entregue pelo Github, porém se percebe uma contribuição forçada, pois o código relevante foi postado por basicamente um usuário. Implementação do jogo proposto foi mínima para o tamanho do grupo.  **OU**  O aluno não preencheu mais de um dos formulários de acompanhamento do projeto.                                                                                                            |
+    | B        | Código entregue pelo Github, onde se percebe uma contribuição balanceada dos membros do grupo. Implementação do jogo proposto foi adequada para o tamanho do grupo.                                                                                                                                                                                                                                           |
+    | A        | Código entregue pelo Github, onde se percebe uma contribuição balanceada dos membros do grupo. Além do código se percebe que os membros do grupo trabalharam juntos em outros evidências de discussão do projeto, como o design do jogo (se tiverem rascunhos, coloquem no README), geração e coleta de imagens (sprites), etc. Implementação do jogo proposto foi acima do esperado para o tamanho do grupo. |
 
 <!-- ## Cronograma para o conceito B no Objetivo 2
 
@@ -121,7 +155,7 @@ Esta é uma sugestão de organização para o projeto de vocês. Lembrem-se que 
 - Até 23/05: projeto concluído com os requisitos do conceito B. -->
 
 !!! danger "Importante"
-    Dia 25/05/2026, das 12h00 às 13h00 teremos a **Feira de Jogos** onde apresentaremos os projetos para professores e alunos do Insper.
+    Dia 23/11/2026, das 12h00 às 14h00 teremos a **Feira de Jogos** onde apresentaremos os projetos para professores e alunos do Insper.
     Desta forma, a presença de todos no evento é imprescindível, e havendo falta será descontado conceito sobre a nota final do projeto.
 
 ## Exemplo
