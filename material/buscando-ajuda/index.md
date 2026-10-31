@@ -51,6 +51,13 @@ Existem diversos recursos gratuitos disponíveis na internet para aprender Pytho
 !!! info "LeetCode: treino levado a sério"
     O [LeetCode](https://leetcode.com/problemset/){:target="_blank"} é uma das plataformas de exercícios de programação mais respeitadas do mundo. Ela é usada por **milhões de programadores** e é a principal referência de preparação para as **entrevistas técnicas** de empresas como Google, Meta, Amazon, Microsoft e Apple, além de muitas empresas e bancos no Brasil. Muitas dessas empresas aplicam, nos seus processos seletivos, problemas iguais ou muito parecidos com os do LeetCode.
 
-    Os problemas são corrigidos automaticamente por uma bateria de testes (incluindo casos extremos e limites de tempo de execução), aceitam soluções em Python 3 e são classificados por dificuldade: **Easy**, **Medium** e **Hard**. Para quem está começando, filtre pelos problemas **Easy** dos tópicos que já vimos no curso (*Array*, *String*, *Hash Table*, *Math*). Depois de resolver, vale muito a pena ler a aba de soluções e discussões para comparar a sua estratégia com a de outras pessoas.
+    Os problemas são corrigidos automaticamente por uma bateria de testes (incluindo casos extremos e limites de tempo de execução), aceitam soluções em Python 3 e são classificados por dificuldade: **Easy**, **Medium** e **Hard**. Para quem está começando, use as listas de problemas por tópico do próprio LeetCode que correspondem ao que vimos no curso, e dentro de cada lista ordene ou filtre pelos problemas **Easy**:
+
+    - [*Array*](https://leetcode.com/problem-list/array/){:target="_blank"}: listas e laços de repetição;
+    - [*String*](https://leetcode.com/problem-list/string/){:target="_blank"}: strings e fatiamento;
+    - [*Hash Table*](https://leetcode.com/problem-list/hash-table/){:target="_blank"}: dicionários;
+    - [*Math*](https://leetcode.com/problem-list/math/){:target="_blank"}: funções, condicionais e laços com contas.
+
+    Depois de resolver, vale muito a pena ler a aba de soluções e discussões para comparar a sua estratégia com a de outras pessoas.
 
     Ou seja, o tempo que você investir no LeetCode não serve só para esta disciplina: é treino direto para estágios e empregos na área.
