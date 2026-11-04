@@ -40,7 +40,7 @@ Boas vindas ao material sobre Design de Software. Aqui você encontrará todo o 
 |     |    | <span class='q5'>09</span> |    | 11 |    |    |    |
 |     |    | 16 |    | 18 |    |    |    |
 |     |    | <span class='epf'>23</span> |    | <span class='epp'>25</span> | <span class='p2w'>26</span> | <span class='p2w'>27</span> |    |
-|     |    | <span class='p2'>30</span> |    |    |    |    |    |
+|     |    | <span class='p2w'>30</span> |    |    |    |    |    |
 | Dez |    |    | <span class='p2w'>01</span> | <span class='p2'>02</span> |    |    |    |
 |     |    | <span class='ps'>07</span> | <span class='ps'>08</span> | <span class='ps'>09</span> |    |    |    |
 
